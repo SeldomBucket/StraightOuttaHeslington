@@ -20,9 +20,13 @@ public class StartScreen extends ScreenAdapter {
     private float runningTime;
     private final String START_MESSAGE = "PRESS 'E' TO START GAME";
     private SpriteBatch batch = new SpriteBatch();
+    private Pixmap black;
+    private Texture textureBlack;
 
     public StartScreen (Game game){
         this.game = game;
+        black = new Pixmap(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), Pixmap.Format.RGBA8888);
+        textureBlack = new Texture(black);
     }
 
     public void show() {
@@ -37,7 +41,7 @@ public class StartScreen extends ScreenAdapter {
         update();
         batch.begin();
         batch.draw(Assets.title, 0, 0);
-        Pixmap black = new Pixmap(Gdx.graphics.getWidth(), Gdx.graphics.getHeight(), Pixmap.Format.RGBA8888);
+
         black.setColor(0,0,0,fadeInCounter);
         fadeInCounter -= 0.01f;
         if (fadeInCounter < 0) {
@@ -49,7 +53,7 @@ public class StartScreen extends ScreenAdapter {
         } else {
             Assets.consolas22.draw(batch, new GlyphLayout(Assets.consolas22, START_MESSAGE, Color.WHITE, Gdx.graphics.getWidth(), Align.center, false), 0, 100);
         }
-        batch.draw(new Texture(black),0,0);
+        batch.draw(textureBlack,0,0);
         batch.end();
     }
 
