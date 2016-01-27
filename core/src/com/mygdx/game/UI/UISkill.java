@@ -36,9 +36,10 @@ public class UISkill extends UIComponent {
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {
         patch.draw(batch, x, y, width, height + (paddingY * 2));
-        renderText(batch, skill.getName(), x, y, Color.WHITE);
-        renderText(batch, skill.getDescription(), x, y - LINE_HEIGHT, Color.LIGHT_GRAY);
-        renderText(batch, "MP COST: " + skill.getMPCost(), x+250, y, Color.WHITE);
+        renderText(batch, skill.getName(), x, y + (LINE_HEIGHT / 2), Color.WHITE);
+        renderText(batch, skill.getDescription(), x, y - ((LINE_HEIGHT * 3) / 2), Color.LIGHT_GRAY);
+        renderText(batch, "DAMAGE: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
+        renderText(batch, "MP COST: " + skill.getMPCost(), x + 200, y - (LINE_HEIGHT / 2), Color.WHITE);
     }
 
     /**
