@@ -47,8 +47,7 @@ public class Game extends com.badlogic.gdx.Game {
 			items = jsonLoader.parseItemManager("items.json");
 			party = jsonLoader.parsePartyManager("party.json");
 			enemies = jsonLoader.parsePartyManager("enemies.json");
-		}
-		catch (FileNotFoundException ex) {
+		} catch (FileNotFoundException ex) {
 			// Do something with 'ex'
 		} catch (IOException ex2) {
 			// Do something with 'ex2'

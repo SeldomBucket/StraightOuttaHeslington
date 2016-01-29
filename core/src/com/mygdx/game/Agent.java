@@ -24,9 +24,9 @@ public class Agent implements Comparable<Agent>{
 
     /**
      * Implements the compareTo function required when implementing the Comparable abstract class.
-    * Compares the total speeds of two agents, using base stats and equipment modifiers.
-    * Orders in descending order.
-    */
+     * Compares the total speeds of two agents, using base stats and equipment modifiers.
+     * Orders in descending order.
+     */
     public int compareTo(Agent agent){
 
         int thisSpeed = this.stats.getSpeed()+this.getCurrentEquipment().getTotalSpeedModifiers();

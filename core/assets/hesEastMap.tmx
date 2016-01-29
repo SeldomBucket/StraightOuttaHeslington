@@ -4,24 +4,9 @@
   <image source="SpriteSheetPlaceHolders.png" width="256" height="256"/>
   <tile id="64">
    <properties>
-    <property name="Swimmable" value=""/>
     <property name="WaterFrame" value="1"/>
     <property name="blocked" value=""/>
    </properties>
-   <animation>
-    <frame tileid="64" duration="100"/>
-    <frame tileid="64" duration="100"/>
-    <frame tileid="64" duration="100"/>
-    <frame tileid="64" duration="100"/>
-    <frame tileid="64" duration="100"/>
-    <frame tileid="64" duration="100"/>
-    <frame tileid="65" duration="100"/>
-    <frame tileid="65" duration="100"/>
-    <frame tileid="65" duration="100"/>
-    <frame tileid="65" duration="100"/>
-    <frame tileid="65" duration="100"/>
-    <frame tileid="65" duration="100"/>
-   </animation>
   </tile>
   <tile id="65">
    <properties>
@@ -54,7 +39,6 @@
    <properties>
     <property name="blocked" value=""/>
    </properties>
-   <objectgroup draworder="index"/>
   </tile>
   <tile id="162">
    <properties>
