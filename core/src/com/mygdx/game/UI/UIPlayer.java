@@ -36,6 +36,10 @@ public class UIPlayer extends UIComponent {
     /**
      * Called once per frame to render the player information.
      */
+    /**
+     *CHANGE- changed highlight to affect all text
+     */
+
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {
         patch.draw(batch, x, y, width, height + (paddingY * 2));
@@ -45,14 +49,17 @@ public class UIPlayer extends UIComponent {
         String mp = "MP:  " + player.getStats().getCurrentMP() + " /" + player.getStats().getMaxMP();
         if (selected) {
             renderText(batch, player.getName(), x, y, Color.WHITE);
+            renderText(batch, level, x, y - LINE_HEIGHT, Color.WHITE);
+            renderText(batch, xp, x+230, y - LINE_HEIGHT, Color.WHITE);
+            renderText(batch, hp, x, y - LINE_HEIGHT*2, Color.WHITE);
+            renderText(batch, mp, x+230, y - LINE_HEIGHT*2, Color.WHITE);
         } else {
             renderText(batch, player.getName(), x, y, Color.LIGHT_GRAY);
+            renderText(batch, level, x, y - LINE_HEIGHT, Color.LIGHT_GRAY);
+            renderText(batch, xp, x+230, y - LINE_HEIGHT, Color.LIGHT_GRAY);
+            renderText(batch, hp, x, y - LINE_HEIGHT*2, Color.LIGHT_GRAY);
+            renderText(batch, mp, x+230, y - LINE_HEIGHT*2, Color.LIGHT_GRAY);
         }
-
-        renderText(batch, level, x, y - LINE_HEIGHT, Color.WHITE);
-        renderText(batch, xp, x+230, y - LINE_HEIGHT, Color.WHITE);
-        renderText(batch, hp, x, y - LINE_HEIGHT*2, Color.WHITE);
-        renderText(batch, mp, x+230, y - LINE_HEIGHT*2, Color.WHITE);
     }
 
     /**
