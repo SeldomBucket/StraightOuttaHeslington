@@ -46,8 +46,7 @@ public class Skill{
     }
 
     public enum SkillType{
-        MELEE,RANGED,MAGIC,HEAL
-
+        MELEE,RANGED,MAGIC,HEAL,REVIVE
     }
 
     public int getBasePower() {

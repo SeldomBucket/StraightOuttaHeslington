@@ -54,10 +54,12 @@ public class UISkill extends UIComponent {
             case HEAL:
                 renderText(batch, "Heals Health: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
                 break;
+            case REVIVE:
+                renderText(batch, "Revives a fallen team member.", x, y - (LINE_HEIGHT / 2), Color.WHITE);
             default:
                 break;
         }
-        renderText(batch, "MP Cost: " + skill.getMPCost(), x + 230, y - (LINE_HEIGHT / 2), Color.WHITE);
+        renderText(batch, "MP Cost: " + skill.getMPCost(), x + 250, y - (LINE_HEIGHT / 2), Color.WHITE);
     }
 
     /**
