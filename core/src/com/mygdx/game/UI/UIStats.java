@@ -25,7 +25,7 @@ public class UIStats extends UIComponent {
     public boolean selected;
 
     public UIStats(float x, float y, float width, Agent player) {
-        super(x, y, width, 230);
+        super(x, y, width, 364);
         this.player = player;
         paddingX = 20;
         paddingY = 20;
@@ -49,16 +49,23 @@ public class UIStats extends UIComponent {
         String in= "INTELLIGENCE:  " + player.getStats().getIntelligence();
         String ar = "ARMOUR:  " + player.getStats().getBaseArmourVal();
 
-
+        /**
+         * CHANGE- added descriptions for stats
+         */
         renderText(batch, level, x, y, Color.WHITE);
         renderText(batch, xp, x+200, y, Color.WHITE);
         renderText(batch, hp, x, y - LINE_HEIGHT, Color.WHITE);
         renderText(batch, mp, x+200, y - LINE_HEIGHT, Color.WHITE);
         renderText(batch, sp, x, y - LINE_HEIGHT*2, Color.WHITE);
         renderText(batch, de, x+200, y - LINE_HEIGHT*2, Color.WHITE);
-        renderText(batch, st, x, y - LINE_HEIGHT*3, Color.WHITE);
-        renderText(batch, in, x+200, y - LINE_HEIGHT*3, Color.WHITE);
-        renderText(batch, ar, x, y - LINE_HEIGHT*4, Color.WHITE);
+        renderText(batch, "Affects turn\norder.", x, y- LINE_HEIGHT*2.5f, Color.LIGHT_GRAY);
+        renderText(batch, "Ranged attack\nmodifier.", x+200, y- LINE_HEIGHT*2.5f, Color.LIGHT_GRAY);
+        renderText(batch, st, x, y - LINE_HEIGHT*4, Color.WHITE);
+        renderText(batch, in, x+200, y - LINE_HEIGHT*4, Color.WHITE);
+        renderText(batch, "Melee attack\nmodifier.", x, y- LINE_HEIGHT*4.5f, Color.LIGHT_GRAY);
+        renderText(batch, "Magic attack\nmodifier.", x+200, y- LINE_HEIGHT*4.5f, Color.LIGHT_GRAY);
+        renderText(batch, ar, x, y - LINE_HEIGHT*6, Color.WHITE);
+        renderText(batch, "Mitigates damage\nrecieved.", x, y- LINE_HEIGHT*6.5f, Color.LIGHT_GRAY);
     }
 
     /**
