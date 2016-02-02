@@ -72,7 +72,7 @@ public class BattleMenu {
         partyStatusList = new UIBattleStatus(0, yOffset, Gdx.graphics.getWidth()/5+10, Gdx.graphics.getHeight()/4, 10, 10, Game.party);
         battleUI.addUIComponent(partyStatusList);
 
-        baseMenuList = new UIBattleBaseMenu(partyStatusList.width, yOffset, Gdx.graphics.getWidth()/6, Gdx.graphics.getHeight()/5, 10, 10);
+        baseMenuList = new UIBattleBaseMenu(partyStatusList.width, yOffset, Gdx.graphics.getWidth()/6, Gdx.graphics.getHeight()/4, 10, 10);
         baseMenuList.addListItem("Skills");
         baseMenuList.addListItem("Items");
         baseMenuList.selectItem(baseMenuPointer);
@@ -313,7 +313,7 @@ public class BattleMenu {
      * Creates the skillUI using the skills of the Agent with the current turn.
      */
     private void populateSkillUI(){
-        skillUI = new UIBattleSkillItemMenu(battleUI.getUIComponent(0).width+battleUI.getUIComponent(1).width,yOffset,Gdx.graphics.getWidth()/2+50,Gdx.graphics.getHeight()/5, 20, 10);
+        skillUI = new UIBattleSkillItemMenu(battleUI.getUIComponent(0).width+battleUI.getUIComponent(1).width,yOffset,Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()/4, 20, 10);
         for(int i=0; i<battleScreen.getCurrentTurnAgent().getSkills().size();i++){
             skillUI.addListItem(Game.skills.getSkill(battleScreen.getCurrentTurnAgent().getSkills().get(i)).getName());
         }
@@ -326,7 +326,7 @@ public class BattleMenu {
      */
     private void populateItemUI(){
 
-        itemUI = new UIBattleSkillItemMenu(battleUI.getUIComponent(0).width+battleUI.getUIComponent(1).width,yOffset,Gdx.graphics.getWidth()/2+50,Gdx.graphics.getHeight()/5,20,10);
+        itemUI = new UIBattleSkillItemMenu(battleUI.getUIComponent(0).width+battleUI.getUIComponent(1).width,yOffset,Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()/4,20,10);
         for(int i=0; i<Game.party.getConsumables().size();i++){
             itemUI.addListItem(Game.items.getConsumable(Game.party.getConsumables().get(i)).getName());
         }
@@ -351,6 +351,7 @@ public class BattleMenu {
                 battleUI.removeUIComponent(skillUI);//Removes the skillUI component
                 break;
             }
+            /* -commented out this code instead of deleting it in case we need it again
             case RIGHT:{
                 if(skillMenuPointer%2==0)
                     skillMenuPointer+=1;
@@ -369,6 +370,19 @@ public class BattleMenu {
             case DOWN:{
                 if(skillMenuPointer!=skillMenu.size()-1 && skillMenuPointer!= skillMenu.size()-2)
                     skillMenuPointer+=2;
+                break;
+            }
+            */
+            case UP: {
+                if (skillMenuPointer != 0) {
+                    skillMenuPointer -= 1;
+                }
+                break;
+            }
+            case DOWN: {
+                if (skillMenuPointer != skillMenu.size() - 1) {
+                    skillMenuPointer += 1;
+                }
                 break;
             }
         }
@@ -393,6 +407,7 @@ public class BattleMenu {
                 battleUI.removeUIComponent(itemUI);
                 break;
             }
+            /*-commented out this code instead of deleting it in case we need it again
             case RIGHT:{
                 if(itemMenuPointer%2==0)
                     itemMenuPointer+=1;
@@ -411,6 +426,19 @@ public class BattleMenu {
             case DOWN:{
                 if(itemMenuPointer!=itemMenu.size()-1 && itemMenuPointer!= itemMenu.size()-2)
                     itemMenuPointer+=2;
+                break;
+            }
+            */
+            case UP: {
+                if (itemMenuPointer != 0) {
+                    itemMenuPointer -= 1;
+                }
+                break;
+            }
+            case DOWN: {
+                if (itemMenuPointer != itemMenu.size() - 1) {
+                    itemMenuPointer += 1;
+                }
                 break;
             }
 

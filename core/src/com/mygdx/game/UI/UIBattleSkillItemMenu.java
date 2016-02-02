@@ -64,24 +64,24 @@ public class UIBattleSkillItemMenu extends UIComponent {
         patch.draw(batch, x, y, width, height + (paddingY * 2));
 
         for(int i=0; i<listItems.size();i++) {
-            if(i%2==0){
+            //if(i%2==0){
                 if(i==selected) {
                     renderText(batch, ">", leftX - 20, thisY, Color.WHITE, Assets.consolas22);
                     renderText(batch, listItems.get(i), leftX, thisY, Color.WHITE, Assets.consolas22);
                 }
                 else
                     renderText(batch, listItems.get(i), leftX, thisY, Color.LIGHT_GRAY, Assets.consolas22);
-            }
-            else{
+           //}
+            //else{
                 if(i==selected){
-                    renderText(batch, ">", rightX - 20, thisY, Color.WHITE, Assets.consolas22);
-                    renderText(batch, listItems.get(i), rightX, thisY, Color.WHITE, Assets.consolas22);
+                    renderText(batch, ">", leftX - 20, thisY, Color.WHITE, Assets.consolas22);
+                    renderText(batch, listItems.get(i), leftX, thisY, Color.WHITE, Assets.consolas22);
                 }
                 else
-                    renderText(batch, listItems.get(i), rightX, thisY, Color.LIGHT_GRAY, Assets.consolas22);
+                    renderText(batch, listItems.get(i), leftX, thisY, Color.LIGHT_GRAY, Assets.consolas22);
 
                 thisY-=25;
-            }
+            //}
 
         }
 
