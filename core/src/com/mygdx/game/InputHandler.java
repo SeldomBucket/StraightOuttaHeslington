@@ -2,6 +2,7 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.Input;
+import com.badlogic.gdx.utils.compression.lzma.Base;
 
 /**
  * Handles input
@@ -16,6 +17,7 @@ public class InputHandler {
     private static Boolean rightPressed = false;
     private static Boolean leftPressed = false;
     private static Boolean actPressed = false;
+    private static Boolean menuPressed = false;
     private static Boolean escPressed = false;
 
     private static Boolean upJustPressed = false;
@@ -23,14 +25,16 @@ public class InputHandler {
     private static Boolean rightJustPressed = false;
     private static Boolean leftJustPressed = false;
     private static Boolean actJustPressed = false;
+    private static Boolean menuJustPressed = false;
     private static Boolean escJustPressed = false;
 
-    private static final int UP = Input.Keys.W;
-    private static final int DOWN = Input.Keys.S;
-    private static final int LEFT = Input.Keys.A;
-    private static final int RIGHT = Input.Keys.D;
-    private static final int ACT = Input.Keys.E;
-    private static final int ESC = Input.Keys.Q;
+    private static final int UP = Input.Keys.UP;
+    private static final int DOWN = Input.Keys.DOWN;
+    private static final int LEFT = Input.Keys.LEFT;
+    private static final int RIGHT = Input.Keys.RIGHT;
+    private static final int ACT = Input.Keys.Z;
+    private static final int MENU = Input.Keys.M;
+    private static final int ESC = Input.Keys.X;
 
     /**
      * Updates and polls to see which inputs are active.
@@ -82,6 +86,15 @@ public class InputHandler {
                 actJustPressed = true;
             }
 
+            menuPressed = false;
+            menuJustPressed = false;
+            if (Gdx.input.isKeyPressed(MENU)) {
+                menuPressed = true;
+            }
+            if (Gdx.input.isKeyJustPressed(MENU)) {
+                menuJustPressed = true;
+            }
+
             escPressed = false;
             escJustPressed = false;
             if (Gdx.input.isKeyPressed(ESC)) {
@@ -129,6 +142,14 @@ public class InputHandler {
 
     public static Boolean isActJustPressed() {
         return actJustPressed;
+    }
+
+    public static Boolean isMenuJustPressed() {
+        return menuJustPressed;
+    }
+
+    public static Boolean isMenuPressed() {
+        return menuPressed;
     }
 
     public static Boolean isEscPressed(){return escPressed;}

@@ -17,7 +17,8 @@ public class Level {
 
     private GameWorld gameWorld;
     public TiledMap map;
-    public boolean[][] collisionMap;
+    public boolean[][] collisionMap, waterMap, roadMap;
+    public Interaction[][] interactablesMap;
     public Player player;
     public ArrayList<Character> characters;
     public boolean stopInput;
@@ -33,7 +34,7 @@ public class Level {
      */
     public Level(GameWorld gameWorld) {
         this.gameWorld = gameWorld;
-        map = new TmxMapLoader().load("newMap.tmx");
+        map = new TmxMapLoader().load("hesEastMap.tmx");
 
         MapProperties prop = map.getProperties();
         mapWidth = prop.get("width", Integer.class);
@@ -43,10 +44,37 @@ public class Level {
         mapBounds = new Vector2(mapWidth * tileWidth, mapHeight * tileHeight);
 
         collisionMap = new boolean[mapWidth][mapHeight];
+        waterMap = new boolean[mapWidth][mapHeight];
+        roadMap = new boolean[mapWidth][mapHeight];
+        interactablesMap = new Interaction[mapWidth][mapHeight];
+
         TiledMapTileLayer layer = (TiledMapTileLayer) map.getLayers().get(0);
         for (int x = 0; x < mapWidth; x++) {
             for (int y = mapHeight - 1; y >= 0; y--) {
                 collisionMap[x][y] = layer.getCell(x, y).getTile().getProperties().containsKey("blocked");
+            }
+        }
+        for (int x = 0; x < mapWidth; x++) {
+            for (int y = mapHeight - 1; y >= 0; y--) {
+                waterMap[x][y] = layer.getCell(x, y).getTile().getProperties().containsKey("water");
+            }
+        }
+        for (int x = 0; x < mapWidth; x++) {
+            for (int y = mapHeight - 1; y >= 0; y--) {
+                roadMap[x][y] = layer.getCell(x, y).getTile().getProperties().containsKey("road");
+            }
+        }
+        for (int x = 0; x < mapWidth; x++) {
+            for (int y = mapHeight - 1; y >= 0; y--) {
+                if(layer.getCell(x, y).getTile().getProperties().containsKey("textSign")){
+                    interactablesMap[x][y] = Interaction.TEXT_SIGN;
+                }else if (layer.getCell(x, y).getTile().getProperties().containsKey("vistaSign")){
+                    interactablesMap[x][y] = Interaction.VISTA_SIGN;
+                }else if(layer.getCell(x, y).getTile().getProperties().containsKey("flightSpot")){
+                    interactablesMap[x][y] = Interaction.FLIGHT;
+                }else{
+                    interactablesMap[x][y] = Interaction.NONE;
+                }
             }
         }
 

@@ -18,7 +18,7 @@ public class StartScreen extends ScreenAdapter {
     private final Game game;
     private float fadeInCounter;
     private float runningTime;
-    private final String START_MESSAGE = "PRESS 'E' TO START GAME";
+    private final String START_MESSAGE = "PRESS 'Z' TO START GAME";
     private SpriteBatch batch = new SpriteBatch();
     private Pixmap black;
     private Texture textureBlack;

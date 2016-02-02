@@ -33,12 +33,17 @@ public class Assets {
 
     private static final int PLAYER_WALKSHEET_COLS = 4;
     private static final int PLAYER_WALKSHEET_ROWS = 2;
+    private static final int PLAYER_SWIMSHEET_COLS = 4;
+    private static final int PLAYER_SWIMSHEET_ROWS = 2;
     private static final int NPC_WALKSHEET_COLS = 4;
     private static final int NPC_WALKSHEET_ROWS = 2;
 
     //  CHARACTER TEXTURE SHEETS
     public static Animation[] playerWalkAnimation;
     public static Texture playerWalkSheet;
+
+    public static Animation[] playerSwimAnimation;
+    public static Texture playerSwimSheet;
 
     public static Animation[] SallyNPCWalkAnimation;
     public static Texture SallyNPCWalkSheet;
@@ -145,6 +150,25 @@ public class Assets {
         for (int x = 0; x < walkFrameDirections.length;x++) {
             playerWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
             playerWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        playerSwimSheet = new Texture("DuckSwimAnimationFrames.png");
+        TextureRegion tmp2[][] = TextureRegion.split(playerSwimSheet, playerSwimSheet.getWidth() / PLAYER_SWIMSHEET_COLS, playerSwimSheet.getHeight() / PLAYER_SWIMSHEET_ROWS);
+        TextureRegion[][] swimFrameDirections = new TextureRegion[PLAYER_SWIMSHEET_COLS][PLAYER_SWIMSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < PLAYER_SWIMSHEET_ROWS; i++) {
+            for (int j = 0; j < PLAYER_SWIMSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    swimFrameDirections[index][j % 2] = tmp2[i][j];
+                } else {
+                    swimFrameDirections[index++][j % 2] = tmp2[i][j];
+                }
+            }
+        }
+        playerSwimAnimation = new Animation[PLAYER_SWIMSHEET_COLS];
+        for (int x = 0; x < swimFrameDirections.length;x++) {
+            playerSwimAnimation[x] = new Animation(0.175f, swimFrameDirections[x]);
+            playerSwimAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
         SallyNPCWalkSheet = new Texture("EvilDuckAnimationFrames.png");

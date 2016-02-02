@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-import com.badlogic.gdx.maps.Map;
 import com.badlogic.gdx.math.Vector2;
 
 /**
@@ -11,6 +10,8 @@ public class Player extends Character {
     private Direction tempDirection;
 
     public NPC interactingNPC;
+
+    public Interaction interaction;
 
     private float runningTime;
 
@@ -32,6 +33,9 @@ public class Player extends Character {
             updateMovement(Direction.LEFT);
         } else if (InputHandler.isRightPressed()) {
             updateMovement(Direction.RIGHT);
+        }
+        if (level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y] == Interaction.FLIGHT){
+            interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y];
         }
     }
 
@@ -71,15 +75,19 @@ public class Player extends Character {
         switch (getDirection()) {
             case UP:
                 interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x, getCurrentTile().y + 1);
+                interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y + 1];
                 break;
             case DOWN:
                 interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x, getCurrentTile().y - 1);
+                interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y - 1];
                 break;
             case LEFT:
                 interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x - 1, getCurrentTile().y);
+                interaction = level.interactablesMap[(int)getCurrentTile().x-1][(int)getCurrentTile().y];
                 break;
             case RIGHT:
                 interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x + 1, getCurrentTile().y);
+                interaction = level.interactablesMap[(int)getCurrentTile().x+1][(int)getCurrentTile().y];
                 break;
         }
     }

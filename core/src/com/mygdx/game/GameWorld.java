@@ -20,6 +20,7 @@ public class GameWorld {
     public GameState gameState;
 
     private NPC interactingNPC;
+    private Interaction interaction;
     private BattleParameters battleParams;
     private int battleChance;
 
@@ -66,36 +67,53 @@ public class GameWorld {
             case FREEROAM:
                 level.stopInput = false;
                 Random random = new Random();
-                if (level.player.getState() == Character.CharacterState.TRANSITIONING && random.nextInt(battleChance--) == 1){
-                    uiManager.createDialogue(new String[] {"You have been stopped by a group of... somethings!"});
-                    level.stopInput = true;
-                    battleChance = 1000;
-                    BattleParameters params = new BattleParameters(0);
+                if (level.player.getState() == Character.CharacterState.TRANSITIONING && random.nextInt(battleChance) == 1){
+                    if (!level.roadMap[(int)level.player.getCurrentTile().x][(int)level.player.getCurrentTile().y]) {
+                        uiManager.createDialogue(new String[]{"You have been stopped by a group of... somethings!"});
+                        level.stopInput = true;
+                        battleChance = 1000;
+                        BattleParameters params = new BattleParameters(0);
 
-                    //Get a number of agents from the list of enemies, make new agent instances with their information and setup the next battle
-                    for(int i=0;i<random.nextInt(3)+1;i++){
-                        Agent thisAgent = Game.enemies.getMember(random.nextInt(Game.enemies.size()));
-                        Statistics thisAgentStats = thisAgent.getStats();
-                        Statistics newStats = new Statistics(thisAgentStats.getMaxHP(),thisAgentStats.getMaxMP(),thisAgentStats.getSpeed(),thisAgentStats.getStrength(),thisAgentStats.getDexterity(),thisAgentStats.getIntelligence(),thisAgentStats.getBaseArmourVal(),thisAgentStats.getExperience(),thisAgentStats.getCurrentLevel());
-                        params.addEnemy(new Agent(thisAgent.getName(), thisAgent.getType(), newStats, thisAgent.getSkills(), thisAgent.getCurrentEquipment(), thisAgent.getTexture()));
+                        //Get a number of agents from the list of enemies, make new agent instances with their information and setup the next battle
+                        for (int i = 0; i < random.nextInt(3) + 1; i++) {
+                            Agent thisAgent = Game.enemies.getMember(random.nextInt(Game.enemies.size()));
+                            Statistics thisAgentStats = thisAgent.getStats();
+                            Statistics newStats = new Statistics(thisAgentStats.getMaxHP(), thisAgentStats.getMaxMP(), thisAgentStats.getSpeed(), thisAgentStats.getStrength(), thisAgentStats.getDexterity(), thisAgentStats.getIntelligence(), thisAgentStats.getBaseArmourVal(), thisAgentStats.getExperience(), thisAgentStats.getCurrentLevel());
+                            params.addEnemy(new Agent(thisAgent.getName(), thisAgent.getType(), newStats, thisAgent.getSkills(), thisAgent.getCurrentEquipment(), thisAgent.getTexture()));
+                        }
+
+                        battleParams = params;
+                        Assets.worldMusic.stop();//Stop the worldMusic
+                        Assets.sfx_battleStart.play(Game.masterVolume);
+                        gameState = GameState.BATTLE_DIALOGUE;
+                        level.stopInput = true;
+                    }else{
+                        battleChance--;
                     }
-
-                    battleParams = params;
-                    Assets.worldMusic.stop();//Stop the worldMusic
-                    Assets.sfx_battleStart.play(Game.masterVolume);
-                    gameState = GameState.BATTLE_DIALOGUE;
-                    level.stopInput = true;
                 } else
                 if (InputHandler.isActJustPressed()) {
                     interactingNPC = level.player.interactingNPC;
+                    interaction = level.player.interaction;
                     level.stopInput = true;
                     if (interactingNPC != null) {
                         interactingNPC.initializeInteraction(delta, uiManager);
+                        interaction = Interaction.NPC_DIALOGUE;
                         gameState = GameState.INTERACTION;
-                    } else {
-                        uiManager.openPartyMenu();
-                        gameState = GameState.PARTY_MENU;
+                    }else if (!(interaction == Interaction.NONE)){
+                        switch (interaction){
+                            case TEXT_SIGN:
+                                uiManager.createDialogue(new String[]{"This is a sign!"});
+                                gameState = GameState.INTERACTION;
+                                break;
+                            case VISTA_SIGN:
+                                break;
+                            case FLIGHT:
+                                break;
+                        }
                     }
+                }else if (InputHandler.isMenuJustPressed()){
+                    uiManager.openPartyMenu();
+                    gameState = GameState.PARTY_MENU;
                 }
                 break;
 
@@ -106,9 +124,22 @@ public class GameWorld {
                 break;
 
             case INTERACTION:
-                if (!interactingNPC.updateInteracting(delta)) {
-                    interactingNPC.action(this);
-                    gameState = GameState.FREEROAM;
+                switch (interaction){
+                    case NPC_DIALOGUE:
+                        if (!interactingNPC.updateInteracting(delta)) {
+                            interactingNPC.action(this);
+                            gameState = GameState.FREEROAM;
+                        }
+                        break;
+                    case TEXT_SIGN:
+                        if(!uiManager.updateDialogue(delta)){
+                            gameState = GameState.FREEROAM;
+                        }
+                        break;
+                    case VISTA_SIGN:
+                        break;
+                    case FLIGHT:
+                        break;
                 }
                 break;
 
