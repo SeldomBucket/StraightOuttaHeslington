@@ -38,8 +38,26 @@ public class UISkill extends UIComponent {
         patch.draw(batch, x, y, width, height + (paddingY * 2));
         renderText(batch, skill.getName(), x, y + (LINE_HEIGHT / 2), Color.WHITE);
         renderText(batch, skill.getDescription(), x, y - ((LINE_HEIGHT * 3) / 2), Color.LIGHT_GRAY);
-        renderText(batch, "DAMAGE: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
-        renderText(batch, "MP COST: " + skill.getMPCost(), x + 200, y - (LINE_HEIGHT / 2), Color.WHITE);
+        /**
+         * CHANGE- switch case to determine what type of skill it is and display correct information based on that
+         */
+        switch (skill.getSkillType()) {
+            case MELEE:
+                renderText(batch, "Melee Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
+                break;
+            case RANGED:
+                renderText(batch, "Ranged Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
+                break;
+            case MAGIC:
+                renderText(batch, "Magic Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
+                break;
+            case HEAL:
+                renderText(batch, "Heals Health: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
+                break;
+            default:
+                break;
+        }
+        renderText(batch, "MP Cost: " + skill.getMPCost(), x + 230, y - (LINE_HEIGHT / 2), Color.WHITE);
     }
 
     /**

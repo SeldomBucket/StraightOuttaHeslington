@@ -105,13 +105,17 @@ public class UIPartyMenu extends UIComponent {
         } else if (InputHandler.isRightJustPressed()) {
             menuSelected++;
         }
-        if (menuSelected < 0)
+        if (menuSelected < 0) {
             menuSelected = 0;
-        if (menuSelected > 2)
+        }
+        if (menuSelected > 2) {
             menuSelected = 2;
-        if (playerSelected < 0)
+        }
+        if (playerSelected < 0) {
             playerSelected = 0;
-        if (playerSelected >= party.size())
-            playerSelected = party.size()-1;
+        }
+        if (playerSelected >= party.size()) {
+            playerSelected = party.size() - 1;
+        }
     }
 }
