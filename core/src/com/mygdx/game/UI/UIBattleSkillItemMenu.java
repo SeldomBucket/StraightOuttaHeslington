@@ -1,5 +1,6 @@
 package com.mygdx.game.UI;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
 import com.badlogic.gdx.graphics.g2d.BitmapFont;
 import com.badlogic.gdx.graphics.g2d.GlyphLayout;
@@ -7,6 +8,7 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
+import com.mygdx.game.*;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -58,33 +60,24 @@ public class UIBattleSkillItemMenu extends UIComponent {
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {
         float leftX = x+20;
-        float rightX = x+(width/2)+20;
         float thisY = y;
 
         patch.draw(batch, x, y, width, height + (paddingY * 2));
 
+        /**
+         * CHANGE- altered skill menu so that it operates as a list rather than a 2d 'array' of skills
+         */
         for(int i=0; i<listItems.size();i++) {
-            //if(i%2==0){
                 if(i==selected) {
                     renderText(batch, ">", leftX - 20, thisY, Color.WHITE, Assets.consolas22);
                     renderText(batch, listItems.get(i), leftX, thisY, Color.WHITE, Assets.consolas22);
                 }
-                else
+                else {
                     renderText(batch, listItems.get(i), leftX, thisY, Color.LIGHT_GRAY, Assets.consolas22);
-           //}
-            //else{
-                if(i==selected){
-                    renderText(batch, ">", leftX - 20, thisY, Color.WHITE, Assets.consolas22);
-                    renderText(batch, listItems.get(i), leftX, thisY, Color.WHITE, Assets.consolas22);
                 }
-                else
-                    renderText(batch, listItems.get(i), leftX, thisY, Color.LIGHT_GRAY, Assets.consolas22);
-
                 thisY-=25;
-            //}
-
         }
-
+        new UISkill(x + width, y, Gdx.graphics.getWidth() - (x + width), height - 20, Game.skills.getSkill(selected)).render(batch, patch);
     }
 
     /**

@@ -56,7 +56,7 @@ public class UIPartyMenu extends UIComponent {
                 new UIMessageBox("SKILLS", Assets.consolas22, Color.WHITE, Align.center, x+width/2+width/6, (y + height +4), width/6, 0, 10).render(batch, patch);
                 new UIMessageBox("EQUIPMENT", Assets.consolas22, Color.LIGHT_GRAY, Align.center, x+width/2+width/3, (y + height+4), width/6, 0, 10).render(batch, patch);
                 for (int i=0;i<party.getMember(playerSelected).getSkills().size();i++) {
-                    new UISkill(x + width/2, (y + height - 86)-(90*i), width/2, Game.skills.getSkill(party.getMember(playerSelected).getSkills().get(i))).render(batch, patch);
+                    new UISkill(x + width/2, (y + height - 86)-(90*i), width/2, 50, Game.skills.getSkill(party.getMember(playerSelected).getSkills().get(i))).render(batch, patch);
                 }
             }
             if (menuSelected == 2) {

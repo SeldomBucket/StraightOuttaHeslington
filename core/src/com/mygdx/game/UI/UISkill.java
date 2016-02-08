@@ -22,8 +22,17 @@ public class UISkill extends UIComponent {
     float paddingX;
     float paddingY;
 
-    public UISkill(float x, float y, float width, Skill skill) {
-        super(x, y, width, 50);
+    /**
+     * CHANGE- added height parameter for instantiation
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param skill
+     */
+
+    public UISkill(float x, float y, float width, float height, Skill skill) {
+        super(x, y, width, height);
         this.skill = skill;
         paddingX = 20;
         paddingY = 20;
