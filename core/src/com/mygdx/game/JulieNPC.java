@@ -10,17 +10,17 @@ import java.util.List;
 /**
  * This class represents the first npc of the game.
  */
-public class SallyNPC extends NPC {
+public class JulieNPC extends NPC {
 
     private boolean doneInteraction;
     private String[] messages;
 
-    public SallyNPC(Level level, Vector2 currentTile) {
+    public JulieNPC(Level level, Vector2 currentTile) {
         super(level, currentTile);
         messages = new String[3];
-        messages[0] = "Help! There is a robo duck on the loose!";
-        messages[1] = "Please help us by finding him and defeating him!";
-        messages[2] = "The last time I saw him was by the Catalyst building.";
+        messages[0] = "Help! I just got pecked by some malards!";
+        messages[1] = "Please teach him a lesson!";
+        messages[2] = "The when I called for help I think they flew south east towrads the lake";
         doneInteraction = false;
     }
 
@@ -43,10 +43,11 @@ public class SallyNPC extends NPC {
     @Override
     public void action(GameWorld gameWorld) {
         if (!doneInteraction) {
-            uiManager.addNotification("You gained 40 points.");
-            Game.pointsScore += 40;
+            uiManager.addNotification("You gained 60 points.");
+            Game.pointsScore += 60;
             doneInteraction = true;
         }
-        level.characters.add(new RoboNPC(level, new Vector2(75, 98)));
+        level.characters.add(new MalardsNPC(level, new Vector2(108, 71)));
     }
 }
+
