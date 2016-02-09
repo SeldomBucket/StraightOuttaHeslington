@@ -50,7 +50,7 @@ public class BattleMenu {
     private UIBattleStatus partyStatusList;
 
     //Declare UIDoubleLists for the skill and item UI elements
-    private UIBattleSkillItemMenu skillUI;
+    private UIBattleSkillMenu skillUI;
     private UIBattleSkillItemMenu itemUI;
 
     private UIMessageBox infoBox;
@@ -313,9 +313,9 @@ public class BattleMenu {
      * Creates the skillUI using the skills of the Agent with the current turn.
      */
     private void populateSkillUI(){
-        skillUI = new UIBattleSkillItemMenu(true, battleUI.getUIComponent(0).width+battleUI.getUIComponent(1).width,yOffset,Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()/4, 20, 10);
+        skillUI = new UIBattleSkillMenu(true, battleUI.getUIComponent(0).width+battleUI.getUIComponent(1).width,yOffset,Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()/4, 20, 10);
         for(int i=0; i<battleScreen.getCurrentTurnAgent().getSkills().size();i++){
-            skillUI.addListItem(Game.skills.getSkill(battleScreen.getCurrentTurnAgent().getSkills().get(i)).getName());
+            skillUI.addListItem(Game.skills.getSkill(battleScreen.getCurrentTurnAgent().getSkills().get(i)));
         }
         battleUI.addUIComponent(skillUI);
         skillUI.selectItem(skillMenuPointer);
