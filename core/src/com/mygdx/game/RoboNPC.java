@@ -12,10 +12,12 @@ import java.util.List;
  */
 public class RoboNPC extends NPC {
 
+    public SallyNPC sallyNPC;
     private String[] messages;
 
-    public RoboNPC(Level level, Vector2 currentTile) {
+    public RoboNPC(Level level, Vector2 currentTile, SallyNPC sallyNPC) {
         super(level, currentTile);
+        this.sallyNPC = sallyNPC;
         messages = new String[2];
         messages[0] = "01011001 01101111 01110101 01110010 00100000 01101101 01101111 01110100 01101000 01100101 01110010 00100000 01101001 01110011 00100000 01100001 00100000 01110111 01101000 01101111 01110010 01100101 00001101 00001010!!!";
         messages[1] = "Robo duck has challenged you to a battle.";
@@ -39,7 +41,7 @@ public class RoboNPC extends NPC {
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-        Agent enemyDuck = new Agent("Robo Duck", Agent.AgentType.ENEMY,new Statistics(250,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck = new Agent("Robo Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(4);
@@ -49,6 +51,8 @@ public class RoboNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
+        level.characters.remove(sallyNPC);
+        level.characters.add(new SallyNPC2(level, new Vector2(108, 91)));
 
     }
 }

@@ -18,6 +18,7 @@ public class GameWorld {
     public Level level;
     public UIManager uiManager;
     public GameState gameState;
+    public SallyNPC sallyDuck;
 
     private NPC interactingNPC;
     private Interaction interaction;
@@ -34,9 +35,12 @@ public class GameWorld {
         level = new Level(this);
         uiManager = new UIManager(Game.party);
         battleChance = 2000;
-        level.characters.add(new SallyNPC(level, new Vector2(108, 91)));
-        level.characters.add(new SammyNPC(level, new Vector2(100, 93)));
-        level.characters.add(new JulieNPC(level, new Vector2(90, 93)));
+        sallyDuck = new SallyNPC(level, new Vector2(108, 91));
+        level.characters.add(sallyDuck);
+        SammyNPC SammyDuck = new SammyNPC(level, new Vector2(100, 93));
+        level.characters.add(SammyDuck);
+        JulieNPC JulieDuck = new JulieNPC(level, new Vector2(90, 93));
+        level.characters.add(JulieDuck);
         uiManager.addUIComponent(new UIScore());
         battleParams = new BattleParameters(0);
         List<Integer> emptyList = new ArrayList<Integer>();
