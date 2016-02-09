@@ -10,15 +10,17 @@ import java.util.List;
 /**
  * This class represents the robot boss of the game.
  */
-public class MalardsNPC extends NPC {
+public class RoboFriendNPC extends NPC {
 
+    public SallyNPC2 sallyNPC2;
     private String[] messages;
 
-    public MalardsNPC(Level level, Vector2 currentTile) {
+    public RoboFriendNPC(Level level, Vector2 currentTile, SallyNPC2 sallyNPC2) {
         super(level, currentTile);
+        this.sallyNPC2 = sallyNPC2;
         messages = new String[2];
-        messages[0] = "Why are you even trying to help her";
-        messages[1] = "The malards have challenged you to a battle.";
+        messages[0] = "YOU KILLED MY FRIEND";
+        messages[1] = "Robo's friend has challenged you to a battle.";
     }
 
     @Override
@@ -35,11 +37,11 @@ public class MalardsNPC extends NPC {
     @Override
     public void action(GameWorld gameWorld) {
         Assets.sfx_battleStart.play(Game.masterVolume);
-        uiManager.addNotification("The malards have been defeated.");
+        uiManager.addNotification("Robo ducks friend has been defeated.");
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-        Agent enemyDuck = new Agent("Malards Duck", Agent.AgentType.ENEMY,new Statistics(250,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck = new Agent("Robo Duck's friend", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(4);
@@ -49,6 +51,7 @@ public class MalardsNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
+        level.characters.remove(sallyNPC2);
 
 
 

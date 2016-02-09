@@ -10,19 +10,19 @@ import java.util.List;
 /**
  * This class represents the first npc of the game.
  */
-public class SallyNPC extends NPC {
+public class SallyNPC2 extends NPC {
 
 
     private boolean doneInteraction;
     private String[] messages;
 
-    public SallyNPC(Level level, Vector2 currentTile) {
+    public SallyNPC2(Level level, Vector2 currentTile) {
         super(level, currentTile);
-            messages = new String[3];
-            messages[0] = "Help! There is a robo duck on the loose!";
-            messages[1] = "Please help us by finding him and defeating him!";
-            messages[2] = "The last time I saw him was by the Catalyst building.";
-            doneInteraction = false;
+        messages = new String[3];
+        messages[0] = "Thank you so much he was really scary";
+        messages[1] = "You seem good at this, can you kill another duck thats been a pain?";
+        messages[2] = "It's robo ducks friend he's probably over there now looking at robo ducks body";
+        doneInteraction = false;
     }
 
     @Override
@@ -44,13 +44,14 @@ public class SallyNPC extends NPC {
 
     @Override
     public void action(GameWorld gameWorld) {
-            if (!doneInteraction) {
-                uiManager.addNotification("You gained 40 points.");
-                Game.pointsScore += 40;
-                doneInteraction = true;
-            }
-
-            level.characters.add((new RoboNPC(level, new Vector2(75, 98), this)));
+        if (!doneInteraction) {
+            uiManager.addNotification("You gained 40 points.");
+            Game.pointsScore += 40;
+            doneInteraction = true;
         }
+
+        level.characters.add((new RoboFriendNPC(level, new Vector2(75, 98), this)));
+
     }
+}
 
