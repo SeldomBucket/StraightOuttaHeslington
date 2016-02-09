@@ -482,8 +482,26 @@ public class BattleMenu {
                             createInfoBox(battleScreen.getCurrentTurnAgent().getName() + " does not have enough MP to use this skill", 3);
                             break;
                         }
+                        switch (Game.skills.getSkill(skillOrItemID).getSkillType()){
+                            case HEAL:case REVIVE:
+                                if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getType()==Agent.AgentType.ENEMY){
+                                    createInfoBox("You can't target enemies with this skill!", 3);
+                                }
+                                else {
+                                    currentUseAbility = new UseSkill(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                }
+                                break;
+                            default:
+                                if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getType()==Agent.AgentType.FRIENDLY){
+                                    createInfoBox("You can't target friendlies with this skill!", 3);
+                                }
+                                else {
+                                    currentUseAbility = new UseSkill(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                }
+                                break;
+                        }
                     }
-                    currentUseAbility = new UseSkill(battleScreen.getCurrentTurnAgent(),battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+
                 }
                 else if(isItemTargeting) {
                     currentUseAbility = new UseItem(battleScreen.getCurrentTurnAgent(),battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
