@@ -504,7 +504,17 @@ public class BattleMenu {
 
                 }
                 else if(isItemTargeting) {
-                    currentUseAbility = new UseItem(battleScreen.getCurrentTurnAgent(),battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                    switch (Game.items.getConsumable(skillOrItemID).getType()){
+                        //add "case DAMAGING" here if damaging item types get added
+                        default:
+                            if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getType()==Agent.AgentType.ENEMY){
+                                createInfoBox("You can't target enemies with this item!", 3);
+                            }
+                            else {
+                                currentUseAbility = new UseItem(battleScreen.getCurrentTurnAgent(),battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                            }
+                            break;
+                    }
                 }
                 break;
             }
