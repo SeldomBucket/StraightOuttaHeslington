@@ -51,7 +51,7 @@ public class BattleMenu {
 
     //Declare UIDoubleLists for the skill and item UI elements
     private UIBattleSkillMenu skillUI;
-    private UIBattleSkillItemMenu itemUI;
+    private UIBattleItemMenu itemUI;
 
     private UIMessageBox infoBox;
     private float infoBoxTimer;
@@ -326,9 +326,9 @@ public class BattleMenu {
      */
     private void populateItemUI(){
 
-        itemUI = new UIBattleSkillItemMenu(false, battleUI.getUIComponent(0).width+battleUI.getUIComponent(1).width,yOffset,Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()/4,20,10);
+        itemUI = new UIBattleItemMenu(battleUI.getUIComponent(0).width+battleUI.getUIComponent(1).width,yOffset,Gdx.graphics.getWidth()/3,Gdx.graphics.getHeight()/4,20,10);
         for(int i=0; i<Game.party.getConsumables().size();i++){
-            itemUI.addListItem(Game.items.getConsumable(Game.party.getConsumables().get(i)).getName());
+            itemUI.addListItem(Game.items.getConsumable(Game.party.getConsumables().get(i)));
         }
         battleUI.addUIComponent(itemUI);
         itemUI.selectItem(itemMenuPointer);
