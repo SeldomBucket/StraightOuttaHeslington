@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.UI.UIDebugCoords;
 import com.mygdx.game.UI.UIManager;
 import com.mygdx.game.UI.UIScore;
 import com.mygdx.game.battle.BattleParameters;
@@ -23,6 +24,8 @@ public class GameWorld {
     private Interaction interaction;
     private BattleParameters battleParams;
     private int battleChance;
+    private boolean[] flightSpotsVisited; //True if you can fly to that particular spot
+    // [Constantine, Langwith, Goodricke, Law and Management, The Catalyst, TFTV, Computer Science, Ron Cooke Hub]
 
     /**
      * Constructor for the GameWorld generates a new level and adds the characters to be used in the game.
@@ -38,6 +41,7 @@ public class GameWorld {
         level.characters.add(new SammyNPC(level, new Vector2(100, 93)));
         level.characters.add(new JulieNPC(level, new Vector2(90, 93)));
         uiManager.addUIComponent(new UIScore());
+        uiManager.addUIComponent(new UIDebugCoords(level.player));
         battleParams = new BattleParameters(0);
         List<Integer> emptyList = new ArrayList<Integer>();
         Agent enemyDuck = new Agent("Crazed Duck", Agent.AgentType.ENEMY,new Statistics(100,100,0,2,2,2,2,2,3),emptyList,new CurrentEquipment(0,0,0,0,0),0);
@@ -46,6 +50,7 @@ public class GameWorld {
         enemyDuck2.addSkill(0);
         battleParams.addEnemy(enemyDuck);
         battleParams.addEnemy(enemyDuck2);
+        flightSpotsVisited = new boolean[]{true, false, false, false, false, false, false, false};
     }
 
     /**
@@ -109,6 +114,55 @@ public class GameWorld {
                             case VISTA_SIGN:
                                 break;
                             case FLIGHT:
+                                gameState = GameState.INTERACTION;
+                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                    if (!flightSpotsVisited[0]){
+                                        flightSpotsVisited[0] = true;
+                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                    }
+                                }
+                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                    if (!flightSpotsVisited[1]){
+                                        flightSpotsVisited[1] = true;
+                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                    }
+                                }
+                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                    if (!flightSpotsVisited[2]){
+                                        flightSpotsVisited[2] = true;
+                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                    }
+                                }
+                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                    if (!flightSpotsVisited[3]){
+                                        flightSpotsVisited[3] = true;
+                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                    }
+                                }
+                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                    if (!flightSpotsVisited[4]){
+                                        flightSpotsVisited[4] = true;
+                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                    }
+                                }
+                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                    if (!flightSpotsVisited[5]){
+                                        flightSpotsVisited[5] = true;
+                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                    }
+                                }
+                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                    if (!flightSpotsVisited[6]){
+                                        flightSpotsVisited[6] = true;
+                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                    }
+                                }
+                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                    if (!flightSpotsVisited[7]){
+                                        flightSpotsVisited[7] = true;
+                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                    }
+                                }
                                 break;
                         }
                     }
@@ -140,6 +194,9 @@ public class GameWorld {
                     case VISTA_SIGN:
                         break;
                     case FLIGHT:
+                        if(!uiManager.updateDialogue(delta)){
+                            gameState = GameState.FREEROAM;
+                        }
                         break;
                 }
                 break;
