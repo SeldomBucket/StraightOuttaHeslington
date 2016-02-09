@@ -26,12 +26,24 @@ public class UIBattleSkillItemMenu extends UIComponent {
 
     private int selected = 0;
     float paddingX,paddingY;
+    boolean isSkillMenu;
 
-    public UIBattleSkillItemMenu(float x, float y, float width, float height, float paddingX, float paddingY) {
+    /**
+     * CHANGE- isSkillMenu added so pop-ups with info for skills/items can be displayed accordingly
+     * @param isSkillMenu
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param paddingX
+     * @param paddingY
+     */
+    public UIBattleSkillItemMenu(boolean isSkillMenu, float x, float y, float width, float height, float paddingX, float paddingY) {
         super(x, y, width, height);
 
-        this.paddingX=paddingX;
-        this.paddingY=paddingY;
+        this.isSkillMenu = isSkillMenu;
+        this.paddingX = paddingX;
+        this.paddingY = paddingY;
 
         listItems = new ArrayList<String>();
     }
@@ -77,7 +89,9 @@ public class UIBattleSkillItemMenu extends UIComponent {
                 }
                 thisY-=25;
         }
-        new UISkill(x + width, y, Gdx.graphics.getWidth() - (x + width), height - 20, Game.skills.getSkill(selected)).render(batch, patch);
+        if (isSkillMenu == true) {
+            new UIBattleSkillInfo(x + width, y, Gdx.graphics.getWidth() - (x + width), height - 20, Game.skills.getSkill(selected)).render(batch, patch);
+        }
     }
 
     /**
