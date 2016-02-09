@@ -488,7 +488,26 @@ public class BattleMenu {
                                     createInfoBox("You can't target enemies with this skill!", 3);
                                 }
                                 else {
-                                    currentUseAbility = new UseSkill(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                    if (Game.skills.getSkill(skillOrItemID).getSkillType() == Skill.SkillType.HEAL) {
+                                        if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getCurrentHP()== battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getMaxHP()){
+                                            createInfoBox(battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getName()+"'s health is already full!", 3);
+                                        }
+                                        else if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getCurrentHP()==0){
+                                            createInfoBox(battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getName()+" is dead and can't be healed.", 3);
+                                        }
+                                        else {
+                                            currentUseAbility = new UseSkill(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                        }
+
+                                    }
+                                    if (Game.skills.getSkill(skillOrItemID).getSkillType() == Skill.SkillType.REVIVE) {
+                                        if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getCurrentHP() != 0){
+                                            createInfoBox(battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getName()+" is not dead yet!", 3);
+                                        }
+                                        else {
+                                            currentUseAbility = new UseSkill(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                        }
+                                    }
                                 }
                                 break;
                             default:
@@ -511,7 +530,36 @@ public class BattleMenu {
                                 createInfoBox("You can't target enemies with this item!", 3);
                             }
                             else {
-                                currentUseAbility = new UseItem(battleScreen.getCurrentTurnAgent(),battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                if (Game.items.getConsumable(skillOrItemID).getType() == Consumable.consumeType.HEAL) {
+                                    if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getCurrentHP()== battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getMaxHP()){
+                                        createInfoBox(battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getName()+"'s health is already full!", 3);
+                                    }
+                                    else if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getCurrentHP()==0){
+                                        createInfoBox(battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getName()+" is dead and can't be healed.", 3);
+                                    }
+                                    else{
+                                        currentUseAbility = new UseItem(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                    }
+                                }
+                                else if (Game.items.getConsumable(skillOrItemID).getType() == Consumable.consumeType.REVIVE){
+                                    if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getCurrentHP() != 0){
+                                        createInfoBox(battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getName()+" is not dead yet!", 3);
+                                    }
+                                    else {
+                                        currentUseAbility = new UseItem(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                    }
+                                }
+                                else if (Game.items.getConsumable(skillOrItemID).getType() == Consumable.consumeType.MANAHEAL){
+                                    if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getCurrentMP() >= battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getMaxMP()){
+                                        createInfoBox(battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getName()+" already has full MP!", 3);
+                                    }
+                                    else {
+                                        currentUseAbility = new UseItem(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                    }
+                                }
+                                else{
+                                    currentUseAbility = new UseItem(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
+                                }
                             }
                             break;
                     }
