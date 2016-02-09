@@ -14,12 +14,12 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Creates and manages rendering of the item and skill menus on the battlescreen.
- * The selected skill/item is highlighted and indicated with a '{@literal >}'
- * The UI is rendered as a grid of 2 columns and rows of (number of elements/2).
- * Elements are rendered left to right in the order they are added to the class.
+ * Creates and manages rendering of the skill menu on the battlescreen.
+ * The selected skill is highlighted and indicated with a '{@literal >}'
+ * The UI is rendered as a list of the skills availabel to the agent.
+ * Elements are rendered top to bottom in the order they are added to the class.
  *
- * The UIBattleSkillItemMenu class is a subclass of UIComponent.
+ * The UIBattleSkillMenu class is a subclass of UIComponent.
  */
 public class UIBattleSkillMenu extends UIComponent {
     public List<Skill> listSkills;

@@ -30,6 +30,7 @@ public class Consumable{
         HEAL, REVIVE, MANAHEAL, SPEEDBUFF, STRENGTHBUFF, DEXTERITYBUFF, INTELLIGENCEBUFF;
     }
 
+    public int getID() {return ID; }
 
     public String getName() {
         return name;
