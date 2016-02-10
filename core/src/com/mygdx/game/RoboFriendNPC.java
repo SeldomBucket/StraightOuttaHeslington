@@ -12,12 +12,12 @@ import java.util.List;
  */
 public class RoboFriendNPC extends NPC {
 
-    public SallyNPC2 sallyNPC2;
+    public SallyNPC sallyNPC;
     private String[] messages;
 
-    public RoboFriendNPC(Level level, Vector2 currentTile, SallyNPC2 sallyNPC2) {
+    public RoboFriendNPC(Level level, Vector2 currentTile, SallyNPC sallyNPC) {
         super(level, currentTile);
-        this.sallyNPC2 = sallyNPC2;
+        this.sallyNPC = sallyNPC;
         messages = new String[2];
         messages[0] = "YOU KILLED MY FRIEND";
         messages[1] = "Robo's friend has challenged you to a battle.";
@@ -51,7 +51,8 @@ public class RoboFriendNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
-        level.characters.remove(sallyNPC2);
+        gameWorld.sallyDuck.doneInteraction = false;
+        gameWorld.sallyDuck.isFriendDead = true;
 
 
 

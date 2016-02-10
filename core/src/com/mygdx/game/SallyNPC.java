@@ -12,9 +12,9 @@ import java.util.List;
  */
 public class SallyNPC extends NPC {
 
-
-    private boolean doneInteraction;
-    private String[] messages;
+    public boolean isRoboDead = false, interactedBefore = false, isFriendDead = false;
+    public boolean doneInteraction;
+    private String[] messages, roboDead_messages, last_messages;
 
     public SallyNPC(Level level, Vector2 currentTile) {
         super(level, currentTile);
@@ -27,16 +27,25 @@ public class SallyNPC extends NPC {
 
     @Override
     public void initializeInteraction(float delta, UIManager uiManager) {
-        if (!doneInteraction) {
+        if ((!doneInteraction && !isRoboDead) && !interactedBefore) {
             uiManager.createDialogue(messages);
             this.uiManager = uiManager;
         }
+        else if (!doneInteraction && isRoboDead){
+            uiManager.createDialogue(roboDead_messages);
+            this.uiManager = uiManager;
+        }
+
+        else if (!doneInteraction && !isRoboDead){
+            uiManager.createDialogue(last_messages);
+            this.uiManager = uiManager;
+        }
+
     }
 
     @Override
     public boolean updateInteracting(float delta) {
         if (doneInteraction) {
-            doneInteraction = false;
             return false;
         }
         return uiManager.updateDialogue(delta);
@@ -44,13 +53,37 @@ public class SallyNPC extends NPC {
 
     @Override
     public void action(GameWorld gameWorld) {
-            if (!doneInteraction) {
+            if ((!doneInteraction && !isRoboDead) && !interactedBefore) {
                 uiManager.addNotification("You gained 40 points.");
                 Game.pointsScore += 40;
+                interactedBefore = true;
+                level.characters.add((new RoboNPC(level, new Vector2(75, 98), this)));
+
+                roboDead_messages = new String[3];
+                roboDead_messages[0] = "thanks, he was scaring the widgey out of me!";
+                roboDead_messages[1] = "You seem to be good at this, can you take care of his nasty friend too?";
+                roboDead_messages[2] = "He'll be over there now probably looking at Robo Ducks body";
                 doneInteraction = true;
             }
 
-            level.characters.add((new RoboNPC(level, new Vector2(75, 98), this)));
+            else if (!doneInteraction && isRoboDead){
+                uiManager.addNotification("You gained 50 points.");
+                Game.pointsScore += 50;
+                isRoboDead = false;
+                level.characters.add((new RoboFriendNPC(level, new Vector2(75, 98), this)));
+
+                last_messages = new String[2];
+                last_messages[0] = "Thank you so much for all your help";
+                last_messages[1] = "You definitely deserve a first for all that you just did";
+                doneInteraction = true;
+            }
+
+            else if (!doneInteraction && isFriendDead){
+                uiManager.addNotification("You gained 60 points.");
+                Game.pointsScore += 60;
+                doneInteraction = true;
+            }
+
         }
     }
 

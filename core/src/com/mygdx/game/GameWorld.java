@@ -20,6 +20,9 @@ public class GameWorld {
     public UIManager uiManager;
     public GameState gameState;
     public SallyNPC sallyDuck;
+    public SammyNPC sammyDuck;
+    public JulieNPC julieDuck;
+    //public BackUpNPC backup1Duck, backUp2Duck, backUP3Duck, backUp4Duck;
 
     private NPC interactingNPC;
     private Interaction interaction;
@@ -40,10 +43,10 @@ public class GameWorld {
         battleChance = 2000;
         sallyDuck = new SallyNPC(level, new Vector2(108, 91));
         level.characters.add(sallyDuck);
-        SammyNPC SammyDuck = new SammyNPC(level, new Vector2(100, 93));
-        level.characters.add(SammyDuck);
-        JulieNPC JulieDuck = new JulieNPC(level, new Vector2(90, 93));
-        level.characters.add(JulieDuck);
+        sammyDuck = new SammyNPC(level, new Vector2(100, 93));
+        level.characters.add(sammyDuck);
+        julieDuck = new JulieNPC(level, new Vector2(90, 93));
+        level.characters.add(julieDuck);
         uiManager.addUIComponent(new UIScore());
         uiManager.addUIComponent(new UIDebugCoords(level.player));
         battleParams = new BattleParameters(0);

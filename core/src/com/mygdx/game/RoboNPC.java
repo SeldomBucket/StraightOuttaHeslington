@@ -51,8 +51,8 @@ public class RoboNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
-        level.characters.remove(sallyNPC);
-        level.characters.add(new SallyNPC2(level, new Vector2(108, 91)));
+        gameWorld.sallyDuck.doneInteraction = false;
+        gameWorld.sallyDuck.isRoboDead = true;
 
     }
 }

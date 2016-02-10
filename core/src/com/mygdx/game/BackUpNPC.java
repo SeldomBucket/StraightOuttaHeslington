@@ -12,11 +12,15 @@ import java.util.List;
  */
 public class BackUpNPC extends NPC {
 
+    public GressinghamNPC gressinghamNPC;
     private String[] messages;
 
-    public BackUpNPC(Level level, Vector2 currentTile) {
+
+
+    public BackUpNPC(Level level, Vector2 currentTile, GressinghamNPC gressinghamNPC) {
         super(level, currentTile);
         messages = new String[3];
+        this.gressinghamNPC = gressinghamNPC;
         messages[0] = "You killed our master, you will pay";
         messages[1] = "Bring it";
         messages[2] = "A gresigham duck has challenged you to a battle.";
@@ -33,6 +37,7 @@ public class BackUpNPC extends NPC {
         return uiManager.updateDialogue(delta);
     }
 
+
     @Override
     public void action(GameWorld gameWorld) {
         Assets.sfx_battleStart.play(Game.masterVolume);
@@ -41,15 +46,26 @@ public class BackUpNPC extends NPC {
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
         Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck2 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck3 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck4 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(4);
 
         params.addEnemy(enemyDuck);
+        params.addEnemy(enemyDuck2);
+        params.addEnemy(enemyDuck3);
+        params.addEnemy(enemyDuck4);
 
 
         gameWorld.setBattle(params);
-        level.characters.remove(this);
+        level.characters.remove(gressinghamNPC.backUp1Duck);
+        level.characters.remove(gressinghamNPC.backUp2Duck);
+        level.characters.remove(gressinghamNPC.backUp3Duck);
+        level.characters.remove(gressinghamNPC.backUp4Duck);
+
+
 
     }
 }
