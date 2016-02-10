@@ -12,8 +12,9 @@ import java.util.List;
  */
 public class SammyNPC extends NPC {
 
-    private boolean doneInteraction;
-    private String[] messages;
+    public boolean isGresDead;
+    public boolean doneInteraction;
+    private String[] messages, back_message;
 
     public SammyNPC(Level level, Vector2 currentTile) {
         super(level, currentTile);
@@ -26,8 +27,13 @@ public class SammyNPC extends NPC {
 
     @Override
     public void initializeInteraction(float delta, UIManager uiManager) {
-        if (!doneInteraction) {
+        if (!doneInteraction && !isGresDead) {
             uiManager.createDialogue(messages);
+            this.uiManager = uiManager;
+        }
+
+        else if (!doneInteraction && isGresDead) {
+            uiManager.createDialogue(back_message);
             this.uiManager = uiManager;
         }
     }
@@ -42,12 +48,25 @@ public class SammyNPC extends NPC {
 
     @Override
     public void action(GameWorld gameWorld) {
-        if (!doneInteraction) {
+        if (!doneInteraction && !isGresDead) {
             uiManager.addNotification("You gained 50 points.");
             Game.pointsScore += 50;
             doneInteraction = true;
+            level.characters.add((new GressinghamNPC(level, new Vector2(100, 113), this)));
+
+            back_message = new String[2];
+            back_message[0] = "Sorry! I didn't mean to put you in that much danger";
+            back_message[1] = "Anyway thank you, this place is a lot safer now";
         }
-        level.characters.add(new GressinghamNPC(level, new Vector2(100, 113)));
+
+        else if (!doneInteraction && isGresDead) {
+            uiManager.addNotification("You gained 60 points.");
+            Game.pointsScore += 60;
+            doneInteraction = true;
+
+        }
+
+
     }
 }
 
