@@ -57,7 +57,7 @@ public class GameWorld {
         enemyDuck2.addSkill(0);
         battleParams.addEnemy(enemyDuck);
         battleParams.addEnemy(enemyDuck2);
-        flightSpotsVisited = new boolean[]{true, false, false, false, false, false, false, false};
+        flightSpotsVisited = new boolean[]{false, false, false, false, false, false, false, false};
     }
 
     /**
@@ -121,55 +121,55 @@ public class GameWorld {
                             case VISTA_SIGN:
                                 break;
                             case FLIGHT:
-                                gameState = GameState.INTERACTION;
-                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                if ((level.player.getCurrentTile().x == 179.0f) && (level.player.getCurrentTile().y == 105.0f)){
                                     if (!flightSpotsVisited[0]){
                                         flightSpotsVisited[0] = true;
-                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                        uiManager.addNotification("Flight spot for Constantine unlocked!");
                                     }
                                 }
-                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                if ((level.player.getCurrentTile().x == 145.0f) && (level.player.getCurrentTile().y == 110.0f)){
                                     if (!flightSpotsVisited[1]){
                                         flightSpotsVisited[1] = true;
-                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                        uiManager.addNotification("Flight spot for Langwith unlocked!");
                                     }
                                 }
-                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                if ((level.player.getCurrentTile().x == 102.0f) && (level.player.getCurrentTile().y == 118.0f)){
                                     if (!flightSpotsVisited[2]){
                                         flightSpotsVisited[2] = true;
-                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                        uiManager.addNotification("Flight spot for Goodricke unlocked!");
                                     }
                                 }
-                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                if ((level.player.getCurrentTile().x == 86.0f) && (level.player.getCurrentTile().y == 92.0f)){
                                     if (!flightSpotsVisited[3]){
                                         flightSpotsVisited[3] = true;
-                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                        uiManager.addNotification("Flight spot for Law and Management unlocked!");
                                     }
                                 }
-                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                if ((level.player.getCurrentTile().x == 71.0f) && (level.player.getCurrentTile().y == 97.0f)){
                                     if (!flightSpotsVisited[4]){
                                         flightSpotsVisited[4] = true;
-                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                        uiManager.addNotification("Flight spot for The Catalyst unlocked!");
                                     }
                                 }
-                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                if ((level.player.getCurrentTile().x == 72.0f) && (level.player.getCurrentTile().y == 72.0f)){
                                     if (!flightSpotsVisited[5]){
                                         flightSpotsVisited[5] = true;
-                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                        uiManager.addNotification("Flight spot for Theatre, Film, and Television unlocked!");
                                     }
                                 }
-                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                if ((level.player.getCurrentTile().x == 89.0f) && (level.player.getCurrentTile().y == 65.0f)){
                                     if (!flightSpotsVisited[6]){
                                         flightSpotsVisited[6] = true;
-                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                        uiManager.addNotification("Flight spot for Computer Science unlocked!");
                                     }
                                 }
-                                if (level.player.getCurrentTile() == new Vector2(86,92)){
+                                if ((level.player.getCurrentTile().x == 115.0f) && (level.player.getCurrentTile().y == 84.0f)){
                                     if (!flightSpotsVisited[7]){
                                         flightSpotsVisited[7] = true;
-                                        uiManager.createDialogue(new String[]{"Flight spot for LMB unlocked!"});
+                                        uiManager.addNotification("Flight spot for Ron Cooke Hub unlocked!");
                                     }
                                 }
+                                gameState = GameState.INTERACTION;
                                 break;
                         }
                     }
@@ -201,7 +201,7 @@ public class GameWorld {
                     case VISTA_SIGN:
                         break;
                     case FLIGHT:
-                        if(!uiManager.updateDialogue(delta)){
+                        if(!uiManager.updateNotification(delta)){
                             gameState = GameState.FREEROAM;
                         }
                         break;
