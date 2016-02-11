@@ -74,15 +74,18 @@ public class UIManager {
     /**
      * To be called once per frame to update timing of notification components.
      */
-    public void updateNotification(float delta) {
+    public boolean updateNotification(float delta) {
         if (notifications.isEmpty()) {
             notificationTimer = 0;
+            return false;
         } else {
             notificationTimer += delta;
             if (notificationTimer > 4f) {
                 notificationTimer = 0;
                 notifications.remove(0);
+                return false;
             }
+            return true;
         }
 
     }

@@ -94,7 +94,31 @@
 		"equipSlots":[0,0,0,0,0]
 		},
 	"texture": 5
-	}
+	},
+  {
+	"name":"Goose",
+	"type":"ENEMY",
+	"stats":{
+	  "currentHP":60,
+	  "currentMP":30,
+	  "maxHP":60,
+	  "maxMP":30,
+	  "speed":0,
+	  "strength":2,
+	  "dexterity":2,
+	  "intelligence":1,
+	  "baseArmourVal":2,
+	  "armourVal":2,
+	  "experience":205,
+	  "currentLevel":2,
+	  "maxLevel":20
+	},
+	"skills":[9],
+	"equipment":{
+	  "equipSlots":[0,0,0,0,0]
+	},
+	"texture": 5
+  }
 	],
 	"consumables": [0,1,2],
 	"equipables": [1]

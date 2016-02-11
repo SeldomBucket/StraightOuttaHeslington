@@ -2,7 +2,7 @@
 "skills":[{
 	"ID":0,
 	"name":"Lightning Bolt",
-	"description":"Shoots a lightning bolt",
+	"description":"Shoots a lightning bolt. But not visibly, that would be too flashy.",
 	"skillType":"MAGIC",
 	"basePower":10,
 	"MPCost":3
@@ -10,7 +10,7 @@
 	{
 	"ID":1,
 	"name":"Cure light wounds",
-	"description":"Cures basic wounds",
+	"description":"Cures light wounds.",
 	"skillType":"HEAL",
 	"basePower":15,
 	"MPCost":3
@@ -18,7 +18,7 @@
 	{
 	"ID":2,
 	"name":"Fireball Bolt",
-	"description":"Shoots a Fireball bolt",
+	"description":"Shoots a Fireball bolt, which isn't really a thing, but just pretend, OK?",
 	"skillType":"MAGIC",
 	"basePower":6,
 	"MPCost":3
@@ -34,7 +34,7 @@
 	{
 	"ID":4,
 	"name":"Overly Close-Range Invisible Laser Attack",
-	"description":"Overly Close-Range Invisible Laser Attack",
+	"description":"Overly Close-Range Invisible Laser Attack, what does it sound like?",
 	"skillType":"MAGIC",
 	"basePower":23,
 	"MPCost":3
@@ -70,6 +70,14 @@
 	"skillType":"MAGIC",
 	"basePower":10,
 	"MPCost":3
-	}
+	},
+  	{
+	"ID":9,
+	"name":"Super Fist Punch",
+	"description":"Balls a wing up into a feathery fist and wallops you in the face",
+	"skillType":"MAGIC",
+	"basePower":10,
+	"MPCost":3
+  	}
 	]
 }

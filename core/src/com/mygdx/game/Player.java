@@ -72,23 +72,26 @@ public class Player extends Character {
     @Override
     public void update(float delta) {
         super.update(delta);
-        switch (getDirection()) {
-            case UP:
-                interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x, getCurrentTile().y + 1);
-                interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y + 1];
-                break;
-            case DOWN:
-                interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x, getCurrentTile().y - 1);
-                interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y - 1];
-                break;
-            case LEFT:
-                interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x - 1, getCurrentTile().y);
-                interaction = level.interactablesMap[(int)getCurrentTile().x-1][(int)getCurrentTile().y];
-                break;
-            case RIGHT:
-                interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x + 1, getCurrentTile().y);
-                interaction = level.interactablesMap[(int)getCurrentTile().x+1][(int)getCurrentTile().y];
-                break;
+        interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y];
+        if (!(interaction == Interaction.FLIGHT)){
+            switch (getDirection()) {
+                case UP:
+                    interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x, getCurrentTile().y + 1);
+                    interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y + 1];
+                    break;
+                case DOWN:
+                    interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x, getCurrentTile().y - 1);
+                    interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y - 1];
+                    break;
+                case LEFT:
+                    interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x - 1, getCurrentTile().y);
+                    interaction = level.interactablesMap[(int)getCurrentTile().x-1][(int)getCurrentTile().y];
+                    break;
+                case RIGHT:
+                    interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x + 1, getCurrentTile().y);
+                    interaction = level.interactablesMap[(int)getCurrentTile().x+1][(int)getCurrentTile().y];
+                    break;
+            }
         }
     }
 }

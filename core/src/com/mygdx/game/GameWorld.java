@@ -1,6 +1,7 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.UI.UIDebugCoords;
 import com.mygdx.game.UI.UIManager;
 import com.mygdx.game.UI.UIScore;
 import com.mygdx.game.battle.BattleParameters;
@@ -18,11 +19,17 @@ public class GameWorld {
     public Level level;
     public UIManager uiManager;
     public GameState gameState;
+    public SallyNPC sallyDuck;
+    public SammyNPC sammyDuck;
+    public JulieNPC julieDuck;
+    //public BackUpNPC backup1Duck, backUp2Duck, backUP3Duck, backUp4Duck;
 
     private NPC interactingNPC;
     private Interaction interaction;
     private BattleParameters battleParams;
     private int battleChance;
+    private boolean[] flightSpotsVisited; //True if you can fly to that particular spot
+    // [Constantine, Langwith, Goodricke, Law and Management, The Catalyst, TFTV, Computer Science, Ron Cooke Hub]
 
     /**
      * Constructor for the GameWorld generates a new level and adds the characters to be used in the game.
@@ -34,10 +41,14 @@ public class GameWorld {
         level = new Level(this);
         uiManager = new UIManager(Game.party);
         battleChance = 2000;
-        level.characters.add(new SallyNPC(level, new Vector2(108, 91)));
-        level.characters.add(new SammyNPC(level, new Vector2(100, 93)));
-        level.characters.add(new JulieNPC(level, new Vector2(90, 93)));
+        sallyDuck = new SallyNPC(level, new Vector2(108, 91));
+        level.characters.add(sallyDuck);
+        sammyDuck = new SammyNPC(level, new Vector2(100, 93));
+        level.characters.add(sammyDuck);
+        julieDuck = new JulieNPC(level, new Vector2(90, 93));
+        level.characters.add(julieDuck);
         uiManager.addUIComponent(new UIScore());
+        uiManager.addUIComponent(new UIDebugCoords(level.player));
         battleParams = new BattleParameters(0);
         List<Integer> emptyList = new ArrayList<Integer>();
         Agent enemyDuck = new Agent("Crazed Duck", Agent.AgentType.ENEMY,new Statistics(100,100,0,2,2,2,2,2,3),emptyList,new CurrentEquipment(0,0,0,0,0),0);
@@ -46,6 +57,7 @@ public class GameWorld {
         enemyDuck2.addSkill(0);
         battleParams.addEnemy(enemyDuck);
         battleParams.addEnemy(enemyDuck2);
+        flightSpotsVisited = new boolean[]{false, false, false, false, false, false, false, false};
     }
 
     /**
@@ -109,6 +121,55 @@ public class GameWorld {
                             case VISTA_SIGN:
                                 break;
                             case FLIGHT:
+                                if ((level.player.getCurrentTile().x == 179.0f) && (level.player.getCurrentTile().y == 105.0f)){
+                                    if (!flightSpotsVisited[0]){
+                                        flightSpotsVisited[0] = true;
+                                        uiManager.addNotification("Flight spot for Constantine unlocked!");
+                                    }
+                                }
+                                if ((level.player.getCurrentTile().x == 145.0f) && (level.player.getCurrentTile().y == 110.0f)){
+                                    if (!flightSpotsVisited[1]){
+                                        flightSpotsVisited[1] = true;
+                                        uiManager.addNotification("Flight spot for Langwith unlocked!");
+                                    }
+                                }
+                                if ((level.player.getCurrentTile().x == 102.0f) && (level.player.getCurrentTile().y == 118.0f)){
+                                    if (!flightSpotsVisited[2]){
+                                        flightSpotsVisited[2] = true;
+                                        uiManager.addNotification("Flight spot for Goodricke unlocked!");
+                                    }
+                                }
+                                if ((level.player.getCurrentTile().x == 86.0f) && (level.player.getCurrentTile().y == 92.0f)){
+                                    if (!flightSpotsVisited[3]){
+                                        flightSpotsVisited[3] = true;
+                                        uiManager.addNotification("Flight spot for Law and Management unlocked!");
+                                    }
+                                }
+                                if ((level.player.getCurrentTile().x == 71.0f) && (level.player.getCurrentTile().y == 97.0f)){
+                                    if (!flightSpotsVisited[4]){
+                                        flightSpotsVisited[4] = true;
+                                        uiManager.addNotification("Flight spot for The Catalyst unlocked!");
+                                    }
+                                }
+                                if ((level.player.getCurrentTile().x == 72.0f) && (level.player.getCurrentTile().y == 72.0f)){
+                                    if (!flightSpotsVisited[5]){
+                                        flightSpotsVisited[5] = true;
+                                        uiManager.addNotification("Flight spot for Theatre, Film, and Television unlocked!");
+                                    }
+                                }
+                                if ((level.player.getCurrentTile().x == 89.0f) && (level.player.getCurrentTile().y == 65.0f)){
+                                    if (!flightSpotsVisited[6]){
+                                        flightSpotsVisited[6] = true;
+                                        uiManager.addNotification("Flight spot for Computer Science unlocked!");
+                                    }
+                                }
+                                if ((level.player.getCurrentTile().x == 115.0f) && (level.player.getCurrentTile().y == 84.0f)){
+                                    if (!flightSpotsVisited[7]){
+                                        flightSpotsVisited[7] = true;
+                                        uiManager.addNotification("Flight spot for Ron Cooke Hub unlocked!");
+                                    }
+                                }
+                                gameState = GameState.INTERACTION;
                                 break;
                         }
                     }
@@ -140,6 +201,9 @@ public class GameWorld {
                     case VISTA_SIGN:
                         break;
                     case FLIGHT:
+                        if(!uiManager.updateNotification(delta)){
+                            gameState = GameState.FREEROAM;
+                        }
                         break;
                 }
                 break;

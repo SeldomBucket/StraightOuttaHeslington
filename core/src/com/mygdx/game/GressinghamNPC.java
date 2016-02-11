@@ -13,9 +13,12 @@ import java.util.List;
 public class GressinghamNPC extends NPC {
 
     private String[] messages;
+    public BackUpNPC backUp1Duck, backUp2Duck, backUp3Duck,backUp4Duck;
+    public SammyNPC sammyNPC;
 
-    public GressinghamNPC(Level level, Vector2 currentTile) {
+    public GressinghamNPC(Level level, Vector2 currentTile, SammyNPC sammyNPC) {
         super(level, currentTile);
+        this.sammyNPC = sammyNPC;
         messages = new String[3];
         messages[0] = "Oh she's sent you after me has she?";
         messages[1] = "Even if you get passed me you wont get passed my back up, bring it!";
@@ -50,10 +53,23 @@ public class GressinghamNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
-        level.characters.add(new BackUpNPC(level, new Vector2(100, 115)));
-        level.characters.add(new BackUpNPC(level, new Vector2(98, 113)));
-        level.characters.add(new BackUpNPC(level, new Vector2(100, 111)));
-        level.characters.add(new BackUpNPC(level, new Vector2(102, 113)));
+        backUp1Duck = new BackUpNPC(level, new Vector2(100, 114), this);
+        level.characters.add(backUp1Duck);
+        backUp2Duck = new BackUpNPC(level, new Vector2(100, 112), this);
+        level.characters.add(backUp2Duck);
+        backUp3Duck = new BackUpNPC(level, new Vector2(101, 113), this);
+        level.characters.add(backUp3Duck);
+        backUp4Duck = new BackUpNPC(level, new Vector2(99, 113), this);
+        level.characters.add(backUp4Duck);
+
+        sammyNPC.isGresDead = true;
+        sammyNPC.doneInteraction = false;
+
+
+
+
+
+
 
     }
 }
