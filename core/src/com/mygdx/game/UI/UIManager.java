@@ -27,7 +27,7 @@ public class UIManager {
         notifications = new ArrayList<UIMessageBox>();
         notificationTimer = 0;
         uiComponents = new ArrayList<UIComponent>();
-        partyMenu = new UIPartyMenu(40, 150, Gdx.graphics.getWidth()-80, Gdx.graphics.getHeight()-320, party);
+        partyMenu = new UIPartyMenu(40, 150, Gdx.graphics.getWidth()-80, Gdx.graphics.getHeight()-272, party);
     }
 
     /**

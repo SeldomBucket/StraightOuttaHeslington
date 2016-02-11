@@ -36,6 +36,15 @@ public class CurrentEquipment {
      */
     public CurrentEquipment(){};
 
+    /**
+     * CHANGE- function returns the equipment corresponding to slotNumber
+     * @param slotNumber
+     * @return
+     */
+    public int getEquipment(int slotNumber) {
+        return equipSlots[slotNumber];
+    }
+
     //Gets the total modifiers by summing the modifiers of each piece of equipped equipment
     private int[] calculateTotalStatModifiers(){
         int[][] totalStatModifiersPerItem= new int[5][5];//2x2 array that stores the total stats of each item on its own row
@@ -91,9 +100,19 @@ public class CurrentEquipment {
         return totalStatModifiers;
     }
 
-    public int getTotalSpeedModifiers(){return totalStatModifiers[0];}
-    public int getTotalStrengthModifiers(){return totalStatModifiers[1];}
-    public int getTotalDexterityModifiers(){return totalStatModifiers[2];}
-    public int getTotalIntelligenceModifiers(){return totalStatModifiers[3];}
-    public int getTotalArmourValModifiers(){return totalStatModifiers[4];}
+    public int getTotalSpeedModifiers() {
+        return totalStatModifiers[0];
+    }
+    public int getTotalStrengthModifiers() {
+        return totalStatModifiers[1];
+    }
+    public int getTotalDexterityModifiers() {
+        return totalStatModifiers[2];
+    }
+    public int getTotalIntelligenceModifiers() {
+        return totalStatModifiers[3];
+    }
+    public int getTotalArmourValModifiers() {
+        return totalStatModifiers[4];
+    }
 }

@@ -3,12 +3,12 @@
 		"ID":0,
 		"name":"EMPTY ITEM",
 		"description":"EMPTY ITEM",
-		"type":"WEAPON",
+		"type":"NONE",
 		"modifiers":[0, 0, 0, 0, 0],
 		"levelRequirement":0
 	},{	
 		"ID":1,
-		"name":"The Sword of here and now",
+		"name":"The Sword of Here and Now",
 		"description":"It's definitely not old",
 		"type":"WEAPON",
 		"modifiers":[1, 1, 1, 1, 1],
@@ -16,7 +16,7 @@
 	},
 	{
 		"ID":2,
-		"name":"The headpiece of long ago",
+		"name":"The Headpiece of Long Ago",
 		"description":"It's very old",
 		"type":"HEAD",
 		"modifiers":[2, 2, 2, 2, 2],

@@ -24,8 +24,15 @@ public class UIPlayer extends UIComponent {
 
     public boolean selected;
 
-    public UIPlayer(float x, float y, float width, Agent player) {
-        super(x, y, width, 70);
+    /**
+     * CHANGE- height no longer hard-coded
+     * @param x
+     * @param y
+     * @param width
+     * @param player
+     */
+    public UIPlayer(float x, float y, float width, float height, Agent player) {
+        super(x, y, width, height);
         this.player = player;
         paddingX = 20;
         paddingY = 20;

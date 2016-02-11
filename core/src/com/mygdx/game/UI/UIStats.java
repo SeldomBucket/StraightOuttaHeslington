@@ -24,8 +24,16 @@ public class UIStats extends UIComponent {
 
     public boolean selected;
 
-    public UIStats(float x, float y, float width, Agent player) {
-        super(x, y, width, 364);
+    /**
+     * CHANGE- height no longer hard-coded
+     * @param x
+     * @param y
+     * @param width
+     * @param height
+     * @param player
+     */
+    public UIStats(float x, float y, float width, float height, Agent player) {
+        super(x, y, width, height);
         this.player = player;
         paddingX = 20;
         paddingY = 20;

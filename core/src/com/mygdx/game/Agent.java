@@ -65,9 +65,13 @@ public class Agent implements Comparable<Agent>{
         stats.increaseHP(amount);
     }
 
-    public void giveMana(int amount){stats.increaseMP(amount);}
+    public void giveMana(int amount) {
+        stats.increaseMP(amount);
+    }
 
-    public void takeMana(int amount){stats.reduceMP(amount);}
+    public void takeMana(int amount) {
+        stats.reduceMP(amount);
+    }
 
     public Statistics getStats() {
         return this.stats;
@@ -78,9 +82,7 @@ public class Agent implements Comparable<Agent>{
     }
 
     public void equipEquipment(int ID){
-
         equipment.equip(ID);
-
     }
 
     public CurrentEquipment getCurrentEquipment() {
