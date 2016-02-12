@@ -71,6 +71,17 @@ public class Equipable {
         this.ID = id;
     }
 
+    /**
+     * CHANGE- Added accessors for obtaining an equipment's name and description
+     * @return
+     */
+    public String getName() {
+        return name;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 
     public int getID() {
         return ID;
@@ -81,7 +92,8 @@ public class Equipable {
     }
 
     //Only 5 different types of equipable
+    //NONE corresponds to an empty slot
     public enum equipType {
-        HEAD, CHEST, FEET, ACCESSORY, WEAPON
+        HEAD, CHEST, FEET, ACCESSORY, WEAPON, NONE
     }
 }

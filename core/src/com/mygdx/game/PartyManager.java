@@ -23,7 +23,6 @@ public class PartyManager {
      * @param member The Agent to add
      */
     public void addMember(Agent member){
-
         if(partyList.size()<=4)
             partyList.add(member);
     }
