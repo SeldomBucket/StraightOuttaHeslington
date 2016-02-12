@@ -1,7 +1,9 @@
 package com.mygdx.game;
 
+import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.UI.UIDebugCoords;
+import com.mygdx.game.UI.UIFlightMenu;
 import com.mygdx.game.UI.UIManager;
 import com.mygdx.game.UI.UIScore;
 import com.mygdx.game.battle.BattleParameters;
@@ -29,7 +31,8 @@ public class GameWorld {
     private BattleParameters battleParams;
     private int battleChance;
     private boolean[] flightSpotsVisited; //True if you can fly to that particular spot
-    // [Constantine, Langwith, Goodricke, Law and Management, The Catalyst, TFTV, Computer Science, Ron Cooke Hub]
+    private String[] locationNames;// [Constantine, Langwith, Goodricke, Law and Management, The Catalyst, TFTV, Computer Science, Ron Cooke Hub]
+    private float flightTimer;
 
     /**
      * Constructor for the GameWorld generates a new level and adds the characters to be used in the game.
@@ -58,7 +61,10 @@ public class GameWorld {
         battleParams.addEnemy(enemyDuck);
         battleParams.addEnemy(enemyDuck2);
         flightSpotsVisited = new boolean[]{false, false, false, false, false, false, false, false};
+        locationNames = new String[]{"Constantine", "Langwith", "Goodricke", "Law and Management", "The Catalyst", "TFTV", "Computer Science", "Ron Cooke Hub"};
+        uiManager.createFlightMenu(flightSpotsVisited, locationNames);
     }
+
 
     /**
      * Called once per frame to update GameWorld logic.
@@ -125,51 +131,67 @@ public class GameWorld {
                                     if (!flightSpotsVisited[0]){
                                         flightSpotsVisited[0] = true;
                                         uiManager.addNotification("Flight spot for Constantine unlocked!");
+                                    }else {
+                                        uiManager.showFlightMenu(0);
+                                        gameState = GameState.INTERACTION;
                                     }
-                                }
-                                if ((level.player.getCurrentTile().x == 145.0f) && (level.player.getCurrentTile().y == 110.0f)){
+                                }else if ((level.player.getCurrentTile().x == 145.0f) && (level.player.getCurrentTile().y == 110.0f)){
                                     if (!flightSpotsVisited[1]){
                                         flightSpotsVisited[1] = true;
                                         uiManager.addNotification("Flight spot for Langwith unlocked!");
+                                    }else {
+                                        uiManager.showFlightMenu(1);
+                                        gameState = GameState.INTERACTION;
                                     }
-                                }
-                                if ((level.player.getCurrentTile().x == 102.0f) && (level.player.getCurrentTile().y == 118.0f)){
+                                }else if ((level.player.getCurrentTile().x == 102.0f) && (level.player.getCurrentTile().y == 118.0f)){
                                     if (!flightSpotsVisited[2]){
                                         flightSpotsVisited[2] = true;
                                         uiManager.addNotification("Flight spot for Goodricke unlocked!");
+                                    }else {
+                                        uiManager.showFlightMenu(2);
+                                        gameState = GameState.INTERACTION;
                                     }
-                                }
-                                if ((level.player.getCurrentTile().x == 86.0f) && (level.player.getCurrentTile().y == 92.0f)){
+                                }else if ((level.player.getCurrentTile().x == 86.0f) && (level.player.getCurrentTile().y == 92.0f)){
                                     if (!flightSpotsVisited[3]){
                                         flightSpotsVisited[3] = true;
                                         uiManager.addNotification("Flight spot for Law and Management unlocked!");
+                                    }else {
+                                        uiManager.showFlightMenu(3);
+                                        gameState = GameState.INTERACTION;
                                     }
-                                }
-                                if ((level.player.getCurrentTile().x == 71.0f) && (level.player.getCurrentTile().y == 97.0f)){
+                                }else if ((level.player.getCurrentTile().x == 71.0f) && (level.player.getCurrentTile().y == 97.0f)){
                                     if (!flightSpotsVisited[4]){
                                         flightSpotsVisited[4] = true;
                                         uiManager.addNotification("Flight spot for The Catalyst unlocked!");
+                                    }else {
+                                        uiManager.showFlightMenu(4);
+                                        gameState = GameState.INTERACTION;
                                     }
-                                }
-                                if ((level.player.getCurrentTile().x == 72.0f) && (level.player.getCurrentTile().y == 72.0f)){
+                                }else if ((level.player.getCurrentTile().x == 72.0f) && (level.player.getCurrentTile().y == 72.0f)){
                                     if (!flightSpotsVisited[5]){
                                         flightSpotsVisited[5] = true;
                                         uiManager.addNotification("Flight spot for Theatre, Film, and Television unlocked!");
+                                    }else {
+                                        uiManager.showFlightMenu(5);
+                                        gameState = GameState.INTERACTION;
                                     }
-                                }
-                                if ((level.player.getCurrentTile().x == 89.0f) && (level.player.getCurrentTile().y == 65.0f)){
+                                }else if ((level.player.getCurrentTile().x == 89.0f) && (level.player.getCurrentTile().y == 65.0f)){
                                     if (!flightSpotsVisited[6]){
                                         flightSpotsVisited[6] = true;
                                         uiManager.addNotification("Flight spot for Computer Science unlocked!");
+                                    }else {
+                                        uiManager.showFlightMenu(6);
+                                        gameState = GameState.INTERACTION;
                                     }
-                                }
-                                if ((level.player.getCurrentTile().x == 115.0f) && (level.player.getCurrentTile().y == 84.0f)){
+                                }else if ((level.player.getCurrentTile().x == 115.0f) && (level.player.getCurrentTile().y == 84.0f)){
                                     if (!flightSpotsVisited[7]){
                                         flightSpotsVisited[7] = true;
                                         uiManager.addNotification("Flight spot for Ron Cooke Hub unlocked!");
+                                    }else {
+                                        uiManager.showFlightMenu(7);
+                                        gameState = GameState.INTERACTION;
                                     }
                                 }
-                                gameState = GameState.INTERACTION;
                                 break;
                         }
                     }
@@ -201,8 +223,94 @@ public class GameWorld {
                     case VISTA_SIGN:
                         break;
                     case FLIGHT:
-                        if(!uiManager.updateNotification(delta)){
-                            gameState = GameState.FREEROAM;
+                        int flightLocation = uiManager.updateFlightMenu(delta);
+                        if(flightLocation != -1){
+                            level.stopInput = true;
+                            switch (flightLocation){
+                                case 0:
+                                    if (flightSpotsVisited[0]) {
+                                        level.player.setCurrentTile(new Vector2(179, 106));
+                                        level.player.setTargetTile(new Vector2(179, 106));
+                                        //level.player.oldPos = new Vector2(179, 106);
+                                        //level.player.setDirection(Character.Direction.DOWN);
+                                    }else{
+                                        uiManager.addNotification("Cannot fly to a location you have not already visited");
+                                    }
+                                    break;
+                                case 1:
+                                    if (flightSpotsVisited[1]) {
+                                        level.player.setCurrentTile(new Vector2(145, 111));
+                                        level.player.setTargetTile(new Vector2(145, 111));
+                                        //level.player.oldPos = new Vector2(145, 111);
+                                        //level.player.setDirection(Character.Direction.DOWN);
+                                    }else{
+                                        uiManager.addNotification("Cannot fly to a location you have not already visited");
+                                    }
+                                    break;
+                                case 2:
+                                    if (flightSpotsVisited[2]) {
+                                        level.player.setCurrentTile(new Vector2(102, 119));
+                                        level.player.setTargetTile(new Vector2(102, 119));
+                                        //level.player.oldPos = new Vector2(102, 119);
+                                        //level.player.setDirection(Character.Direction.DOWN);
+                                    }else{
+                                        uiManager.addNotification("Cannot fly to a location you have not already visited");
+                                    }
+                                    break;
+                                case 3:
+                                    if (flightSpotsVisited[3]) {
+                                        level.player.setCurrentTile(new Vector2(86, 93));
+                                        level.player.setTargetTile(new Vector2(86, 93));
+                                        //level.player.oldPos = new Vector2(86, 93);
+                                        //level.player.setDirection(Character.Direction.DOWN);
+                                    }else{
+                                        uiManager.addNotification("Cannot fly to a location you have not already visited");
+                                    }
+                                    break;
+                                case 4:
+                                    if (flightSpotsVisited[4]) {
+                                        level.player.setCurrentTile(new Vector2(71, 98));
+                                        level.player.setTargetTile(new Vector2(71, 98));
+                                        //level.player.oldPos = new Vector2(71, 98);
+                                        //level.player.setDirection(Character.Direction.DOWN);
+                                    }else{
+                                        uiManager.addNotification("Cannot fly to a location you have not already visited");
+                                    }
+                                    break;
+                                case 5:
+                                    if (flightSpotsVisited[5]) {
+                                        level.player.setCurrentTile(new Vector2(72, 73));
+                                        level.player.setTargetTile(new Vector2(72, 73));
+                                        //level.player.oldPos = new Vector2(72, 73);
+                                        //level.player.setDirection(Character.Direction.DOWN);
+                                    }else{
+                                        uiManager.addNotification("Cannot fly to a location you have not already visited");
+                                    }
+                                    break;
+                                case 6:
+                                    if (flightSpotsVisited[6]) {
+                                        level.player.setCurrentTile(new Vector2(89, 66));
+                                        level.player.setTargetTile(new Vector2(89, 66));
+                                        //level.player.oldPos = new Vector2(89, 66);
+                                        //level.player.setDirection(Character.Direction.DOWN);
+                                    }else{
+                                        uiManager.addNotification("Cannot fly to a location you have not already visited");
+                                    }
+                                    break;
+                                case 7:
+                                    if (flightSpotsVisited[7]) {
+                                        level.player.setCurrentTile(new Vector2(115, 85));
+                                        level.player.setTargetTile(new Vector2(115, 85));
+                                        //level.player.oldPos = new Vector2(115, 85);
+                                        //level.player.setDirection(Character.Direction.DOWN);
+                                    }else{
+                                        uiManager.addNotification("Cannot fly to a location you have not already visited");
+                                    }
+                                    break;
+                            }
+                            level.player.updateFlight(delta);
+                            gameState = GameState.FLYING;
+                            flightTimer = 0;
                         }
                         break;
                 }
@@ -217,6 +325,17 @@ public class GameWorld {
                     uiManager.addNotification("You lost the battle! You have been moved backwards.");
                 }
                 gameState = GameState.FREEROAM;
+                break;
+
+            case FLYING:
+                flightTimer += delta;
+                level.player.setState(Character.CharacterState.TRANSITIONING);
+                //level.player.updateFlight(delta);
+                level.stopInput = true;
+                if (flightTimer > 1){
+                    level.player.updateMovement(Character.Direction.DOWN);
+                    gameState = GameState.FREEROAM;
+                }
                 break;
         }
     }

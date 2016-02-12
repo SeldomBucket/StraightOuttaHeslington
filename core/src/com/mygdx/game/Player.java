@@ -64,6 +64,27 @@ public class Player extends Character {
             tempDirection = Direction.RIGHT;
         }
     }
+    protected void updateFlight(float delta){
+        float copyOfRunningTime = runningTime + delta;
+        float t = copyOfRunningTime / TRANSITION_SPEED;
+        getAbsPos().set(oldPos.x + (targetPos.x - oldPos.x) * t, oldPos.y + (targetPos.y - oldPos.y) * t);
+        if (t >= 1) {
+            setState(CharacterState.STATIONARY);
+            runningTime = 0;
+            getCurrentTile().set(targetTile);
+            oldPos.set(getAbsPos());
+            setDirection(tempDirection);
+        }
+        if (InputHandler.isUpPressed()) {
+            tempDirection = Direction.UP;
+        } else if (InputHandler.isDownPressed()) {
+            tempDirection = Direction.DOWN;
+        } else if (InputHandler.isLeftPressed()) {
+            tempDirection = Direction.LEFT;
+        } else if (InputHandler.isRightPressed()) {
+            tempDirection = Direction.RIGHT;
+        }
+    }
 
     /**
      * Extends parent class by also updating the current interactingNPC of the player.

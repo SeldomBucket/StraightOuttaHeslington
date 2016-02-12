@@ -51,6 +51,10 @@ public class WorldScreen extends ScreenAdapter {
     public void render(float delta) {
         update(delta);
         worldRenderer.render();
+        if (gameWorld.gameState == GameState.FLYING){
+            update(delta);
+            worldRenderer.render();
+        }
     }
 
     @Override

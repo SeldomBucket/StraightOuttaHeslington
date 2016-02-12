@@ -186,6 +186,10 @@ public abstract class Character {
         this.stateTime = stateTime;
     }
 
+    public void setTargetTile(Vector2 vector2){
+        targetTile = vector2;
+    }
+
     /**
      * The state of the character
      */

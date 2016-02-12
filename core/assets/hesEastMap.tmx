@@ -267,6 +267,7 @@
   <tile id="68">
    <properties>
     <property name="flightSpot" value=""/>
+    <property name="road" value=""/>
    </properties>
   </tile>
   <tile id="69">

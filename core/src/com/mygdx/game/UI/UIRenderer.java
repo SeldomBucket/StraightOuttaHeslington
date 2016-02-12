@@ -39,6 +39,7 @@ public class UIRenderer {
                 uiManager.notifications.get(0).render(uiBatch, Assets.patch);
         }
         uiManager.partyMenu.render(uiBatch, Assets.patch);
+        uiManager.flightMenu.render(uiBatch, Assets.patch);
         uiBatch.end();
     }
 

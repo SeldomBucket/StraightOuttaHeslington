@@ -22,12 +22,14 @@ public class UIManager {
 
     public UIDialogue dialogue;
     private float notificationTimer;
+    public UIFlightMenu flightMenu;
 
     public UIManager(PartyManager party) {
         notifications = new ArrayList<UIMessageBox>();
         notificationTimer = 0;
         uiComponents = new ArrayList<UIComponent>();
         partyMenu = new UIPartyMenu(40, 150, Gdx.graphics.getWidth()-80, Gdx.graphics.getHeight()-320, party);
+
     }
 
     /**
@@ -74,20 +76,29 @@ public class UIManager {
     /**
      * To be called once per frame to update timing of notification components.
      */
-    public boolean updateNotification(float delta) {
+    public void updateNotification(float delta) {
         if (notifications.isEmpty()) {
             notificationTimer = 0;
-            return false;
         } else {
             notificationTimer += delta;
             if (notificationTimer > 4f) {
                 notificationTimer = 0;
                 notifications.remove(0);
-                return false;
             }
-            return true;
         }
 
+    }
+
+    public void createFlightMenu(boolean[] locations, String[] locationNames){
+        flightMenu = new UIFlightMenu(10,10,Gdx.graphics.getWidth()-20, Gdx.graphics.getHeight()-60,locations,locationNames);
+    }
+
+    public void showFlightMenu(int location){
+        flightMenu.show(location);
+    }
+
+    public int updateFlightMenu(float delta){
+        return flightMenu.update(delta);
     }
 
     public void addUIComponent(UIComponent c) {
