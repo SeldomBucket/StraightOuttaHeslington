@@ -16,7 +16,7 @@ public class UISkill extends UIComponent {
 
     private BitmapFont font;
 
-    private final float LINE_HEIGHT = 25f;
+    private final float LINE_HEIGHT = 19f;
     private Skill skill;
 
     float paddingX;
@@ -36,7 +36,7 @@ public class UISkill extends UIComponent {
         this.skill = skill;
         paddingX = 20;
         paddingY = 20;
-        font = Assets.consolas22;
+        font = Assets.consolas16;
     }
 
     /**
@@ -81,11 +81,11 @@ public class UISkill extends UIComponent {
      */
     private void renderText(SpriteBatch batch, String message, float x, float y, Color color) {
         GlyphLayout layout = new GlyphLayout(font, message,
-                Color.BLACK, width - paddingX * 2, Align.left, false);
+                Color.BLACK, width - paddingX * 2, Align.left, true);
 
         font.draw(batch, layout, x + paddingX, y + height + paddingY - 2);
         layout.setText(font, message,
-                color, width - paddingX * 2, Align.left, false);
+                color, width - paddingX * 2, Align.left, true);
         font.draw(batch, layout, x + paddingX, y + height + paddingY);
     }
 }

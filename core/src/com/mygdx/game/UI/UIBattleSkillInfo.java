@@ -16,7 +16,7 @@ public class UIBattleSkillInfo extends UIComponent {
 
     private BitmapFont font;
 
-    private final float LINE_HEIGHT = 25f;
+    private final float LINE_HEIGHT = 19f;
     private Skill skill;
 
     float paddingX;
@@ -36,7 +36,7 @@ public class UIBattleSkillInfo extends UIComponent {
         this.skill = skill;
         paddingX = 20;
         paddingY = 20;
-        font = Assets.consolas22;
+        font = Assets.consolas16;
     }
 
     /**

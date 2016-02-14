@@ -17,7 +17,7 @@ public class UIBattleItemInfo extends UIComponent {
 
     private BitmapFont font;
 
-    private final float LINE_HEIGHT = 25f;
+    private final float LINE_HEIGHT = 19f;
     private Consumable consumable;
 
     float paddingX;
@@ -37,7 +37,7 @@ public class UIBattleItemInfo extends UIComponent {
         this.consumable = consumable;
         paddingX = 20;
         paddingY = 20;
-        font = Assets.consolas22;
+        font = Assets.consolas16;
     }
 
     /**
