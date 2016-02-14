@@ -12,9 +12,9 @@ import java.util.List;
  */
 public class SammyNPC extends NPC {
 
-    public boolean isGresDead;
+    public boolean isGresDead = false, isTealDead = false;
     public boolean doneInteraction;
-    private String[] messages, back_message;
+    private String[] messages, second_message, last_message;
 
     public SammyNPC(Level level, Vector2 currentTile) {
         super(level, currentTile);
@@ -32,8 +32,13 @@ public class SammyNPC extends NPC {
             this.uiManager = uiManager;
         }
 
-        else if (!doneInteraction && isGresDead) {
-            uiManager.createDialogue(back_message);
+        else if ((!doneInteraction && isGresDead) && !isTealDead) {
+            uiManager.createDialogue(second_message);
+            this.uiManager = uiManager;
+        }
+
+        else if ((!doneInteraction && isGresDead) && isTealDead) {
+            uiManager.createDialogue(last_message);
             this.uiManager = uiManager;
         }
     }
@@ -54,14 +59,31 @@ public class SammyNPC extends NPC {
             doneInteraction = true;
             level.characters.add((new GressinghamNPC(level, new Vector2(100, 113), this)));
 
-            back_message = new String[2];
-            back_message[0] = "Sorry! I didn't mean to put you in that much danger";
-            back_message[1] = "Anyway thank you, this place is a lot safer now";
+            second_message = new String[4];
+            second_message[0] = "Sorry! I didn't mean to put you in that much danger";
+            second_message[1] = "You handled it well though, can you make this place even safer?";
+            second_message[2] = "The teal duck is acting like he owns this place and is being big headed, get him to attack you by killing another nasty duck";
+            second_message[3] = "Attack that duck to the north east then the Teal duck will come for your blood";
+
         }
 
-        else if (!doneInteraction && isGresDead) {
+        else if ((!doneInteraction && isGresDead) && !isTealDead) {
             uiManager.addNotification("You gained 60 points.");
             Game.pointsScore += 60;
+            level.characters.add((new RandomDuckNPC(level, new Vector2(115, 102), this)));
+
+            last_message = new String [2];
+            last_message[0] = "Well done you really are good at this";
+            last_message[1] = "I hope I can help you sometime too";
+
+            doneInteraction = true;
+
+        }
+
+        else if ((!doneInteraction && isGresDead) && isTealDead) {
+            uiManager.addNotification("You gained 100 points.");
+            Game.pointsScore += 100;
+
             doneInteraction = true;
 
         }

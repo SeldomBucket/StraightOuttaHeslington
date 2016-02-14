@@ -14,7 +14,7 @@ public class SallyNPC extends NPC {
 
     public boolean isRoboDead = false, interactedBefore = false, isFriendDead = false;
     public boolean doneInteraction;
-    private String[] messages, roboDead_messages, last_messages;
+    private String[] messages, second_messages, last_messages;
 
     public SallyNPC(Level level, Vector2 currentTile) {
         super(level, currentTile);
@@ -31,12 +31,12 @@ public class SallyNPC extends NPC {
             uiManager.createDialogue(messages);
             this.uiManager = uiManager;
         }
-        else if (!doneInteraction && isRoboDead){
-            uiManager.createDialogue(roboDead_messages);
+        else if ((!doneInteraction && isRoboDead) && !isFriendDead){
+            uiManager.createDialogue(second_messages);
             this.uiManager = uiManager;
         }
 
-        else if (!doneInteraction && !isRoboDead){
+        else if ((!doneInteraction && !isRoboDead) && isFriendDead){
             uiManager.createDialogue(last_messages);
             this.uiManager = uiManager;
         }
@@ -59,17 +59,16 @@ public class SallyNPC extends NPC {
                 interactedBefore = true;
                 level.characters.add((new RoboNPC(level, new Vector2(75, 98), this)));
 
-                roboDead_messages = new String[3];
-                roboDead_messages[0] = "thanks, he was scaring the widgey out of me!";
-                roboDead_messages[1] = "You seem to be good at this, can you take care of his nasty friend too?";
-                roboDead_messages[2] = "He'll be over there now probably looking at Robo Ducks body";
+                second_messages = new String[3];
+                second_messages[0] = "thanks, he was scaring the widgey out of me!";
+                second_messages[1] = "You seem to be good at this, can you take care of his nasty friend too?";
+                second_messages[2] = "He'll be over there now probably looking at Robo Ducks body";
                 doneInteraction = true;
             }
 
             else if (!doneInteraction && isRoboDead){
                 uiManager.addNotification("You gained 50 points.");
                 Game.pointsScore += 50;
-                isRoboDead = false;
                 level.characters.add((new RoboFriendNPC(level, new Vector2(75, 98), this)));
 
                 last_messages = new String[2];

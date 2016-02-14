@@ -24,6 +24,7 @@ public class GameWorld {
     public SallyNPC sallyDuck;
     public SammyNPC sammyDuck;
     public JulieNPC julieDuck;
+    public DannyNPC dannyDuck;
     //public BackUpNPC backup1Duck, backUp2Duck, backUP3Duck, backUp4Duck;
 
     private NPC interactingNPC;
@@ -50,6 +51,8 @@ public class GameWorld {
         level.characters.add(sammyDuck);
         julieDuck = new JulieNPC(level, new Vector2(90, 93));
         level.characters.add(julieDuck);
+        dannyDuck = new DannyNPC(level, new Vector2(120, 93));
+        level.characters.add(dannyDuck);
         uiManager.addUIComponent(new UIScore());
         uiManager.addUIComponent(new UIDebugCoords(level.player));
         battleParams = new BattleParameters(0);
