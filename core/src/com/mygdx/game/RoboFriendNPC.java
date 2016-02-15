@@ -51,8 +51,8 @@ public class RoboFriendNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
-        gameWorld.sallyDuck.doneInteraction = false;
-        gameWorld.sallyDuck.isFriendDead = true;
+        sallyNPC.doneInteraction = false;
+        sallyNPC.isFriendDead = true;
 
 
 
