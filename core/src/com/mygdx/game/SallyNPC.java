@@ -27,7 +27,7 @@ public class SallyNPC extends NPC {
 
     @Override
     public void initializeInteraction(float delta, UIManager uiManager) {
-        if ((!doneInteraction && !isRoboDead) && !interactedBefore) {
+        if (!doneInteraction && !isRoboDead) {
             uiManager.createDialogue(messages);
             this.uiManager = uiManager;
         }
@@ -36,7 +36,7 @@ public class SallyNPC extends NPC {
             this.uiManager = uiManager;
         }
 
-        else if ((!doneInteraction && !isRoboDead) && isFriendDead){
+        else if ((!doneInteraction && isRoboDead) && isFriendDead){
             uiManager.createDialogue(last_messages);
             this.uiManager = uiManager;
         }
@@ -66,7 +66,7 @@ public class SallyNPC extends NPC {
                 doneInteraction = true;
             }
 
-            else if (!doneInteraction && isRoboDead){
+            else if ((!doneInteraction && isRoboDead) && !isFriendDead){
                 uiManager.addNotification("You gained 50 points.");
                 Game.pointsScore += 50;
                 level.characters.add((new RoboFriendNPC(level, new Vector2(75, 98), this)));
@@ -77,7 +77,7 @@ public class SallyNPC extends NPC {
                 doneInteraction = true;
             }
 
-            else if (!doneInteraction && isFriendDead){
+            else if ((!doneInteraction && isRoboDead) && isFriendDead){
                 uiManager.addNotification("You gained 60 points.");
                 Game.pointsScore += 60;
                 doneInteraction = true;
