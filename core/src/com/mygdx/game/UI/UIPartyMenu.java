@@ -16,19 +16,23 @@ import java.util.List;
 public class UIPartyMenu extends UIComponent {
 
     private PartyManager party;
-    private boolean show;
+    private boolean show, isEquipping;
 
-    private int playerSelected, menuSelected;
+    private int playerSelected, menuSelected, equipmentSelected;
 
     private List<UIPlayer> playerList;
+    private List<UIEquipment> equipList;
 
     public UIPartyMenu(float x, float y, float width, float height, PartyManager party) {
         super(x, y, width, height);
         this.party = party;
         show = false;
+        isEquipping = false;
         playerSelected = 0;
         menuSelected = 1;
+        equipmentSelected = -1;
         playerList = new ArrayList<UIPlayer>();
+        equipList = new ArrayList<UIEquipment>();
         for (int i=0;i<party.size();i++) {
             playerList.add(new UIPlayer(x,(y + height - 82)-(122*i), width/2, 82, party.getMember(i)));
         }
@@ -64,12 +68,15 @@ public class UIPartyMenu extends UIComponent {
                 new UIMessageBox("STATS", Assets.consolas22, Color.LIGHT_GRAY, Align.center, x+width/2, (y + height + 4), width/6, 0, 10).render(batch, patch);
                 new UIMessageBox("SKILLS", Assets.consolas22, Color.LIGHT_GRAY, Align.center, x+width/2+width/6, (y + height +4), width/6, 0, 10).render(batch, patch);
                 new UIMessageBox("EQUIPMENT", Assets.consolas22, Color.WHITE, Align.center, x+width/2+width/3, (y + height+4), width/6, 0, 10).render(batch, patch);
-                /**
-                 * CHANGE- added loop to generate UI boxes for current equipment
-                 */
+                //Populate equipment list with highlighted character's equipment & render
+                equipList.clear();
                 for (int i=0;i<5;i++) {
-                    new UIEquipment(x + width/2, (y+ height - 86) - (90 * i), width/2, 50,
-                            Game.items.getEquipable(party.getMember(playerSelected).getCurrentEquipment().getEquipment(i))).render(batch, patch);
+                    equipList.add (new UIEquipment(x + width/2, (y+ height - 86) - (90 * i), width/2, 50,
+                            Game.items.getEquipable(party.getMember(playerSelected).getCurrentEquipment().getEquipment(i))));
+                    if (i == equipmentSelected) {
+                        equipList.get(i).selected = true;
+                    }
+                    equipList.get(i).render(batch, patch);
                 }
             }
 
@@ -90,7 +97,7 @@ public class UIPartyMenu extends UIComponent {
      * @return returns true if the dialogue box should continue to be displayed.
      */
     public boolean update(float delta) {
-        if (InputHandler.isEscJustPressed()) {
+        if ((InputHandler.isEscJustPressed()) && (isEquipping == false)) {
             show = false;
             return false;
         } else {
@@ -103,16 +110,35 @@ public class UIPartyMenu extends UIComponent {
     }
 
     private void optionUpdate() {
-        if (InputHandler.isUpJustPressed()) {
-            playerSelected--;
-        } else if (InputHandler.isDownJustPressed()) {
-            playerSelected++;
+        //Player is not currently in equipment sub-menu
+        if (isEquipping == false) {
+            if (InputHandler.isUpJustPressed()) {
+                playerSelected--;
+            } else if (InputHandler.isDownJustPressed()) {
+                playerSelected++;
+            }
+            if (InputHandler.isLeftJustPressed()) {
+                menuSelected--;
+            } else if (InputHandler.isRightJustPressed()) {
+                menuSelected++;
+            }
+            if ((InputHandler.isActJustPressed()) && (menuSelected == 2)) {
+                isEquipping = true;
+                equipmentSelected = 0;
+            }
         }
-        if (InputHandler.isLeftJustPressed()) {
-            menuSelected--;
-        } else if (InputHandler.isRightJustPressed()) {
-            menuSelected++;
+        else {
+            if (InputHandler.isUpJustPressed()) {
+                equipmentSelected--;
+            } else if (InputHandler.isDownJustPressed()) {
+                equipmentSelected++;
+            }
+            if ((InputHandler.isEscJustPressed()) && (menuSelected == 2)) {
+                isEquipping = false;
+                equipmentSelected = -1;
+            }
         }
+        //Guards to stop menu pointers from running out of bounds
         if (menuSelected < 0) {
             menuSelected = 0;
         }
@@ -124,6 +150,12 @@ public class UIPartyMenu extends UIComponent {
         }
         if (playerSelected >= party.size()) {
             playerSelected = party.size() - 1;
+        }
+        if (equipmentSelected < 0 && isEquipping == true) {
+            equipmentSelected = 0;
+        }
+        if (equipmentSelected > 4) {
+            equipmentSelected = 4;
         }
     }
 }
