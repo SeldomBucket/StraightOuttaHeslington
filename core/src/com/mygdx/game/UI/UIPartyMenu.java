@@ -16,18 +16,20 @@ import java.util.List;
 public class UIPartyMenu extends UIComponent {
 
     private PartyManager party;
-    private boolean show, isEquipping;
+    private boolean show;
+    private equipMode mode;
 
-    private int playerSelected, menuSelected, equipmentSelected;
+    private int playerSelected, menuSelected, equipmentSelected, inventorySelected;
 
     private List<UIPlayer> playerList;
     private List<UIEquipment> equipList;
+    private UIEquipmentInventory inventory;
 
     public UIPartyMenu(float x, float y, float width, float height, PartyManager party) {
         super(x, y, width, height);
         this.party = party;
         show = false;
-        isEquipping = false;
+        mode = equipMode.NOT;
         playerSelected = 0;
         menuSelected = 1;
         equipmentSelected = -1;
@@ -78,6 +80,11 @@ public class UIPartyMenu extends UIComponent {
                     }
                     equipList.get(i).render(batch, patch);
                 }
+                if (mode == equipMode.EQUIP) {
+                    inventory = new UIEquipmentInventory(x, y, width/2, height, party.getEquipables());
+                    inventory.selected = inventorySelected;
+                    inventory.render(batch, patch);
+                }
             }
 
         }
@@ -97,7 +104,7 @@ public class UIPartyMenu extends UIComponent {
      * @return returns true if the dialogue box should continue to be displayed.
      */
     public boolean update(float delta) {
-        if ((InputHandler.isEscJustPressed()) && (isEquipping == false)) {
+        if ((InputHandler.isEscJustPressed()) && (mode == equipMode.NOT)) {
             show = false;
             return false;
         } else {
@@ -111,7 +118,7 @@ public class UIPartyMenu extends UIComponent {
 
     private void optionUpdate() {
         //Player is not currently in equipment sub-menu
-        if (isEquipping == false) {
+        if (mode == equipMode.NOT) {
             if (InputHandler.isUpJustPressed()) {
                 playerSelected--;
             } else if (InputHandler.isDownJustPressed()) {
@@ -123,19 +130,34 @@ public class UIPartyMenu extends UIComponent {
                 menuSelected++;
             }
             if ((InputHandler.isActJustPressed()) && (menuSelected == 2)) {
-                isEquipping = true;
+                mode = equipMode.SELECT;
                 equipmentSelected = 0;
             }
         }
-        else {
+        //player is selecting an equipment from the currently selected character
+        else if (mode == equipMode.SELECT) {
             if (InputHandler.isUpJustPressed()) {
                 equipmentSelected--;
             } else if (InputHandler.isDownJustPressed()) {
                 equipmentSelected++;
             }
+            if ((InputHandler.isActJustPressed()) && (menuSelected == 2)) {
+                mode = equipMode.EQUIP;
+            }
             if ((InputHandler.isEscJustPressed()) && (menuSelected == 2)) {
-                isEquipping = false;
+                mode = equipMode.NOT;
                 equipmentSelected = -1;
+            }
+        }
+        //player is choosing a replacement equipment for the currently selected equipment
+        else if (mode == equipMode.EQUIP) {
+            if (InputHandler.isUpJustPressed()) {
+                inventorySelected--;
+            } else if (InputHandler.isDownJustPressed()) {
+                inventorySelected++;
+            }
+            if ((InputHandler.isEscJustPressed()) && (menuSelected == 2)) {
+                mode = equipMode.SELECT;
             }
         }
         //Guards to stop menu pointers from running out of bounds
@@ -151,11 +173,26 @@ public class UIPartyMenu extends UIComponent {
         if (playerSelected >= party.size()) {
             playerSelected = party.size() - 1;
         }
-        if (equipmentSelected < 0 && isEquipping == true) {
+        if (equipmentSelected < 0 && mode != equipMode.NOT) {
             equipmentSelected = 0;
         }
         if (equipmentSelected > 4) {
             equipmentSelected = 4;
         }
+        if (inventorySelected < 0) {
+            inventorySelected = 0;
+        }
+        if (inventorySelected >= party.getEquipables().size()) {
+            inventorySelected = party.getEquipables().size() - 1;
+        }
+    }
+
+    /**
+     * NOT- player is not equipping
+     * SELECT- player is selecting a currently equipped item
+     * EQUIP- player is choosing a replacement item
+     */
+    public enum equipMode {
+        NOT, SELECT, EQUIP
     }
 }

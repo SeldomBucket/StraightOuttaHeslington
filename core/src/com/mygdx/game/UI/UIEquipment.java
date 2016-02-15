@@ -10,10 +10,6 @@ import com.mygdx.game.Assets;
 import com.mygdx.game.Equipable;
 
 /**
- * Created by Thomas on 09/02/2016.
- */
-
-/**
  * The equipment menu is part of the party menu and shows information about a particular piece of equipment currently equipped.
  */
 public class UIEquipment extends UIComponent {
