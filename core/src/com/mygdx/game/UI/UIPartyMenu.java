@@ -163,8 +163,7 @@ public class UIPartyMenu extends UIComponent {
                 }
                 //Equip item
                 else {
-                    int id = party.getEquipables().get(inventorySelected);
-                    party.getMember(playerSelected).getCurrentEquipment().equip(id);
+                    party.getMember(playerSelected).getCurrentEquipment().equip(inventorySelected);
                 }
             }
             if ((InputHandler.isEscJustPressed()) && (menuSelected == 2)) {

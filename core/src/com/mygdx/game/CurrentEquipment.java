@@ -64,9 +64,10 @@ public class CurrentEquipment {
         return totalStatModifiers;
     }
 
-    //NEED TO DO SOMETHING ABOUT UNEQUIPPING ALSO
-    public void equip(int id){
-        Equipable item = Game.items.getEquipable(id);
+    //Equip item and remove from inventory
+    public void equip(int index){
+        Equipable item = Game.items.getEquipable(Game.party.getEquipables().get(index));
+        int id = item.getID();
         switch (item.getType()){
             case HEAD:{
                 equipSlots[0] = id;
@@ -89,10 +90,15 @@ public class CurrentEquipment {
                 break;
             }
         }
+        Game.party.getEquipables().remove(index);
         totalStatModifiers=calculateTotalStatModifiers();
     }
+    //Add item to inventory then unequip
     public void unequip(int index) {
+        int id = Game.items.getEquipable(equipSlots[index]).getID();
         equipSlots[index] = 0;
+        Game.party.getEquipables().add(id);
+        totalStatModifiers=calculateTotalStatModifiers();
     }
 
     /**
