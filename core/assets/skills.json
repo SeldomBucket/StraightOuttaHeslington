@@ -94,6 +94,14 @@
 	"skillType":"MELEE",
 	"basePower":5,
 	"MPCost":0
-	}
+	},
+  	{
+	"ID":12,
+	"name":"Cure wounds",
+	"description":"Cures 30 HP worth of wounds.",
+	"skillType":"HEAL",
+	"basePower":30,
+	"MPCost":10
+  	}
 	]
 }

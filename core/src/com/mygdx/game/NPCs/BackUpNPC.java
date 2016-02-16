@@ -1,6 +1,7 @@
-package com.mygdx.game;
+package com.mygdx.game.NPCs;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.*;
 import com.mygdx.game.UI.UIManager;
 import com.mygdx.game.battle.BattleParameters;
 
@@ -23,7 +24,7 @@ public class BackUpNPC extends NPC {
         this.gressinghamNPC = gressinghamNPC;
         messages[0] = "You killed our master, you will pay";
         messages[1] = "Bring it";
-        messages[2] = "A gresigham duck has challenged you to a battle.";
+        messages[2] = "A gressingham duck has challenged you to a battle.";
     }
 
     @Override

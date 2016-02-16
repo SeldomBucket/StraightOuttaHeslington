@@ -1,6 +1,7 @@
-package com.mygdx.game;
+package com.mygdx.game.NPCs;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.*;
 import com.mygdx.game.UI.UIManager;
 import com.mygdx.game.battle.BattleParameters;
 
@@ -20,7 +21,7 @@ public class MallardsNPC extends NPC {
         this.julieNPC = julieNPC;
         messages = new String[2];
         messages[0] = "Why are you even trying to help her";
-        messages[1] = "The malards have challenged you to a battle.";
+        messages[1] = "The mallards have challenged you to a battle.";
     }
 
     @Override
@@ -64,7 +65,7 @@ public class MallardsNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
-        julieNPC.isMalardDead = true;
+        julieNPC.isMallardDead = true;
         julieNPC.doneInteraction = false;
 
 

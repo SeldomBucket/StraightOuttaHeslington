@@ -1,6 +1,7 @@
-package com.mygdx.game;
+package com.mygdx.game.NPCs;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.*;
 import com.mygdx.game.UI.UIManager;
 import com.mygdx.game.battle.BattleParameters;
 
@@ -52,7 +53,6 @@ public class SomeDucksNPC extends NPC {
 
         params.addEnemy(enemyDuck1);
         params.addEnemy(enemyDuck2);
-
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
