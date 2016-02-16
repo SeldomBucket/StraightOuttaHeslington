@@ -41,14 +41,15 @@ public class TealNPC extends NPC {
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-        Agent enemyDuck1 = new Agent("Teal Duck", Agent.AgentType.ENEMY,new Statistics(5,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck = new Agent("Teal Duck", Agent.AgentType.ENEMY,new Statistics(5,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
-        enemyDuck1.addSkill(4);
-        enemyDuck1.addSkill(10);
+        enemyDuck.addSkill(3);
+        enemyDuck.addSkill(10);
+        enemyDuck.addSkill(7);
 
 
-        params.addEnemy(enemyDuck1);
+        params.addEnemy(enemyDuck);
 
 
 
