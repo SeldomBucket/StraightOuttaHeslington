@@ -31,7 +31,7 @@ public class UseSkill extends UseAbility {
 
         battleMenu.showTurnIndicator=false;
 
-        switch (skill.getSkillType()){
+        /*switch (skill.getSkillType()){
             case MELEE:{
                 break;
             }
@@ -41,16 +41,17 @@ public class UseSkill extends UseAbility {
             case MAGIC:{
                 battleAnimator.moveAgentTo(user,target.getX(),target.getY(),this);//Moves the agent to the target
                 battleMenu.createInfoBox(user.getName() + " uses " + skill.getName()+" on "+target.getName(),3);//Create an info box with information on the current action
-
                 break;
             }
             case HEAL:{
                 battleAnimator.moveAgentTo(user, target.getX(), target.getY(), this);
                 battleMenu.createInfoBox(user.getName() + " uses " + skill.getName()+" on "+target.getName(),3);
-
                 break;
             }
         }
+        */
+        battleAnimator.moveAgentTo(user, target.getX(), target.getY(), this);
+        battleMenu.createInfoBox(user.getName() + " uses " + skill.getName()+" on "+target.getName(),3);
 
 
 
@@ -74,9 +75,23 @@ public class UseSkill extends UseAbility {
         if(type==0) {
             switch (skill.getSkillType()) {
                 case MELEE: {
+                    Assets.sfx_hitNoise.play(Game.masterVolume);
+                    target.dealDamage(user.getStats().getStrength() + user.getCurrentEquipment().getTotalStrengthModifiers() + skill.getBasePower());
+                    String infoBoxText = (target.getName() + " takes "+(user.getStats().getStrength() + user.getCurrentEquipment().getTotalStrengthModifiers() + skill.getBasePower()) + " damage");
+                    if(target.isDead())
+                        infoBoxText+=" and is defeated.";
+                    battleMenu.createInfoBox( infoBoxText, 3);
+                    battleAnimator.returnAgent();//Return agent to start point
                     break;
                 }
                 case RANGED: {
+                    Assets.sfx_hitNoise.play(Game.masterVolume);
+                    target.dealDamage(user.getStats().getDexterity() + user.getCurrentEquipment().getTotalDexterityModifiers() + skill.getBasePower());
+                    String infoBoxText = (target.getName() + " takes "+(user.getStats().getDexterity() + user.getCurrentEquipment().getTotalDexterityModifiers() + skill.getBasePower()) + " damage");
+                    if(target.isDead())
+                        infoBoxText+=" and is defeated.";
+                    battleMenu.createInfoBox( infoBoxText, 3);
+                    battleAnimator.returnAgent();//Return agent to start point
                     break;
                 }
                 case MAGIC: {
@@ -87,7 +102,6 @@ public class UseSkill extends UseAbility {
                         infoBoxText+=" and is defeated.";
                     battleMenu.createInfoBox( infoBoxText, 3);
                     battleAnimator.returnAgent();//Return agent to start point
-
                     break;
                 }
                 case HEAL: {
