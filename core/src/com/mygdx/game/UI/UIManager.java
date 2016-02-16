@@ -18,6 +18,7 @@ import java.util.List;
  */
 public class UIManager {
     public UIPartyMenu partyMenu;
+    public UIShopMenu shopMenu;
     public List<UIMessageBox> notifications;
 
     private List<UIComponent> uiComponents;
@@ -114,13 +115,20 @@ public class UIManager {
     public void createFlightMenu(boolean[] locations, String[] locationNames){
         flightMenu = new UIFlightMenu(10,10,Gdx.graphics.getWidth()-20, Gdx.graphics.getHeight()-60,locations,locationNames);
     }
-
     public void showFlightMenu(int location){
         flightMenu.show(location);
     }
-
     public int updateFlightMenu(float delta){
         return flightMenu.update(delta);
+    }
+    public void createShopMenu(boolean[] locations, String[] locationNames){
+        shopMenu = new UIShopMenu(10,10,Gdx.graphics.getWidth()-20, Gdx.graphics.getHeight()-60,locations,locationNames);
+    }
+    public void showShopMenu(int location){
+        shopMenu.show(location);
+    }
+    public int updateShopMenu(float delta){
+        return shopMenu.update(delta);
     }
 
     public void addUIComponent(UIComponent c) {

@@ -32,6 +32,8 @@ public class GameWorld {
     private boolean[] vistasVisited; //True if you have seen the vista, used for points
     private boolean[] flightSpotsVisited; //True if you can fly to that particular spot
     private String[] locationNames;// [Constantine, Langwith, Goodricke, Law and Management, The Catalyst, TFTV, Computer Science, Ron Cooke Hub]
+    private boolean[] itemsToShow;
+    private String[] itemNames;
 
     private float flightTimer;
 
@@ -67,6 +69,9 @@ public class GameWorld {
         vistasVisited = new boolean[]{false, false, false, false, false, false, false, false, false};
         locationNames = new String[]{"Constantine", "Langwith", "Goodricke", "Law and Management", "The Catalyst", "TFTV", "Computer Science", "Ron Cooke Hub"};
         uiManager.createFlightMenu(flightSpotsVisited, locationNames);
+        itemsToShow = new boolean[]{true, true, true, true, true, true, true, true};
+        itemNames = new String[]{"thing1","thing2","thing3","thing4","thing5","thing6","thing7","thing8"};
+        uiManager.createShopMenu(itemsToShow, itemNames);
     }
 
 
@@ -219,11 +224,21 @@ public class GameWorld {
                 }else if (InputHandler.isMenuJustPressed()){
                     uiManager.openPartyMenu();
                     gameState = GameState.PARTY_MENU;
+
+                } else if (InputHandler.isShopJustPressed()){
+                    uiManager.showShopMenu(0);
+                    gameState = GameState.SHOP_MENU;
                 }
                 break;
 
             case PARTY_MENU:
                 if (!uiManager.updatePartyMenu(delta)){
+                    gameState = GameState.FREEROAM;
+                }
+                break;
+
+            case SHOP_MENU:
+                if (!(uiManager.updateShopMenu(delta)==-1)){
                     gameState = GameState.FREEROAM;
                 }
                 break;

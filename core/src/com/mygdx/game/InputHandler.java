@@ -18,6 +18,7 @@ public class InputHandler {
     private static Boolean leftPressed = false;
     private static Boolean actPressed = false;
     private static Boolean menuPressed = false;
+    private static Boolean shopPressed = false;
     private static Boolean escPressed = false;
 
     private static Boolean upJustPressed = false;
@@ -26,6 +27,7 @@ public class InputHandler {
     private static Boolean leftJustPressed = false;
     private static Boolean actJustPressed = false;
     private static Boolean menuJustPressed = false;
+    private static Boolean shopJustPressed = false;
     private static Boolean escJustPressed = false;
 
     private static final int UP = Input.Keys.UP;
@@ -35,6 +37,7 @@ public class InputHandler {
     private static final int ACT = Input.Keys.Z;
     private static final int MENU = Input.Keys.M;
     private static final int ESC = Input.Keys.X;
+    private static final int SHOP = Input.Keys.C;
 
     /**
      * Updates and polls to see which inputs are active.
@@ -95,6 +98,15 @@ public class InputHandler {
                 menuJustPressed = true;
             }
 
+            shopPressed = false;
+            shopJustPressed = false;
+            if (Gdx.input.isKeyPressed(SHOP)) {
+                shopPressed = true;
+            }
+            if (Gdx.input.isKeyJustPressed(SHOP)) {
+                shopJustPressed = true;
+            }
+
             escPressed = false;
             escJustPressed = false;
             if (Gdx.input.isKeyPressed(ESC)) {
@@ -152,12 +164,20 @@ public class InputHandler {
         return menuPressed;
     }
 
+    public static Boolean isShopJustPressed() {
+        return shopJustPressed;
+    }
+
+    public static Boolean isShopPressed() {
+        return shopPressed;
+    }
+
     public static Boolean isEscPressed(){return escPressed;}
 
     public static Boolean isEscJustPressed(){return escJustPressed;}
 
     public enum inputType{
-        UP,DOWN,LEFT,RIGHT,ACT,ESC
+        UP,DOWN,LEFT,RIGHT,ACT,ESC,SHOP
     }
 
     /**
