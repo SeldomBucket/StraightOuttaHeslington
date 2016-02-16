@@ -63,7 +63,7 @@
 		"currentLevel":2,
 		"maxLevel":20
 		},
-	"skills":[2, 1],
+	"skills":[1, 10],
 	"equipment":{
 		"equipSlots":[0,0,0,0,0]
 		}

@@ -71,8 +71,8 @@ public class Statistics {
     }
 
     //when equipment is changed, this should be called
-    public void adjustArmourVal() {
-
+    public void adjustArmourVal(int equipmentArmourVal) {
+        armourVal = baseArmourVal + equipmentArmourVal;
     }
 
 
