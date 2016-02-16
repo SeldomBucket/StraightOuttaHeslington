@@ -102,6 +102,14 @@
 	"skillType":"HEAL",
 	"basePower":30,
 	"MPCost":10
-  	}
+  	},
+  {
+	"ID":13,
+	"name":"Wing attack",
+	"description":"Not at all copyrighted, honest!",
+	"skillType":"RANGED",
+	"basePower":10,
+	"MPCost":3
+  }
 	]
 }

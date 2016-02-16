@@ -13,8 +13,6 @@ import java.io.IOException;
  */
 public class Game extends com.badlogic.gdx.Game {
 
-
-
 	public static PartyManager party;
 	public static PartyManager enemies;
 	public static ItemManager items;

@@ -33,6 +33,8 @@ public class DannyNPC extends NPC {
         }
         else if ((!doneInteraction && isBreadStealerDead) && !isMisunderstoodDead){
             uiManager.createDialogue(second_messages);
+            Game.party.getMember(2).addSkill(12);
+            uiManager.addNotification("Adrian the Duck can now use Heal Wounds!");
             this.uiManager = uiManager;
         }
 
@@ -51,9 +53,6 @@ public class DannyNPC extends NPC {
         if ((!doneInteraction && !isBreadStealerDead) && !interactedBefore) {
             uiManager.addNotification("You gained 40 points.");
             Game.pointsScore += 40;
-            interactedBefore = true;
-            level.characters.add((new BreadStealerNPC(level, new Vector2(130, 93), this)));
-
             second_messages = new String[3];
             second_messages[0] = "thanks for getting my bread back!";
             second_messages[1] = "Oh no a duck has thought you stole his bread not getting him back he's coming for you";
@@ -63,8 +62,12 @@ public class DannyNPC extends NPC {
 
         else if (!doneInteraction && isBreadStealerDead){
             uiManager.addNotification("You gained 50 points.");
+            interactedBefore = true;
+            level.characters.add((new BreadStealerNPC(level, new Vector2(130, 93), this)));
             Game.pointsScore += 50;
             level.characters.add((new MisunderstoodNPC(level, new Vector2(120, 91), this)));
+            Game.party.getMember(3).addSkill(1);
+            gameWorld.uiManager.addNotification("Ahn the Duck can now use Cure Light Wounds!");
             doneInteraction = true;
         }
 

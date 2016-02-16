@@ -59,5 +59,6 @@ public class SomeDucksNPC extends NPC {
         julieNPC.doneInteraction = false;
         julieNPC.isSomeDucksDead = true;
 
+
     }
 }
