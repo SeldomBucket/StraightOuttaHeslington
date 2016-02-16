@@ -38,6 +38,7 @@ public class MallardsNPC extends NPC {
     @Override
     public void action(GameWorld gameWorld) {
         Assets.sfx_battleStart.play(Game.masterVolume);
+
         uiManager.addNotification("The mallards have been defeated.");
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
@@ -49,13 +50,13 @@ public class MallardsNPC extends NPC {
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck1.addSkill(10);
-        enemyDuck1.addSkill(4);
+        enemyDuck1.addSkill(7);
         enemyDuck2.addSkill(10);
-        enemyDuck2.addSkill(4);
+        enemyDuck2.addSkill(8);
         enemyDuck3.addSkill(10);
-        enemyDuck3.addSkill(4);
+        enemyDuck3.addSkill(9);
         enemyDuck4.addSkill(10);
-        enemyDuck4.addSkill(4);
+        enemyDuck4.addSkill(2);
 
         params.addEnemy(enemyDuck1);
         params.addEnemy(enemyDuck2);
