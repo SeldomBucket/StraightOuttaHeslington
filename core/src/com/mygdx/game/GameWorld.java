@@ -54,7 +54,7 @@ public class GameWorld {
         dannyDuck = new DannyNPC(level, new Vector2(120, 93));
         level.characters.add(dannyDuck);
         uiManager.addUIComponent(new UIScore());
-        uiManager.addUIComponent(new UIDebugCoords(level.player));
+        //uiManager.addUIComponent(new UIDebugCoords(level.player));
         battleParams = new BattleParameters(0);
         List<Integer> emptyList = new ArrayList<Integer>();
         Agent enemyDuck = new Agent("Crazed Duck", Agent.AgentType.ENEMY,new Statistics(100,100,0,2,2,2,2,2,3),emptyList,new CurrentEquipment(0,0,0,0,0),0);

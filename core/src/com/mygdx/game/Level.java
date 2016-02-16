@@ -77,16 +77,16 @@ public class Level {
                     interactionMap[x][y] = Interaction.TEXT_SIGN;
                     switch (x+y){
                         case 223:
-                            textSigns.put(x+y, new String[]{"Hi there, I'm a helpful sign!","You've already guessed to use Z to interact","(you can interact with textSigns and other ducks)","and use arrow keys to move."});
+                            textSigns.put(x+y, new String[]{"Hi there, I'm a helpful sign!","You've already guessed to use Z to interact","(you can interact with signs and other ducks)","and use arrow keys to move.","But did you know, you can open your party menu with M", "and use X to exit out of it."});
                             break;
                         case 224:
-                            textSigns.put(x+y, new String[]{"But did you know, you can open your party menu with M", "and use X to exit out of it."});
+                            textSigns.put(x+y, new String[]{"Be careful!","If you're not walking on a road, a random battle may occur."});
                             break;
                         case 225:
                             textSigns.put(x+y, new String[]{"You can swim in light blue water","but darker water is too dangerous to swim in."});
                             break;
                         case 226:
-                            textSigns.put(x+y, new String[]{"Go north to Constantine College now!","There will be more textSigns to guide you."});
+                            textSigns.put(x+y, new String[]{"Go north to Constantine College now!","There will be more signs to guide you."});
                             break;
                         case 264:
                             textSigns.put(x+y, new String[]{"To get to Constantine college, go North,","go left at the fork,", "then take the first right."});
@@ -164,7 +164,7 @@ public class Level {
             }
         }
 
-        player = new Player(this, new Vector2(181,104));//197, 23));
+        player = new Player(this, new Vector2(197, 23));
         player.setDirection(Character.Direction.DOWN);
         characters = new ArrayList<Character>();
         characters.add(player);
