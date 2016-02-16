@@ -118,8 +118,10 @@ public class UIManager {
     public void showFlightMenu(int location){
         flightMenu.show(location);
     }
-    public int updateFlightMenu(float delta){
-        return flightMenu.update(delta);
+
+    public int updateFlightMenu(){
+        return flightMenu.update();
+
     }
     public void createShopMenu(boolean[] locations, String[] locationNames){
         shopMenu = new UIShopMenu(10,10,Gdx.graphics.getWidth()-20, Gdx.graphics.getHeight()-60,locations,locationNames);

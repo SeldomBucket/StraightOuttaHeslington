@@ -65,10 +65,6 @@ public class UIFlightMenu extends UIComponent {
                     }
                 }
             }
-
-            /*new UIMessageBox("STATS", Assets.consolas22, Color.LIGHT_GRAY, Align.center, x+width/2, (y + height + 4), width/6, 0, 10).render(batch, patch);
-            new UIMessageBox("SKILLS", Assets.consolas22, Color.LIGHT_GRAY, Align.center, x+width/2+width/6, (y + height +4), width/6, 0, 10).render(batch, patch);
-            new UIMessageBox("EQUIPMENT", Assets.consolas22, Color.WHITE, Align.center, x+width/2+width/3, (y + height+4), width/6, 0, 10).render(batch, patch);*/
         }
     }
 
@@ -84,15 +80,17 @@ public class UIFlightMenu extends UIComponent {
      * Called once per frame to handle input logic for selecting a player and exiting the menu.
      * @return returns true if the dialogue box should continue to be displayed.
      */
-    public int update(float delta) {
+    public int update() {
         if (InputHandler.isActJustPressed()) {
             show = false;
             return locationSelected;
-        } else {
+        } else if (InputHandler.isEscJustPressed()) {
+            show = false;
+            return 666;
+        }else{
             optionUpdate();
             return -1;
         }
-
     }
 
     private void optionUpdate() {

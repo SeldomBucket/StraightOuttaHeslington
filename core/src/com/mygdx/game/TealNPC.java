@@ -45,6 +45,7 @@ public class TealNPC extends NPC {
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck1.addSkill(4);
+        enemyDuck1.addSkill(10);
 
 
         params.addEnemy(enemyDuck1);

@@ -59,7 +59,7 @@ public class UIRenderer {
             uiManager.dialogue.render(batch, Assets.patch);
         }
         uiManager.partyMenu.render(batch, Assets.patch);
-        uiManager.flightMenu.render(batch, Assets.patch);
+//        uiManager.flightMenu.render(batch, Assets.patch);
         if (uiManager.vista != null) {
             uiManager.vista.render(batch, Assets.patch);
         }

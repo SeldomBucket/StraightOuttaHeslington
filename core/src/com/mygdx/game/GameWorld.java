@@ -336,8 +336,10 @@ public class GameWorld {
                         }
                         break;
                     case FLIGHT:
-                        int flightLocation = uiManager.updateFlightMenu(delta);
-                        if(flightLocation != -1){
+                        int flightLocation = uiManager.updateFlightMenu();
+                        if (flightLocation == 666) {
+                            gameState = GameState.FREEROAM;
+                        }else if((flightLocation != -1)){
                             level.stopInput = true;
                             switch (flightLocation){
                                 case 0:
