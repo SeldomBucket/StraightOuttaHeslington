@@ -40,6 +40,9 @@ public class UIRenderer {
         }
         uiManager.partyMenu.render(uiBatch, Assets.patch);
         uiManager.flightMenu.render(uiBatch, Assets.patch);
+        if (uiManager.vista != null) {
+            uiManager.vista.render(uiBatch, Assets.patch);
+        }
         uiBatch.end();
     }
 
@@ -53,6 +56,11 @@ public class UIRenderer {
         }
         if (uiManager.dialogue != null) {
             uiManager.dialogue.render(batch, Assets.patch);
+        }
+        uiManager.partyMenu.render(batch, Assets.patch);
+        uiManager.flightMenu.render(batch, Assets.patch);
+        if (uiManager.vista != null) {
+            uiManager.vista.render(batch, Assets.patch);
         }
     }
 

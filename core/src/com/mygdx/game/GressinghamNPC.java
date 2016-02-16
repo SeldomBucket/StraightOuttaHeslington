@@ -65,11 +65,5 @@ public class GressinghamNPC extends NPC {
         sammyNPC.isGresDead = true;
         sammyNPC.doneInteraction = false;
 
-
-
-
-
-
-
     }
 }

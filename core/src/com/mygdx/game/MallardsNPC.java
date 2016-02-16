@@ -10,12 +10,12 @@ import java.util.List;
 /**
  * This class represents the robot boss of the game.
  */
-public class MalardsNPC extends NPC {
+public class MallardsNPC extends NPC {
 
     public JulieNPC julieNPC;
     private String[] messages;
 
-    public MalardsNPC(Level level, Vector2 currentTile, JulieNPC julieNPC) {
+    public MallardsNPC(Level level, Vector2 currentTile, JulieNPC julieNPC) {
         super(level, currentTile);
         this.julieNPC = julieNPC;
         messages = new String[2];

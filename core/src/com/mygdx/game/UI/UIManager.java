@@ -2,6 +2,8 @@ package com.mygdx.game.UI;
 
 import com.badlogic.gdx.Gdx;
 import com.badlogic.gdx.graphics.Color;
+import com.badlogic.gdx.graphics.Texture;
+import com.badlogic.gdx.graphics.g2d.TextureRegion;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
 import com.mygdx.game.InputHandler;
@@ -23,6 +25,7 @@ public class UIManager {
     public UIDialogue dialogue;
     private float notificationTimer;
     public UIFlightMenu flightMenu;
+    public UIVista vista;
 
     public UIManager(PartyManager party) {
         notifications = new ArrayList<UIMessageBox>();
@@ -63,6 +66,26 @@ public class UIManager {
             return false;
         }
         return true;
+    }
+
+    /**
+     * Creates a new dialogue from an array of messages.
+     */
+    public void addVista(Texture image) {
+        vista = new UIVista(image);
+    }
+
+    /**
+     * To be called if the player is in a dialogue.
+     * @return false when dialogue has finished.
+     */
+    public boolean updateVista() {
+        if (!vista.update()) {
+            vista = null;
+            return false;
+        }else{
+            return true;
+        }
     }
 
     /**
