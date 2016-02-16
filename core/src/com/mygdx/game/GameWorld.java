@@ -265,8 +265,12 @@ public class GameWorld {
                         case 0:
                             if (levelRequirements[0] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[0]){
-                                    Game.pointsScore -= itemCosts[0];
-                                    uiManager.addNotification("Successfully purchased the " + itemNames[0]);
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[0];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[0]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[0] + " in your inventory");
+                                    }
                                 }else{
                                     uiManager.addNotification("You do not have enough points to buy the " + itemNames[0]);
                                 }
@@ -278,8 +282,12 @@ public class GameWorld {
                         case 1:
                             if (levelRequirements[1] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[1]){
-                                    Game.pointsScore -= itemCosts[1];
-                                    uiManager.addNotification("Successfully purchased the " + itemNames[1]);
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[1];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[1]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[1] + " in your inventory");
+                                    }
                                 }else{
                                     uiManager.addNotification("You do not have enough points to buy the " + itemNames[1]);
                                 }
@@ -289,20 +297,139 @@ public class GameWorld {
                             break;
 
                         case 2:
+                            if (levelRequirements[2] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[2]){
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[2];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[2]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[2] + " in your inventory");
+                                    }
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[2]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[2]);
+                            }
                             break;
+
                         case 3:
+                            if (levelRequirements[3] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[3]){
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[3];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[3]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[3] + " in your inventory");
+                                    }
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[3]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[3]);
+                            }
                             break;
+
                         case 4:
+                            if (levelRequirements[4] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[4]){
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[4];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[4]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[4] + " in your inventory");
+                                    }
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[4]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[4]);
+                            }
                             break;
+
                         case 5:
+                            if (levelRequirements[5] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[5]){
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[5];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[5]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[5] + " in your inventory");
+                                    }
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[5]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[5]);
+                            }
                             break;
+
                         case 6:
+                            if (levelRequirements[6] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[6]){
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[6];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[6]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[6] + " in your inventory");
+                                    }
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[6]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[6]);
+                            }
                             break;
+
                         case 7:
+                            if (levelRequirements[7] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[7]){
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[7];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[7]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[7] + " in your inventory");
+                                    }
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[7]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[7]);
+                            }
                             break;
+
                         case 8:
+                            if (levelRequirements[8] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[8]){
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[8];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[8]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[8] + " in your inventory");
+                                    }
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[8]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[8]);
+                            }
                             break;
+
                         case 9:
+                            if (levelRequirements[9] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[9]){
+                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[9];
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[9]);
+                                    }else{
+                                        uiManager.addNotification("You already have the " + itemNames[9] + " in your inventory");
+                                    }
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[9]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[9]);
+                            }
                             break;
 
                     }
