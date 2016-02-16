@@ -44,11 +44,8 @@ public class GressinghamNPC extends NPC {
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-<<<<<<< HEAD
-        Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(90,100,4,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
-=======
+
         Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
->>>>>>> 0ec48ffa34f704369c8e57ed92aa277b4b9ba6ab
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(10);
