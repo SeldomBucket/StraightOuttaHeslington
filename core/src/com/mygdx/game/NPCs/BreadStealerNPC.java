@@ -1,6 +1,7 @@
-package com.mygdx.game;
+package com.mygdx.game.NPCs;
 
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.*;
 import com.mygdx.game.UI.UIManager;
 import com.mygdx.game.battle.BattleParameters;
 

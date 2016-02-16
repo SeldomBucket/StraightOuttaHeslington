@@ -154,7 +154,7 @@ public class Agent implements Comparable<Agent>{
                 '}';
     }
 
-    public int getTexture() {
+    public int getTextureIndex() {
         return texture;
     }
 

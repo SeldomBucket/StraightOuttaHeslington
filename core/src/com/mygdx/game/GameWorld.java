@@ -1,7 +1,10 @@
 package com.mygdx.game;
 
 import com.badlogic.gdx.math.Vector2;
-import com.mygdx.game.UI.UIDebugCoords;
+import com.mygdx.game.NPCs.DannyNPC;
+import com.mygdx.game.NPCs.JulieNPC;
+import com.mygdx.game.NPCs.SallyNPC;
+import com.mygdx.game.NPCs.SammyNPC;
 import com.mygdx.game.UI.UIManager;
 import com.mygdx.game.UI.UIScore;
 import com.mygdx.game.battle.BattleParameters;
@@ -32,6 +35,8 @@ public class GameWorld {
     private boolean[] vistasVisited; //True if you have seen the vista, used for points
     private boolean[] flightSpotsVisited; //True if you can fly to that particular spot
     private String[] locationNames;// [Constantine, Langwith, Goodricke, Law and Management, The Catalyst, TFTV, Computer Science, Ron Cooke Hub]
+
+    private Vector2 lastFlightSpot;
 
     private float flightTimer;
 
@@ -102,7 +107,7 @@ public class GameWorld {
                             Agent thisAgent = Game.enemies.getMember(random.nextInt(Game.enemies.size()));
                             Statistics thisAgentStats = thisAgent.getStats();
                             Statistics newStats = new Statistics(thisAgentStats.getMaxHP(), thisAgentStats.getMaxMP(), thisAgentStats.getSpeed(), thisAgentStats.getStrength(), thisAgentStats.getDexterity(), thisAgentStats.getIntelligence(), thisAgentStats.getBaseArmourVal(), thisAgentStats.getExperience(), thisAgentStats.getCurrentLevel());
-                            params.addEnemy(new Agent(thisAgent.getName(), thisAgent.getType(), newStats, thisAgent.getSkills(), thisAgent.getCurrentEquipment(), thisAgent.getTexture()));
+                            params.addEnemy(new Agent(thisAgent.getName(), thisAgent.getType(), newStats, thisAgent.getSkills(), thisAgent.getCurrentEquipment(), thisAgent.getTextureIndex()));
                         }
 
                         battleParams = params;
@@ -218,6 +223,7 @@ public class GameWorld {
                     }
                 }else if (InputHandler.isMenuJustPressed()){
                     uiManager.openPartyMenu();
+                    level.stopInput = true;
                     gameState = GameState.PARTY_MENU;
                 }
                 break;
@@ -331,6 +337,7 @@ public class GameWorld {
                                     if (flightSpotsVisited[0]) {
                                         level.player.setCurrentTile(new Vector2(179, 106));
                                         level.player.setTargetTile(new Vector2(179, 106));
+                                        lastFlightSpot = new Vector2(179, 106);
                                         //level.player.oldPos = new Vector2(179, 106);
                                         //level.player.setDirection(Character.Direction.DOWN);
                                     }else{
@@ -341,6 +348,7 @@ public class GameWorld {
                                     if (flightSpotsVisited[1]) {
                                         level.player.setCurrentTile(new Vector2(145, 111));
                                         level.player.setTargetTile(new Vector2(145, 111));
+                                        lastFlightSpot = new Vector2(145, 111);
                                         //level.player.oldPos = new Vector2(145, 111);
                                         //level.player.setDirection(Character.Direction.DOWN);
                                     }else{
@@ -351,6 +359,7 @@ public class GameWorld {
                                     if (flightSpotsVisited[2]) {
                                         level.player.setCurrentTile(new Vector2(102, 119));
                                         level.player.setTargetTile(new Vector2(102, 119));
+                                        lastFlightSpot = new Vector2(102, 119);
                                         //level.player.oldPos = new Vector2(102, 119);
                                         //level.player.setDirection(Character.Direction.DOWN);
                                     }else{
@@ -361,6 +370,7 @@ public class GameWorld {
                                     if (flightSpotsVisited[3]) {
                                         level.player.setCurrentTile(new Vector2(86, 93));
                                         level.player.setTargetTile(new Vector2(86, 93));
+                                        lastFlightSpot = new Vector2(86, 93);
                                         //level.player.oldPos = new Vector2(86, 93);
                                         //level.player.setDirection(Character.Direction.DOWN);
                                     }else{
@@ -371,6 +381,7 @@ public class GameWorld {
                                     if (flightSpotsVisited[4]) {
                                         level.player.setCurrentTile(new Vector2(71, 98));
                                         level.player.setTargetTile(new Vector2(71, 98));
+                                        lastFlightSpot = new Vector2(71, 98);
                                         //level.player.oldPos = new Vector2(71, 98);
                                         //level.player.setDirection(Character.Direction.DOWN);
                                     }else{
@@ -381,6 +392,7 @@ public class GameWorld {
                                     if (flightSpotsVisited[5]) {
                                         level.player.setCurrentTile(new Vector2(72, 73));
                                         level.player.setTargetTile(new Vector2(72, 73));
+                                        lastFlightSpot = new Vector2(72, 73);
                                         //level.player.oldPos = new Vector2(72, 73);
                                         //level.player.setDirection(Character.Direction.DOWN);
                                     }else{
@@ -391,6 +403,7 @@ public class GameWorld {
                                     if (flightSpotsVisited[6]) {
                                         level.player.setCurrentTile(new Vector2(89, 66));
                                         level.player.setTargetTile(new Vector2(89, 66));
+                                        lastFlightSpot = new Vector2(89, 66);
                                         //level.player.oldPos = new Vector2(89, 66);
                                         //level.player.setDirection(Character.Direction.DOWN);
                                     }else{
@@ -401,6 +414,7 @@ public class GameWorld {
                                     if (flightSpotsVisited[7]) {
                                         level.player.setCurrentTile(new Vector2(115, 85));
                                         level.player.setTargetTile(new Vector2(115, 85));
+                                        lastFlightSpot = new Vector2(115, 85);
                                         //level.player.oldPos = new Vector2(115, 85);
                                         //level.player.setDirection(Character.Direction.DOWN);
                                     }else{
@@ -421,8 +435,8 @@ public class GameWorld {
                     uiManager.addNotification("You won the battle!");
                 } else {
                     Game.party.setHealths(1);
-                    level.player.setCurrentTile(new Vector2(118, 94));
-                    uiManager.addNotification("You lost the battle! You have been moved backwards.");
+                    level.player.setCurrentTile(new Vector2(lastFlightSpot.x, lastFlightSpot.y));
+                    uiManager.addNotification("You lost the battle! You have been moved to the last flight spot you were at.");
                 }
                 gameState = GameState.FREEROAM;
                 break;
