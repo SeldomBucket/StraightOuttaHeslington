@@ -13,6 +13,8 @@ public class Player extends Character {
 
     public Interaction interaction;
 
+    public Integer interactionLocationHash;
+
     private float runningTime;
 
     public Player(Level level, Vector2 currentTile) {
@@ -34,8 +36,8 @@ public class Player extends Character {
         } else if (InputHandler.isRightPressed()) {
             updateMovement(Direction.RIGHT);
         }
-        if (level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y] == Interaction.FLIGHT){
-            interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y];
+        if (level.interactionMap[(int)getCurrentTile().x][(int)getCurrentTile().y] == Interaction.FLIGHT){
+            interaction = level.interactionMap[(int)getCurrentTile().x][(int)getCurrentTile().y];
         }
     }
 
@@ -68,7 +70,7 @@ public class Player extends Character {
         float copyOfRunningTime = runningTime + delta;
         float t = copyOfRunningTime / TRANSITION_SPEED;
         getAbsPos().set(oldPos.x + (targetPos.x - oldPos.x) * t, oldPos.y + (targetPos.y - oldPos.y) * t);
-        if (t >= 1) {
+        if (t >= 5) {
             setState(CharacterState.STATIONARY);
             runningTime = 0;
             getCurrentTile().set(targetTile);
@@ -93,24 +95,29 @@ public class Player extends Character {
     @Override
     public void update(float delta) {
         super.update(delta);
-        interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y];
+        interaction = level.interactionMap[(int)getCurrentTile().x][(int)getCurrentTile().y];
+        interactionLocationHash = (int)(this.getCurrentTile().x + this.getCurrentTile().y);
         if (!(interaction == Interaction.FLIGHT)){
             switch (getDirection()) {
                 case UP:
                     interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x, getCurrentTile().y + 1);
-                    interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y + 1];
+                    interaction = level.interactionMap[(int)getCurrentTile().x][(int)getCurrentTile().y + 1];
+                    interactionLocationHash = (int)(this.getCurrentTile().x + this.getCurrentTile().y + 1);
                     break;
                 case DOWN:
                     interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x, getCurrentTile().y - 1);
-                    interaction = level.interactablesMap[(int)getCurrentTile().x][(int)getCurrentTile().y - 1];
+                    interaction = level.interactionMap[(int)getCurrentTile().x][(int)getCurrentTile().y - 1];
+                    interactionLocationHash = (int)(this.getCurrentTile().x + this.getCurrentTile().y - 1);
                     break;
                 case LEFT:
                     interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x - 1, getCurrentTile().y);
-                    interaction = level.interactablesMap[(int)getCurrentTile().x-1][(int)getCurrentTile().y];
+                    interaction = level.interactionMap[(int)getCurrentTile().x-1][(int)getCurrentTile().y];
+                    interactionLocationHash = (int)(this.getCurrentTile().x + this.getCurrentTile().y - 1);
                     break;
                 case RIGHT:
                     interactingNPC = (NPC) level.getCharacterAt(getCurrentTile().x + 1, getCurrentTile().y);
-                    interaction = level.interactablesMap[(int)getCurrentTile().x+1][(int)getCurrentTile().y];
+                    interaction = level.interactionMap[(int)getCurrentTile().x+1][(int)getCurrentTile().y];
+                    interactionLocationHash = (int)(this.getCurrentTile().x + this.getCurrentTile().y + 1);
                     break;
             }
         }

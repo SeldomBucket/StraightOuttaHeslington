@@ -23,7 +23,7 @@ public class UIDialogue extends UIComponent {
             dialogueBoxes[i] = new UIDialogueBox(x, y, width, height, messages[i]);
         }
         currentMessage = 0;
-        this.dialogueWaitTime = 1f;
+        this.dialogueWaitTime = 0.7f;
     }
 
     public UIDialogue(float x, float y, float width, float height, String[] messages, float dialogueWaitTime) {

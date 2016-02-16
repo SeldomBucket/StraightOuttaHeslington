@@ -2,10 +2,6 @@ package com.mygdx.game;
 
 import com.badlogic.gdx.math.Vector2;
 import com.mygdx.game.UI.UIManager;
-import com.mygdx.game.battle.BattleParameters;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * This class represents the first npc of the game.
@@ -56,7 +52,7 @@ public class JulieNPC extends NPC {
         if (!doneInteraction && !isMalardDead) {
             uiManager.addNotification("You gained 60 points.");
             Game.pointsScore += 60;
-            level.characters.add(new MalardsNPC(level, new Vector2(108, 71), this));
+            level.characters.add(new MallardsNPC(level, new Vector2(108, 71), this));
 
             second_messages = new String [3];
             second_messages[0] = "Thank you, can you help me some more?";

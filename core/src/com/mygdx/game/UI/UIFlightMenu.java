@@ -37,30 +37,30 @@ public class UIFlightMenu extends UIComponent {
            for (int i = 0;i<4;i++){
                 if (locations[i]){
                     if (i == locationSelected){
-                        new UIMessageBox(locationNames[i], Assets.consolas22, Color.GOLD, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\n"+locationNames[i], Assets.consolas22, Color.GOLD, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
                     }else{
-                        new UIMessageBox(locationNames[i], Assets.consolas22, Color.WHITE, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\n"+locationNames[i], Assets.consolas22, Color.WHITE, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
                     }
                 }else{
                     if (i == locationSelected){
-                        new UIMessageBox("not unlocked yet", Assets.consolas22, Color.GOLD, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\nnot unlocked yet", Assets.consolas22, Color.GOLD, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
                     }else{
-                        new UIMessageBox("not unlocked yet", Assets.consolas22, Color.WHITE, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\nnot unlocked yet", Assets.consolas22, Color.WHITE, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
                     }
                 }
             }
             for (int i = 0;i<4;i++){
                 if (locations[i+4]) {
                     if (i + 4 == locationSelected) {
-                        new UIMessageBox(locationNames[i + 4], Assets.consolas22, Color.GOLD, Align.center, x + (width / 2), y + ((height / 4) * i), width / 2, height / 6).render(batch, patch);
+                        new UIMessageBox("\n\n"+locationNames[i + 4], Assets.consolas22, Color.GOLD, Align.center, x + (width / 2), y + ((height / 4) * i), width / 2, height / 6).render(batch, patch);
                     }else {
-                        new UIMessageBox(locationNames[i + 4], Assets.consolas22, Color.WHITE, Align.center, x + (width / 2), y + ((height / 4) * i), width / 2, height / 6).render(batch, patch);
+                        new UIMessageBox("\n\n"+locationNames[i + 4], Assets.consolas22, Color.WHITE, Align.center, x + (width / 2), y + ((height / 4) * i), width / 2, height / 6).render(batch, patch);
                     }
                 }else{
                     if (i + 4 == locationSelected) {
-                        new UIMessageBox("not unlocked yet", Assets.consolas22, Color.GOLD, Align.center, x+(width/2), y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\nnot unlocked yet", Assets.consolas22, Color.GOLD, Align.center, x+(width/2), y+((height/4)*i), width/2, height/6).render(batch, patch);
                     }else {
-                        new UIMessageBox("not unlocked yet", Assets.consolas22, Color.WHITE, Align.center, x+(width/2), y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\nnot unlocked yet", Assets.consolas22, Color.WHITE, Align.center, x+(width/2), y+((height/4)*i), width/2, height/6).render(batch, patch);
                     }
                 }
             }
@@ -96,9 +96,21 @@ public class UIFlightMenu extends UIComponent {
 
     private void optionUpdate() {
         if (InputHandler.isUpJustPressed()) {
-            locationSelected++;
+            if (locationSelected!=3){
+                locationSelected++;
+            }
         } else if (InputHandler.isDownJustPressed()) {
-            locationSelected--;
+            if (locationSelected!=4){
+                locationSelected--;
+            }
+        } else if (InputHandler.isLeftJustPressed()) {
+            if (locationSelected>3){
+                locationSelected-=4;
+            }
+        } else if (InputHandler.isRightJustPressed()) {
+            if (locationSelected<4){
+                locationSelected+=4;
+            }
         }
         if (locationSelected < 0) {
             locationSelected = 0;
