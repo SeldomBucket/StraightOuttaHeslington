@@ -119,8 +119,8 @@ public class UIManager {
         flightMenu.show(location);
     }
 
-    public int updateFlightMenu(float delta){
-        return flightMenu.update(delta);
+    public int updateFlightMenu(){
+        return flightMenu.update();
     }
 
     public void addUIComponent(UIComponent c) {

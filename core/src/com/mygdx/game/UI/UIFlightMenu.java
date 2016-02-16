@@ -83,15 +83,17 @@ public class UIFlightMenu extends UIComponent {
      * Called once per frame to handle input logic for selecting a player and exiting the menu.
      * @return returns true if the dialogue box should continue to be displayed.
      */
-    public int update(float delta) {
+    public int update() {
         if (InputHandler.isActJustPressed()) {
             show = false;
             return locationSelected;
-        } else {
+        } else if (InputHandler.isEscJustPressed()) {
+            show = false;
+            return 666;
+        }else{
             optionUpdate();
             return -1;
         }
-
     }
 
     private void optionUpdate() {
