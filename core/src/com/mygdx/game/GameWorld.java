@@ -100,7 +100,7 @@ public class GameWorld {
             case FREEROAM:
                 level.stopInput = false;
                 Random random = new Random();
-                if (level.player.getState() == Character.CharacterState.TRANSITIONING && random.nextInt(battleChance) < 0){
+                if (level.player.getState() == Character.CharacterState.TRANSITIONING && random.nextInt(battleChance) == -1){
                     if (!level.roadMap[(int)level.player.getCurrentTile().x][(int)level.player.getCurrentTile().y]) {
                         uiManager.createDialogue(new String[]{"You have been stopped by a group of... somethings!"});
                         level.stopInput = true;

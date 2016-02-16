@@ -44,7 +44,7 @@ public class GressinghamNPC extends NPC {
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-        Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(10);
@@ -64,6 +64,8 @@ public class GressinghamNPC extends NPC {
         backUp4Duck = new BackUpNPC(level, new Vector2(99, 113), this);
         level.characters.add(backUp4Duck);
 
+        Game.party.getMember(0).addSkill(3);
+        gameWorld.uiManager.addNotification("Tom the Duck can now use Water bolt!");
         sammyNPC.isGresDead = true;
         sammyNPC.doneInteraction = false;
 

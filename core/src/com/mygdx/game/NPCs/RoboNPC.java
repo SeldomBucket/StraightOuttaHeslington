@@ -7,6 +7,7 @@ import com.mygdx.game.battle.BattleParameters;
 
 import java.util.ArrayList;
 import java.util.List;
+import java.util.Random;
 
 /**
  * This class represents the robot boss of the game.
@@ -53,6 +54,8 @@ public class RoboNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
+        Game.party.getMember(2).addSkill(4);
+        gameWorld.uiManager.addNotification("Ryan the Duck can now use the Incredibly Close Range Laser Attack!");
         sallyNPC.doneInteraction = false;
         sallyNPC.isRoboDead = true;
 

@@ -57,6 +57,15 @@ public class Assets {
     public static Animation[] BreadStealerNPCWalkAnimation;
     public static Texture BreadStealerNPCWalkSheet;
 
+    public static Animation[] DannyNPCWalkAnimation;
+    public static Texture DannyNPCWalkSheet;
+
+    public static Animation[] GressinghamNPCWalkAnimation;
+    public static Texture GressinghamNPCWalkSheet;
+
+    public static Animation[] JulieNPCWalkAnimation;
+    public static Texture JulieNPCWalkSheet;
+
     public static Texture shadow;
 
     public static Texture title;
@@ -257,6 +266,63 @@ public class Assets {
         for (int x = 0; x < walkFrameDirections.length;x++) {
             BreadStealerNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
             BreadStealerNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        GressinghamNPCWalkSheet = new Texture("NPCAnimations/NPC3AnimationFrames.png");
+        tmp = TextureRegion.split(GressinghamNPCWalkSheet, GressinghamNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, GressinghamNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        GressinghamNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            GressinghamNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            GressinghamNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        DannyNPCWalkSheet = new Texture("NPCAnimations/NPC4AnimationFrames.png");
+        tmp = TextureRegion.split(DannyNPCWalkSheet, DannyNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, DannyNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        DannyNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            DannyNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            DannyNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        JulieNPCWalkSheet = new Texture("NPCAnimations/NPC4AnimationFrames.png");
+        tmp = TextureRegion.split(JulieNPCWalkSheet, JulieNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, JulieNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        JulieNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            JulieNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            JulieNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
     }
 

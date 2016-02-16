@@ -72,7 +72,8 @@ public class BackUpNPC extends NPC {
         level.characters.remove(gressinghamNPC.backUp2Duck);
         level.characters.remove(gressinghamNPC.backUp3Duck);
         level.characters.remove(gressinghamNPC.backUp4Duck);
-
+        Game.party.getMember(0).addSkill(0);
+        gameWorld.uiManager.addNotification("Tom the Duck can now use Lightning bolt!");
 
 
     }

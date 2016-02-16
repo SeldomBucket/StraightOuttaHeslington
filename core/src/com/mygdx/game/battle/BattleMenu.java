@@ -470,7 +470,10 @@ public class BattleMenu {
                                 if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getType()==Agent.AgentType.FRIENDLY){
                                     createInfoBox("You can't target friendlies with this skill!", 3);
                                 }
-                                else {
+                                else if (battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getStats().getCurrentHP() == 0){
+                                    createInfoBox(battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]).getName()+" is already dead!", 3);
+                                }
+                                else{
                                     currentUseAbility = new UseSkill(battleScreen.getCurrentTurnAgent(), battleScreen.turnOrder.get(battleLayout[targetMenuPointerRow][targetMenuPointerColumn]), skillOrItemID, this);
                                 }
                                 break;
