@@ -47,9 +47,7 @@ public class UIBattleSkillInfo extends UIComponent {
         patch.draw(batch, x, y, width, height + (paddingY * 2));
         renderText(batch, skill.getName(), x, y + (LINE_HEIGHT / 2), Color.WHITE);
         renderText(batch, skill.getDescription(), x, y - ((LINE_HEIGHT * 5) / 2), Color.LIGHT_GRAY);
-        /**
-         * CHANGE- switch case to determine what type of skill it is and display correct information based on that
-         */
+        //determine what type of skill it is and display correct information based on that
         switch (skill.getSkillType()) {
             case MELEE:
                 renderText(batch, "Melee Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);

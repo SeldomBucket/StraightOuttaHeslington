@@ -7,7 +7,6 @@ import com.badlogic.gdx.graphics.g2d.NinePatch;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.utils.Align;
 import com.mygdx.game.Assets;
-import com.mygdx.game.Equipable;
 import com.mygdx.game.Game;
 
 import java.util.List;
@@ -36,12 +35,13 @@ public class UIEquipmentInventory extends UIComponent {
     }
 
     /**
-     * Called once per frame to render the skill information.
+     * Called once per frame to render the inventory information.
      */
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {
 
         patch.draw(batch, x, y, width, height + (paddingY * 2));
+        //create a list of items in the inventory
         for (int i=0;i<inventory.size();i++) {
             if (i == selected) {
                     renderText(batch, Game.items.getEquipable(inventory.get(i)).getName(), x,

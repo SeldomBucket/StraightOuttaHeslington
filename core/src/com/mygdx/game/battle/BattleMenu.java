@@ -351,28 +351,6 @@ public class BattleMenu {
                 battleUI.removeUIComponent(skillUI);//Removes the skillUI component
                 break;
             }
-            /* -commented out this code instead of deleting it in case we need it again
-            case RIGHT:{
-                if(skillMenuPointer%2==0)
-                    skillMenuPointer+=1;
-                break;
-            }
-            case LEFT:{
-                if(skillMenuPointer%2!=0)
-                    skillMenuPointer-=1;
-                break;
-            }
-            case UP:{
-                if(skillMenuPointer!=0 && skillMenuPointer!=1)
-                    skillMenuPointer-=2;
-                break;
-            }
-            case DOWN:{
-                if(skillMenuPointer!=skillMenu.size()-1 && skillMenuPointer!= skillMenu.size()-2)
-                    skillMenuPointer+=2;
-                break;
-            }
-            */
             case UP: {
                 if (skillMenuPointer != 0) {
                     skillMenuPointer -= 1;
@@ -407,28 +385,6 @@ public class BattleMenu {
                 battleUI.removeUIComponent(itemUI);
                 break;
             }
-            /*-commented out this code instead of deleting it in case we need it again
-            case RIGHT:{
-                if(itemMenuPointer%2==0)
-                    itemMenuPointer+=1;
-                break;
-            }
-            case LEFT:{
-                if(itemMenuPointer%2!=0)
-                    itemMenuPointer-=1;
-                break;
-            }
-            case UP:{
-                if(itemMenuPointer!=0 && itemMenuPointer!=1)
-                    itemMenuPointer-=2;
-                break;
-            }
-            case DOWN:{
-                if(itemMenuPointer!=itemMenu.size()-1 && itemMenuPointer!= itemMenu.size()-2)
-                    itemMenuPointer+=2;
-                break;
-            }
-            */
             case UP: {
                 if (itemMenuPointer != 0) {
                     itemMenuPointer -= 1;

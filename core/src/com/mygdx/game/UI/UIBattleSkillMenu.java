@@ -64,9 +64,7 @@ public class UIBattleSkillMenu extends UIComponent {
 
         patch.draw(batch, x, y, width, height + (paddingY * 2));
 
-        /**
-         * CHANGE- altered skill menu so that it operates as a list rather than a 2d 'array' of skills
-         */
+        //create list of available skills
         for(int i=0; i<listSkills.size();i++) {
             if(i==selected) {
                 renderText(batch, ">", leftX - 20, thisY, Color.WHITE, Assets.consolas22);

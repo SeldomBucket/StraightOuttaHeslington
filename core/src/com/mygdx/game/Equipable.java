@@ -71,10 +71,6 @@ public class Equipable {
         this.ID = id;
     }
 
-    /**
-     * CHANGE- Added accessors for obtaining an equipment's name and description
-     * @return
-     */
     public String getName() {
         return name;
     }

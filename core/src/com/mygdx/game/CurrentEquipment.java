@@ -37,9 +37,7 @@ public class CurrentEquipment {
     public CurrentEquipment(){};
 
     /**
-     * CHANGE- function returns the equipment corresponding to slotNumber
-     * @param slotNumber
-     * @return
+     * function returns the equipment corresponding to slotNumber
      */
     public int getEquipment(int slotNumber) {
         return equipSlots[slotNumber];

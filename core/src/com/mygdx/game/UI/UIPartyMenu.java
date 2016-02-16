@@ -48,6 +48,7 @@ public class UIPartyMenu extends UIComponent {
 
         if (show) {
             new UIMessageBox("", Assets.consolas22, Color.WHITE, Align.center, x, y, width, height).render(batch, patch);
+            //render the player list
             for (int i=0;i<playerList.size();i++) {
                 playerList.get(i).render(batch, patch);
             }
@@ -61,6 +62,7 @@ public class UIPartyMenu extends UIComponent {
                 new UIMessageBox("STATS", Assets.consolas22, Color.LIGHT_GRAY, Align.center, x+width/2, (y + height + 4), width/6, 0, 10).render(batch, patch);
                 new UIMessageBox("SKILLS", Assets.consolas22, Color.WHITE, Align.center, x+width/2+width/6, (y + height +4), width/6, 0, 10).render(batch, patch);
                 new UIMessageBox("EQUIPMENT", Assets.consolas22, Color.LIGHT_GRAY, Align.center, x+width/2+width/3, (y + height+4), width/6, 0, 10).render(batch, patch);
+                //populate skill list with highlighted character's skills & render
                 for (int i=0;i<party.getMember(playerSelected).getSkills().size();i++) {
                     new UISkill(x + width/2, (y + height - 86)-(90*i), width/2, 50,
                             Game.skills.getSkill(party.getMember(playerSelected).getSkills().get(i))).render(batch, patch);
@@ -80,6 +82,7 @@ public class UIPartyMenu extends UIComponent {
                     }
                     equipList.get(i).render(batch, patch);
                 }
+                //overlay inventory UI elements over player list if user is in this part of the menu
                 if (mode == equipMode.EQUIP) {
                     inventory = new UIEquipmentInventory(x, y, width/2, height, party.getEquipables());
                     inventory.selected = inventorySelected;

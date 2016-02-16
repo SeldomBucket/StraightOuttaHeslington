@@ -10,7 +10,7 @@ import com.mygdx.game.Assets;
 import com.mygdx.game.Skill;
 
 /**
- * The skill menu is part of the party menu and show information about a particular skill.
+ * The skill menu is part of the party menu and shows information about a particular skill.
  */
 public class UISkill extends UIComponent {
 
@@ -47,9 +47,7 @@ public class UISkill extends UIComponent {
         patch.draw(batch, x, y, width, height + (paddingY * 2));
         renderText(batch, skill.getName(), x, y + (LINE_HEIGHT / 2), Color.WHITE);
         renderText(batch, skill.getDescription(), x, y - ((LINE_HEIGHT * 3) / 2), Color.LIGHT_GRAY);
-        /**
-         * CHANGE- switch case to determine what type of skill it is and display correct information based on that
-         */
+        //determine what type of skill it is and display correct information based on that
         switch (skill.getSkillType()) {
             case MELEE:
                 renderText(batch, "Base Melee Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);

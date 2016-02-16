@@ -43,10 +43,6 @@ public class UIPlayer extends UIComponent {
     /**
      * Called once per frame to render the player information.
      */
-    /**
-     *CHANGE- changed highlight to affect all text
-     */
-
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {
         patch.draw(batch, x, y, width, height + (paddingY * 2));
@@ -54,6 +50,7 @@ public class UIPlayer extends UIComponent {
         String xp = "XP:  " + player.getStats().getExperience() + " /" + player.getStats().getMaxExp();
         String hp = "HP:  " + player.getStats().getCurrentHP() + " /" + player.getStats().getMaxHP();
         String mp = "MP:  " + player.getStats().getCurrentMP() + " /" + player.getStats().getMaxMP();
+        //different colour to render depending on currently highlighted character
         if (selected) {
             renderText(batch, player.getName(), x, y, Color.WHITE);
             renderText(batch, level, x, y - LINE_HEIGHT, Color.WHITE);

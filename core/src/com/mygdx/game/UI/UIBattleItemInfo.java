@@ -23,15 +23,6 @@ public class UIBattleItemInfo extends UIComponent {
     float paddingX;
     float paddingY;
 
-    /**
-     * CHANGE- added height parameter for instantiation
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @param consumable
-     */
-
     public UIBattleItemInfo(float x, float y, float width, float height, Consumable consumable) {
         super(x, y, width, height);
         this.consumable = consumable;

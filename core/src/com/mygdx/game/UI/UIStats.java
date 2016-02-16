@@ -57,10 +57,7 @@ public class UIStats extends UIComponent {
         int st = player.getStats().getStrength() + totalStatMods[2];
         int in = player.getStats().getIntelligence() + totalStatMods[3];
         int ar = player.getStats().getBaseArmourVal() + totalStatMods[4];
-
-        /**
-         * CHANGE- added descriptions for stats
-         */
+        //render stats (+ equipment mods) and descriptions of stats
         renderText(batch, level, x, y, Color.WHITE);
         renderText(batch, xp, x+200, y, Color.WHITE);
         renderText(batch, hp, x, y - LINE_HEIGHT, Color.WHITE);
