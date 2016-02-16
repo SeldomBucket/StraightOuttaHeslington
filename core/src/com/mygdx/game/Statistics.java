@@ -1,5 +1,7 @@
 package com.mygdx.game;
 
+import java.util.Random;
+
 /**
  * Stores an agents statistics.
  */
@@ -56,12 +58,38 @@ public class Statistics {
      */
     public  Statistics(){};
 
+    private int RandInc(int stat){
+        Random randlvl = new Random();
+        if (randlvl.nextInt(3)==2){
+            stat += 2;
+        }
+        else{
+            stat +=1;
+        }
+        return stat;
+    }
+
+    private void LevelUp(){
+        Random randlvl = new Random();
+        speed = RandInc(speed);
+        strength = RandInc(strength);
+        dexterity = RandInc(dexterity);
+        intelligence = RandInc(intelligence);
+        baseArmourVal = RandInc(baseArmourVal);
+        maxHP = (int)(maxHP *1.05);
+        currentHP = maxHP;
+        maxMP = (int)(maxMP *1.08);
+        currentMP = maxMP;
+
+    }
+
     public int increaseXP(int xp){//might need to return things when level up
         int levelIncrease = 0;
         experience+=xp;
         while(experience>=maxExp) {
                 experience -= maxExp;
                 currentLevel += 1;
+                LevelUp();
                 levelIncrease+=1;
         }
         if(levelIncrease>0)
