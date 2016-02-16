@@ -41,9 +41,9 @@ public class UIShopMenu extends UIComponent {
             for (int i = 0;i<5;i++){
                 if (items[i]){
                     if (i == itemSelected){
-                        new UIMessageBox("\n\n"+itemNames[i], Assets.consolas22, Color.GOLD, Align.center, x, y+((height/5)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\n"+itemNames[i]+"\nCost:", Assets.consolas22, Color.GOLD, Align.center, x, y+((height/5)*i), width/2, height/6).render(batch, patch);
                     }else{
-                        new UIMessageBox("\n\n"+itemNames[i], Assets.consolas22, Color.WHITE, Align.center, x, y+((height/5)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\n"+itemNames[i]+"\nCost:", Assets.consolas22, Color.WHITE, Align.center, x, y+((height/5)*i), width/2, height/6).render(batch, patch);
                     }
                 }else{
                     if (i == itemSelected){
@@ -56,9 +56,9 @@ public class UIShopMenu extends UIComponent {
             for (int i = 0;i<5;i++){
                 if (items[i+5]) {
                     if (i + 5 == itemSelected) {
-                        new UIMessageBox("\n\n"+itemNames[i + 4], Assets.consolas22, Color.GOLD, Align.center, x + (width / 2), y + ((height / 5) * i), width / 2, height / 6).render(batch, patch);
+                        new UIMessageBox("\n\n"+itemNames[i + 4]+"\nCost:", Assets.consolas22, Color.GOLD, Align.center, x + (width / 2), y + ((height / 5) * i), width / 2, height / 6).render(batch, patch);
                     }else {
-                        new UIMessageBox("\n\n"+itemNames[i + 4], Assets.consolas22, Color.WHITE, Align.center, x + (width / 2), y + ((height / 5) * i), width / 2, height / 6).render(batch, patch);
+                        new UIMessageBox("\n\n"+itemNames[i + 4]+"\nCost:", Assets.consolas22, Color.WHITE, Align.center, x + (width / 2), y + ((height / 5) * i), width / 2, height / 6).render(batch, patch);
                     }
                 }else{
                     if (i + 5 == itemSelected) {
