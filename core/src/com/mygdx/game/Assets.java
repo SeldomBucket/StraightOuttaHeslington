@@ -54,6 +54,9 @@ public class Assets {
     public static Animation[] MallardNPCWalkAnimation;
     public static Texture MallardNPCWalkSheet;
 
+    public static Animation[] BreadStealerNPCWalkAnimation;
+    public static Texture BreadStealerNPCWalkSheet;
+
     public static Texture shadow;
 
     public static Texture title;
@@ -82,7 +85,7 @@ public class Assets {
 
         playerTexture = new Texture("Duck2.png");
         deadPlayerTexture = new Texture("DuckDead.png");
-        battleSprites = new Texture[6][2];
+        battleSprites = new Texture[9][2];
         battleSprites[0][0] = new Texture("Duck2.png");
         battleSprites[0][1] = new Texture("DuckDead.png");
         battleSprites[1][0] = new Texture("Roboduck.png");
@@ -96,6 +99,12 @@ public class Assets {
         battleSprites[4][1] = new Texture("enemy_sprites/ScarDuckDead.png");
         battleSprites[5][0] = new Texture("enemy_sprites/UndeadDuck.png");
         battleSprites[5][1] = new Texture("enemy_sprites/UndeadDuckDead.png");
+        battleSprites[6][0] = new Texture("NPCAnimations/NPC1.png");
+        battleSprites[6][1] = new Texture("NPCAnimations/NPC1.png");
+        battleSprites[7][0] = new Texture("NPCAnimations/NPC2.png");
+        battleSprites[7][1] = new Texture("NPCAnimations/NPC2.png");
+        battleSprites[8][0] = new Texture("NPCAnimations/NPC3.png");
+        battleSprites[8][1] = new Texture("NPCAnimations/NPC3.png");
 
         battleTurnPointer = new Texture("turnPointer.png");
         targetingPointer = new Texture("targetingPointer.png");
@@ -229,6 +238,25 @@ public class Assets {
         for (int x = 0; x < walkFrameDirections.length;x++) {
             MallardNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
             MallardNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        BreadStealerNPCWalkSheet = new Texture("NPCAnimations/NPC2AnimationFrames.png");
+        tmp = TextureRegion.split(BreadStealerNPCWalkSheet, BreadStealerNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, BreadStealerNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        BreadStealerNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            BreadStealerNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            BreadStealerNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
     }
 
