@@ -6,6 +6,7 @@ import com.badlogic.gdx.graphics.OrthographicCamera;
 import com.badlogic.gdx.graphics.g2d.SpriteBatch;
 import com.badlogic.gdx.maps.tiled.renderers.OrthogonalTiledMapRenderer;
 import com.badlogic.gdx.math.Vector2;
+import com.mygdx.game.NPCs.*;
 import com.mygdx.game.UI.UIRenderer;
 
 /**
@@ -137,7 +138,207 @@ public class WorldRenderer {
                     batch.draw(Assets.SallyNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 }
-            } else {
+            } else if (c instanceof RoboNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            } else if (c instanceof SammyNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            } else if (c instanceof BreadStealerNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            }else if (c instanceof DannyNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            }else if (c instanceof GressinghamNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            }else if (c instanceof JulieNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            }else if (c instanceof MallardsNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            }else if (c instanceof MisunderstoodNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            }else if (c instanceof RandomDuckNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            }else if (c instanceof RoboFriendNPC) {
+                if (c.getState() != Character.CharacterState.TRANSITIONING) {
+                    c.setStateTime(0.174f);
+                }else{
+                    c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
+                }
+                batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
+                if (c.getDirection() == Player.Direction.DOWN) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.LEFT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else if (c.getDirection() == Player.Direction.RIGHT) {
+                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                } else {
+                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                            c.getAbsPos().y - textureOffset.y);
+                }
+            }else if (c instanceof TealNPC) {
                 if (c.getState() != Character.CharacterState.TRANSITIONING) {
                     c.setStateTime(0.174f);
                 }else{

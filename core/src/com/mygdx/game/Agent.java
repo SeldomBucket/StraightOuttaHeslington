@@ -59,6 +59,8 @@ public class Agent implements Comparable<Agent>{
 
     public void dealDamage(int power){
         //Needs to take into account User armourval
+        power = power - stats.getArmourVal();
+        if (power <1){power = 1;}
         stats.reduceHP(power);
     }
     public void dealHealth(int amount){
@@ -83,6 +85,7 @@ public class Agent implements Comparable<Agent>{
 
     public void equipEquipment(int ID){
         equipment.equip(ID);
+        stats.adjustArmourVal(equipment.getTotalArmourValModifiers());
     }
 
     public CurrentEquipment getCurrentEquipment() {
@@ -154,7 +157,7 @@ public class Agent implements Comparable<Agent>{
                 '}';
     }
 
-    public int getTexture() {
+    public int getTextureIndex() {
         return texture;
     }
 

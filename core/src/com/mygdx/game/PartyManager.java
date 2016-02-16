@@ -83,9 +83,9 @@ public class PartyManager {
             Agent thisAgent = partyList.get(i);
 
             if(!thisAgent.isDead())
-                batch.draw(Assets.battleSprites[thisAgent.getTexture()][0],thisAgent.getX()-(32),thisAgent.getY()-(32),96f,96f);
+                batch.draw(Assets.battleSprites[thisAgent.getTextureIndex()][0],thisAgent.getX()-(32),thisAgent.getY()-(32),96f,96f);
             else
-                batch.draw(Assets.battleSprites[thisAgent.getTexture()][1],thisAgent.getX()-(32),thisAgent.getY()-(32),96f,96f);
+                batch.draw(Assets.battleSprites[thisAgent.getTextureIndex()][1],thisAgent.getX()-(32),thisAgent.getY()-(32),96f,96f);
         }
 
     }
