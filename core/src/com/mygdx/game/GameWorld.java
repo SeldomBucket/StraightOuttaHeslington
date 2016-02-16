@@ -37,6 +37,9 @@ public class GameWorld {
     private String[] locationNames;// [Constantine, Langwith, Goodricke, Law and Management, The Catalyst, TFTV, Computer Science, Ron Cooke Hub]
     private boolean[] itemsToShow;
     private String[] itemNames;
+    private int[] levelRequirements;
+    private int maxLevel;
+    private int[] itemCosts;
 
     private Vector2 lastFlightSpot;
 
@@ -74,10 +77,14 @@ public class GameWorld {
         vistasVisited = new boolean[]{false, false, false, false, false, false, false, false, false};
         locationNames = new String[]{"Constantine", "Langwith", "Goodricke", "Law and Management", "The Catalyst", "TFTV", "Computer Science", "Ron Cooke Hub"};
         uiManager.createFlightMenu(flightSpotsVisited, locationNames);
-        itemsToShow = new boolean[]{true, true, true, false, true, true, true, false, true};
-        itemNames = new String[]{"Heal Flask","thing2","thing3","thing4","thing5","thing6","thing7","thing8", "thing 9", "thing 10"};
+        itemsToShow = new boolean[]{true, true, true, true, true, true, true, true, true, true};
+        itemCosts = new int[]{20,40,20,50,100,60,70,80,100,60};
+        levelRequirements = new int[]{0, 9990, 0, 5, 12, 15, 6, 9, 20, 10};
+        itemNames = new String[]{"Heal Flask","Revive Potion","Mana Flask","Crowbar","Fancy Sword","Wizard's Hat","Heelys","Iron Chestplate", "Magic Wand", "Gun"};
         uiManager.createShopMenu(itemsToShow, itemNames);
-    }
+        maxLevel = 0;
+        }
+
 
 
     /**
@@ -244,7 +251,61 @@ public class GameWorld {
                 break;
 
             case SHOP_MENU:
-                if (!(uiManager.updateShopMenu(delta)==-1)){
+
+                for (int i = 0;i<4;i++) {
+                    if (Game.party.getMember(i).getStats().getCurrentLevel() > maxLevel) {
+                        maxLevel = Game.party.getMember(i).getStats().getCurrentLevel();
+                    }
+                }
+                int shopSelection = uiManager.updateShopMenu(delta);
+                if (shopSelection == 974){
+                    gameState = GameState.FREEROAM;
+                }else if(!(shopSelection==-1)){
+                    switch (shopSelection){
+                        case 0:
+                            if (levelRequirements[0] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[0]){
+                                    Game.pointsScore -= itemCosts[0];
+                                    uiManager.addNotification("Successfully purchased the " + itemNames[0]);
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[0]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[0]);
+                            }
+                            break;
+
+                        case 1:
+                            if (levelRequirements[1] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[1]){
+                                    Game.pointsScore -= itemCosts[1];
+                                    uiManager.addNotification("Successfully purchased the " + itemNames[1]);
+                                }else{
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[1]);
+                                }
+                            }else{
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[1]);
+                            }
+                            break;
+
+                        case 2:
+                            break;
+                        case 3:
+                            break;
+                        case 4:
+                            break;
+                        case 5:
+                            break;
+                        case 6:
+                            break;
+                        case 7:
+                            break;
+                        case 8:
+                            break;
+                        case 9:
+                            break;
+
+                    }
                     gameState = GameState.FREEROAM;
                 }
                 break;
@@ -341,6 +402,7 @@ public class GameWorld {
                             }
                         }
                         break;
+
                     case FLIGHT:
                         int flightLocation = uiManager.updateFlightMenu();
                         if (flightLocation == 666) {

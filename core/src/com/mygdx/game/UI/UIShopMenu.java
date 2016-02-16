@@ -38,33 +38,33 @@ public class UIShopMenu extends UIComponent {
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {
         if (show) {
-            for (int i = 0;i<4;i++){
+            for (int i = 0;i<5;i++){
                 if (items[i]){
                     if (i == itemSelected){
-                        new UIMessageBox("\n\n"+itemNames[i], Assets.consolas22, Color.GOLD, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\n"+itemNames[i], Assets.consolas22, Color.GOLD, Align.center, x, y+((height/5)*i), width/2, height/6).render(batch, patch);
                     }else{
-                        new UIMessageBox("\n\n"+itemNames[i], Assets.consolas22, Color.WHITE, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\n"+itemNames[i], Assets.consolas22, Color.WHITE, Align.center, x, y+((height/5)*i), width/2, height/6).render(batch, patch);
                     }
                 }else{
                     if (i == itemSelected){
-                        new UIMessageBox("\n\nnot unlocked yet", Assets.consolas22, Color.GOLD, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\nNot High Enough Level", Assets.consolas22, Color.GOLD, Align.center, x, y+((height/5)*i), width/2, height/6).render(batch, patch);
                     }else{
-                        new UIMessageBox("\n\nnot unlocked yet", Assets.consolas22, Color.WHITE, Align.center, x, y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\nNot High Enough Level", Assets.consolas22, Color.WHITE, Align.center, x, y+((height/5)*i), width/2, height/6).render(batch, patch);
                     }
                 }
             }
-            for (int i = 0;i<4;i++){
-                if (items[i+4]) {
-                    if (i + 4 == itemSelected) {
-                        new UIMessageBox("\n\n"+itemNames[i + 4], Assets.consolas22, Color.GOLD, Align.center, x + (width / 2), y + ((height / 4) * i), width / 2, height / 6).render(batch, patch);
+            for (int i = 0;i<5;i++){
+                if (items[i+5]) {
+                    if (i + 5 == itemSelected) {
+                        new UIMessageBox("\n\n"+itemNames[i + 4], Assets.consolas22, Color.GOLD, Align.center, x + (width / 2), y + ((height / 5) * i), width / 2, height / 6).render(batch, patch);
                     }else {
-                        new UIMessageBox("\n\n"+itemNames[i + 4], Assets.consolas22, Color.WHITE, Align.center, x + (width / 2), y + ((height / 4) * i), width / 2, height / 6).render(batch, patch);
+                        new UIMessageBox("\n\n"+itemNames[i + 4], Assets.consolas22, Color.WHITE, Align.center, x + (width / 2), y + ((height / 5) * i), width / 2, height / 6).render(batch, patch);
                     }
                 }else{
-                    if (i + 4 == itemSelected) {
-                        new UIMessageBox("\n\nnot unlocked yet", Assets.consolas22, Color.GOLD, Align.center, x+(width/2), y+((height/4)*i), width/2, height/6).render(batch, patch);
+                    if (i + 5 == itemSelected) {
+                        new UIMessageBox("\n\nNot High Enough Level", Assets.consolas22, Color.GOLD, Align.center, x+(width/2), y+((height/5)*i), width/2, height/6).render(batch, patch);
                     }else {
-                        new UIMessageBox("\n\nnot unlocked yet", Assets.consolas22, Color.WHITE, Align.center, x+(width/2), y+((height/4)*i), width/2, height/6).render(batch, patch);
+                        new UIMessageBox("\n\nNot High Enough Level", Assets.consolas22, Color.WHITE, Align.center, x+(width/2), y+((height/5)*i), width/2, height/6).render(batch, patch);
                     }
                 }
             }
@@ -84,6 +84,9 @@ public class UIShopMenu extends UIComponent {
         if (InputHandler.isActJustPressed()) {
             show = false;
             return itemSelected;
+        } else if (InputHandler.isEscJustPressed()) {
+            show = false;
+            return 974;
         } else {
             optionUpdate();
             return -1;
@@ -93,27 +96,27 @@ public class UIShopMenu extends UIComponent {
 
     private void optionUpdate() {
         if (InputHandler.isUpJustPressed()) {
-            if (itemSelected!=3){
+            if (itemSelected!=4){
                 itemSelected++;
             }
         } else if (InputHandler.isDownJustPressed()) {
-            if (itemSelected!=4){
+            if (itemSelected!=5){
                 itemSelected--;
             }
         } else if (InputHandler.isLeftJustPressed()) {
-            if (itemSelected>3){
-                itemSelected-=4;
+            if (itemSelected>4){
+                itemSelected-=5;
             }
         } else if (InputHandler.isRightJustPressed()) {
-            if (itemSelected<4){
-                itemSelected+=4;
+            if (itemSelected<5){
+                itemSelected+=5;
             }
         }
         if (itemSelected < 0) {
             itemSelected = 0;
         }
-        if (itemSelected > 7) {
-            itemSelected = 7;
+        if (itemSelected > 9) {
+            itemSelected = 9;
         }
         if (itemSelected < 0) {
             itemSelected = 0;

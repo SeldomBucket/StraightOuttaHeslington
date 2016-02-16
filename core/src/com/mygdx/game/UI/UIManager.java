@@ -93,7 +93,7 @@ public class UIManager {
      * Adds a notification to the current list of notifications waiting to be displayed.
      */
     public void addNotification(String message) {
-        notifications.add(new UIMessageBox(message, Assets.consolas22, Color.WHITE, Align.center, 20, Gdx.graphics.getHeight()-80, Gdx.graphics.getWidth()/2, 0));
+        notifications.add(new UIMessageBox(message, Assets.consolas22, Color.WHITE, Align.center, 20, Gdx.graphics.getHeight()-120, Gdx.graphics.getWidth()/2, 0));
     }
 
     /**
