@@ -44,13 +44,23 @@ public class UIEquipmentInventory extends UIComponent {
         patch.draw(batch, x, y, width, height + (paddingY * 2));
         for (int i=0;i<inventory.size();i++) {
             if (i == selected) {
-                renderText(batch, Game.items.getEquipable(inventory.get(i)).getName(), x,
-                        y + (LINE_HEIGHT / 2) - (LINE_HEIGHT * i), Color.WHITE);
+                    renderText(batch, Game.items.getEquipable(inventory.get(i)).getName(), x,
+                            y + (LINE_HEIGHT / 2) - (LINE_HEIGHT * i), Color.WHITE);
             }
             else {
-                renderText(batch, Game.items.getEquipable(inventory.get(i)).getName(), x,
-                        y + (LINE_HEIGHT / 2) - (LINE_HEIGHT * i), Color.LIGHT_GRAY);
+                    renderText(batch, Game.items.getEquipable(inventory.get(i)).getName(), x,
+                            y + (LINE_HEIGHT / 2) - (LINE_HEIGHT * i), Color.LIGHT_GRAY);
             }
+        }
+
+        //Handle highlighting of "Remove Equipment"
+        if (selected == inventory.size()) {
+            renderText(batch, "Remove Equipment", x,
+                    y + (LINE_HEIGHT / 2) - (LINE_HEIGHT * inventory.size()), Color.WHITE);
+        }
+        else {
+            renderText(batch, "Remove Equipment", x,
+                    y + (LINE_HEIGHT / 2) - (LINE_HEIGHT * inventory.size()), Color.LIGHT_GRAY);
         }
     }
 

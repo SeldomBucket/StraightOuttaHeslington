@@ -156,6 +156,17 @@ public class UIPartyMenu extends UIComponent {
             } else if (InputHandler.isDownJustPressed()) {
                 inventorySelected++;
             }
+            if ((InputHandler.isActJustPressed())) {
+                //Unequip item
+                if (inventorySelected == party.getEquipables().size()) {
+                    party.getMember(playerSelected).getCurrentEquipment().unequip(equipmentSelected);
+                }
+                //Equip item
+                else {
+                    int id = party.getEquipables().get(inventorySelected);
+                    party.getMember(playerSelected).getCurrentEquipment().equip(id);
+                }
+            }
             if ((InputHandler.isEscJustPressed()) && (menuSelected == 2)) {
                 mode = equipMode.SELECT;
             }
@@ -182,11 +193,10 @@ public class UIPartyMenu extends UIComponent {
         if (inventorySelected < 0) {
             inventorySelected = 0;
         }
-        if (inventorySelected >= party.getEquipables().size()) {
-            inventorySelected = party.getEquipables().size() - 1;
+        if (inventorySelected > party.getEquipables().size()) {
+            inventorySelected = party.getEquipables().size();
         }
     }
-
     /**
      * NOT- player is not equipping
      * SELECT- player is selecting a currently equipped item

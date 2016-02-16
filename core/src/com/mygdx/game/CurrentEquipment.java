@@ -65,32 +65,34 @@ public class CurrentEquipment {
     }
 
     //NEED TO DO SOMETHING ABOUT UNEQUIPPING ALSO
-    public void equip(int ID){
-        Equipable item = Game.items.getEquipable(ID);
+    public void equip(int id){
+        Equipable item = Game.items.getEquipable(id);
         switch (item.getType()){
             case HEAD:{
-                equipSlots[0] = ID;
+                equipSlots[0] = id;
                 break;
             }
             case CHEST:{
-                equipSlots[1] = ID;
+                equipSlots[1] = id;
                 break;
             }
             case FEET:{
-                equipSlots[2] = ID;
+                equipSlots[2] = id;
                 break;
             }
             case ACCESSORY:{
-                equipSlots[3] = ID;
+                equipSlots[3] = id;
                 break;
             }
             case WEAPON:{
-                equipSlots[4] = ID;
+                equipSlots[4] = id;
                 break;
             }
         }
         totalStatModifiers=calculateTotalStatModifiers();
-
+    }
+    public void unequip(int index) {
+        equipSlots[index] = 0;
     }
 
     /**
