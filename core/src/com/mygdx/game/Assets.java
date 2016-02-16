@@ -51,6 +51,9 @@ public class Assets {
     public static Animation[] RoboNPCWalkAnimation;
     public static Texture RoboNPCWalkSheet;
 
+    public static Animation[] MallardNPCWalkAnimation;
+    public static Texture MallardNPCWalkSheet;
+
     public static Texture shadow;
 
     public static Texture title;
@@ -209,6 +212,24 @@ public class Assets {
             RoboNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
+        MallardNPCWalkSheet = new Texture("NPCAnimations/NPC1AnimationFrames.png");
+        tmp = TextureRegion.split(MallardNPCWalkSheet, MallardNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, MallardNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        MallardNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            MallardNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            MallardNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
     }
 
     /**
