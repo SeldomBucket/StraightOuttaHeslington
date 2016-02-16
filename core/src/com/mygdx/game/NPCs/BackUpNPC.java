@@ -46,10 +46,17 @@ public class BackUpNPC extends NPC {
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
+<<<<<<< HEAD
         Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(80,90,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
         Agent enemyDuck2 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(80,90,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
         Agent enemyDuck3 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(80,90,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
         Agent enemyDuck4 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(80,90,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+=======
+        Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0), 8);
+        Agent enemyDuck2 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
+        Agent enemyDuck3 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
+        Agent enemyDuck4 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
+>>>>>>> 0ec48ffa34f704369c8e57ed92aa277b4b9ba6ab
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(10);
@@ -72,8 +79,7 @@ public class BackUpNPC extends NPC {
         level.characters.remove(gressinghamNPC.backUp2Duck);
         level.characters.remove(gressinghamNPC.backUp3Duck);
         level.characters.remove(gressinghamNPC.backUp4Duck);
-
-
-
+        Game.party.getMember(0).addSkill(0);
+        gameWorld.uiManager.addNotification("Tom the Duck can now use Lightning bolt!");
     }
 }

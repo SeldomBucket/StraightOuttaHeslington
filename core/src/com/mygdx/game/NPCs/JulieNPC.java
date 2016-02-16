@@ -34,11 +34,15 @@ public class JulieNPC extends NPC {
 
         else if ((!doneInteraction && isMallardDead) && !isSomeDucksDead) {
             uiManager.createDialogue(second_messages);
+            uiManager.addNotification("Adrian the Duck can now use Toxic Goop!");
+            Game.party.getMember(2).addSkill(5);
             this.uiManager = uiManager;
         }
 
         else if (!doneInteraction && isMallardDead) {
             uiManager.createDialogue(last_messages);
+            Game.party.getMember(3).addSkill(9);
+            uiManager.addNotification("Ahn the Duck can now use Super Fist Punch!");
             this.uiManager = uiManager;
         }
     }
@@ -69,11 +73,9 @@ public class JulieNPC extends NPC {
         else if((!doneInteraction && isMallardDead) && !isSomeDucksDead){
             uiManager.addNotification("You gained 70 points.");
             Game.pointsScore += 70;
-
             last_messages = new String [2];
             last_messages[0] = "Thanks";
             last_messages [1] = "You're making this place a lot safer";
-
             doneInteraction = true;
 
         }

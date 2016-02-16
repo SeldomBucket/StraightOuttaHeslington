@@ -38,14 +38,15 @@ public class MallardsNPC extends NPC {
     @Override
     public void action(GameWorld gameWorld) {
         Assets.sfx_battleStart.play(Game.masterVolume);
-        uiManager.addNotification("The malards have been defeated.");
-        BattleParameters params = new BattleParameters(2);
+
+        uiManager.addNotification("The mallards have been defeated.");
+        BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-        Agent enemyDuck1 = new Agent("Malards Duck", Agent.AgentType.ENEMY,new Statistics(70,80,8,2,4,3,2,1,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
-        Agent enemyDuck2 = new Agent("Malards Duck", Agent.AgentType.ENEMY,new Statistics(70,80,8,2,4,3,2,1,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
-        Agent enemyDuck3 = new Agent("Malards Duck", Agent.AgentType.ENEMY,new Statistics(70,80,8,2,4,3,2,1,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
-        Agent enemyDuck4 = new Agent("Malards Duck", Agent.AgentType.ENEMY,new Statistics(70,80,8,2,4,3,2,1,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck1 = new Agent("Mallards Duck", Agent.AgentType.ENEMY,new Statistics(5,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),6);
+        Agent enemyDuck2 = new Agent("Mallards Duck", Agent.AgentType.ENEMY,new Statistics(5,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),6);
+        Agent enemyDuck3 = new Agent("Mallards Duck", Agent.AgentType.ENEMY,new Statistics(5,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),6);
+        Agent enemyDuck4 = new Agent("Mallards Duck", Agent.AgentType.ENEMY,new Statistics(5,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),6);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck1.addSkill(10);
@@ -62,14 +63,10 @@ public class MallardsNPC extends NPC {
         params.addEnemy(enemyDuck3);
         params.addEnemy(enemyDuck4);
 
-
         gameWorld.setBattle(params);
         level.characters.remove(this);
         julieNPC.isMallardDead = true;
         julieNPC.doneInteraction = false;
-
-
-
 
     }
 }

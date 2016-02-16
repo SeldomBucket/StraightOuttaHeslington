@@ -17,7 +17,7 @@
 		"currentLevel":1,
 		"maxLevel":20
 		},
-	"skills":[0, 10, 2, 3],
+	"skills":[10,2],
 	"equipment":{
 		"equipSlots":[2,0,0,0,1]
 		}
@@ -40,7 +40,7 @@
 		"currentLevel":1,
 		"maxLevel":20
 		},
-	"skills":[3, 10, 1],
+	"skills":[10,13],
 	"equipment":{
 		"equipSlots":[0,0,0,0,1]
 		}
@@ -63,7 +63,7 @@
 		"currentLevel":1,
 		"maxLevel":20
 		},
-	"skills":[1, 10, 12],
+	"skills":[10,1],
 	"equipment":{
 		"equipSlots":[0,0,0,0,0]
 		}
@@ -86,7 +86,7 @@
 		"currentLevel":1,
 		"maxLevel":20
 		},
-	"skills":[0, 10, 1],
+	"skills":[10, 7],
 	"equipment":{
 		"equipSlots":[0,0,0,0,0]
 		}

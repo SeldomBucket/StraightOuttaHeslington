@@ -42,7 +42,11 @@ public class BreadStealerNPC extends NPC {
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
+<<<<<<< HEAD
         Agent enemyDuck = new Agent("Bread stealer", Agent.AgentType.ENEMY,new Statistics(120,120,8,2,4,3,1,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+=======
+        Agent enemyDuck = new Agent("Bread stealer", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),7);
+>>>>>>> 0ec48ffa34f704369c8e57ed92aa277b4b9ba6ab
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(10);

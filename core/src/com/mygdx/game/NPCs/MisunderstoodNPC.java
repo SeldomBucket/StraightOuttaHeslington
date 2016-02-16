@@ -48,9 +48,7 @@ public class MisunderstoodNPC extends NPC {
         enemyDuck.addSkill(10);
         enemyDuck.addSkill(6);
 
-
         params.addEnemy(enemyDuck);
-
 
         gameWorld.setBattle(params);
         level.characters.remove(this);

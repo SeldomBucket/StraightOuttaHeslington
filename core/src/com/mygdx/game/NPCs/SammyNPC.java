@@ -75,7 +75,8 @@ public class SammyNPC extends NPC {
             last_message = new String [2];
             last_message[0] = "Well done you really are good at this";
             last_message[1] = "I hope I can help you sometime too";
-
+            Game.party.getMember(0).addSkill(3);
+            gameWorld.uiManager.addNotification("Tom the Duck can now use Water bolt!");
             doneInteraction = true;
 
         }

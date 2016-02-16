@@ -63,6 +63,8 @@ public class SallyNPC extends NPC {
                 second_messages[0] = "thanks, he was scaring the widgey out of me!";
                 second_messages[1] = "You seem to be good at this, can you take care of his nasty friend too?";
                 second_messages[2] = "He'll be over there now probably looking at Robo Ducks body";
+                Game.party.getMember(2).addSkill(4);
+                gameWorld.uiManager.addNotification("Ryan the Duck can now use the Incredibly Close Range Laser Attack!");
                 doneInteraction = true;
             }
 
@@ -79,6 +81,8 @@ public class SallyNPC extends NPC {
 
             else if ((!doneInteraction && isRoboDead) && isFriendDead){
                 uiManager.addNotification("You gained 60 points.");
+                Game.party.getMember(1).addSkill(6);
+                gameWorld.uiManager.addNotification("Ryan the Duck can now use Gamma Ray!");
                 Game.pointsScore += 60;
                 doneInteraction = true;
             }
