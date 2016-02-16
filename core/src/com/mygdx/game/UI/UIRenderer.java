@@ -40,6 +40,7 @@ public class UIRenderer {
         }
         uiManager.partyMenu.render(uiBatch, Assets.patch);
         uiManager.flightMenu.render(uiBatch, Assets.patch);
+        uiManager.shopMenu.render(uiBatch,Assets.patch);
         if (uiManager.vista != null) {
             uiManager.vista.render(uiBatch, Assets.patch);
         }

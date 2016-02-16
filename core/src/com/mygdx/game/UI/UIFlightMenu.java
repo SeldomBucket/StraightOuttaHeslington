@@ -11,6 +11,7 @@ import com.mygdx.game.InputHandler;
  * The party menu allows the user to see information about each party member.
  * It contains a party member's skills and statistics.
  */
+
 public class UIFlightMenu extends UIComponent {
 
     private boolean show;

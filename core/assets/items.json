@@ -29,6 +29,13 @@
 		"type":"HEAD",
 		"modifiers":[5, 5, 5, 5, 5],
 		"levelRequirement":0
+	},{
+		"ID":4,
+		"name":"Crowbar",
+		"description":"Good for hitting people with...",
+		"type":"WEAPON",
+		"modifiers":[5, 0, 0, 0, 0],
+		"levelRequirement":0
 	}],
 "consumables":[
 	{
