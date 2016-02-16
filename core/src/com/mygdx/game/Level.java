@@ -77,7 +77,7 @@ public class Level {
                     interactionMap[x][y] = Interaction.TEXT_SIGN;
                     switch (x+y){
                         case 223:
-                            textSigns.put(x+y, new String[]{"Hi there, I'm a helpful sign!","You've already guessed to use Z to interact","(you can interact with signs and other ducks)","and use arrow keys to move.","But did you know, you can open your party menu with M", "and use X to exit out of it."});
+                            textSigns.put(x+y, new String[]{"Hi there, I'm a helpful sign!","You've already guessed to use Z to interact","(you can interact with signs and other ducks)","and use arrow keys to move.","But did you know, you can open your party menu with M", "and use X to exit out of it (and any other menu you find)."});
                             break;
                         case 224:
                             textSigns.put(x+y, new String[]{"Be careful!","If you're not walking on a road, a random battle may occur."});
