@@ -46,7 +46,7 @@ public class CurrentEquipment {
     }
 
     //Gets the total modifiers by summing the modifiers of each piece of equipped equipment
-    private int[] calculateTotalStatModifiers(){
+    public int[] calculateTotalStatModifiers(){
         int[][] totalStatModifiersPerItem= new int[5][5];//2x2 array that stores the total stats of each item on its own row
 
         for(int i=0; i<5; i++){

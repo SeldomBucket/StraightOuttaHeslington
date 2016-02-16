@@ -51,11 +51,12 @@ public class UIStats extends UIComponent {
         String xp = "XP:  " + player.getStats().getExperience() + " /" + player.getStats().getMaxExp();
         String hp = "HP:  " + player.getStats().getCurrentHP() + " /" + player.getStats().getMaxHP();
         String mp = "MP:  " + player.getStats().getCurrentMP() + " /" + player.getStats().getMaxMP();
-        String sp = "SPEED:  " + player.getStats().getSpeed();
-        String de = "DEXTERITY:  " + player.getStats().getDexterity();
-        String st = "STRENGTH:  " + player.getStats().getStrength();
-        String in= "INTELLIGENCE:  " + player.getStats().getIntelligence();
-        String ar = "ARMOUR:  " + player.getStats().getBaseArmourVal();
+        int[] totalStatMods = player.getCurrentEquipment().calculateTotalStatModifiers();
+        int sp = player.getStats().getSpeed() + totalStatMods[0];
+        int de = player.getStats().getDexterity() + totalStatMods[1];
+        int st = player.getStats().getStrength() + totalStatMods[2];
+        int in = player.getStats().getIntelligence() + totalStatMods[3];
+        int ar = player.getStats().getBaseArmourVal() + totalStatMods[4];
 
         /**
          * CHANGE- added descriptions for stats
@@ -64,15 +65,15 @@ public class UIStats extends UIComponent {
         renderText(batch, xp, x+200, y, Color.WHITE);
         renderText(batch, hp, x, y - LINE_HEIGHT, Color.WHITE);
         renderText(batch, mp, x+200, y - LINE_HEIGHT, Color.WHITE);
-        renderText(batch, sp, x, y - LINE_HEIGHT*2, Color.WHITE);
-        renderText(batch, de, x+200, y - LINE_HEIGHT*2, Color.WHITE);
+        renderText(batch, "SPEED: " + sp, x, y - LINE_HEIGHT*2, Color.WHITE);
+        renderText(batch, "DEXTERITY:  " + de, x+200, y - LINE_HEIGHT*2, Color.WHITE);
         renderText(batch, "Affects turn\norder.", x, y- LINE_HEIGHT*2.5f, Color.LIGHT_GRAY);
         renderText(batch, "Ranged attack\nmodifier.", x+200, y- LINE_HEIGHT*2.5f, Color.LIGHT_GRAY);
-        renderText(batch, st, x, y - LINE_HEIGHT*4, Color.WHITE);
-        renderText(batch, in, x+200, y - LINE_HEIGHT*4, Color.WHITE);
+        renderText(batch, "STRENGTH: " + st, x, y - LINE_HEIGHT*4, Color.WHITE);
+        renderText(batch, "INTELLIGENCE: " + in, x+200, y - LINE_HEIGHT*4, Color.WHITE);
         renderText(batch, "Melee attack\nmodifier.", x, y- LINE_HEIGHT*4.5f, Color.LIGHT_GRAY);
         renderText(batch, "Magic attack\nmodifier.", x+200, y- LINE_HEIGHT*4.5f, Color.LIGHT_GRAY);
-        renderText(batch, ar, x, y - LINE_HEIGHT*6, Color.WHITE);
+        renderText(batch, "ARMOUR: " + ar, x, y - LINE_HEIGHT*6, Color.WHITE);
         renderText(batch, "Mitigates damage\nrecieved.", x, y- LINE_HEIGHT*6.5f, Color.LIGHT_GRAY);
     }
 

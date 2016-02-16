@@ -52,13 +52,13 @@ public class UISkill extends UIComponent {
          */
         switch (skill.getSkillType()) {
             case MELEE:
-                renderText(batch, "Melee Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
+                renderText(batch, "Base Melee Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
                 break;
             case RANGED:
-                renderText(batch, "Ranged Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
+                renderText(batch, "Base Ranged Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
                 break;
             case MAGIC:
-                renderText(batch, "Magic Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
+                renderText(batch, "Base Magic Damage: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
                 break;
             case HEAL:
                 renderText(batch, "Heals Health: " + skill.getBasePower(), x, y - (LINE_HEIGHT / 2), Color.WHITE);
