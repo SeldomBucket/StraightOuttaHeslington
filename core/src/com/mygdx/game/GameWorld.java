@@ -69,8 +69,8 @@ public class GameWorld {
         vistasVisited = new boolean[]{false, false, false, false, false, false, false, false, false};
         locationNames = new String[]{"Constantine", "Langwith", "Goodricke", "Law and Management", "The Catalyst", "TFTV", "Computer Science", "Ron Cooke Hub"};
         uiManager.createFlightMenu(flightSpotsVisited, locationNames);
-        itemsToShow = new boolean[]{true, true, true, true, true, true, true, true};
-        itemNames = new String[]{"thing1","thing2","thing3","thing4","thing5","thing6","thing7","thing8"};
+        itemsToShow = new boolean[]{true, true, true, false, true, true, true, false, true};
+        itemNames = new String[]{"Heal Flask","thing2","thing3","thing4","thing5","thing6","thing7","thing8", "thing 9", "thing 10"};
         uiManager.createShopMenu(itemsToShow, itemNames);
     }
 

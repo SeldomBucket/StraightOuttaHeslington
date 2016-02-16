@@ -34,8 +34,50 @@
 		"name":"Crowbar",
 		"description":"Good for hitting people with...",
 		"type":"WEAPON",
-		"modifiers":[5, 0, 0, 0, 0],
-		"levelRequirement":0
+		"modifiers":[1, 5, 0, 0, 0],
+		"levelRequirement":5
+	},{
+		"ID":5,
+		"name":"Fancy Sword",
+		"description":"A super sharp, fancy sword",
+		"type":"WEAPON",
+		"modifiers":[2, 10, 0, 0, 0],
+		"levelRequirement":12
+	},{
+		"ID":6,
+		"name":"Wizard's Hat",
+		"description":"A battered, old hat with magic powers",
+		"type":"HEAD",
+		"modifiers":[2, 1, 1, 7, 7],
+		"levelRequirement":15
+	},{
+		"ID":7,
+		"name":"Heelys",
+		"description":"The ultimate flipper footwear",
+		"type":"FEET",
+		"modifiers":[4, 1, 2, 1, 2],
+		"levelRequirement":6
+	},{
+		"ID":8,
+		"name":"Iron Chestplate",
+		"description":"",
+		"type":"CHEST",
+		"modifiers":[0, 1, 0, 0, 7],
+		"levelRequirement":9
+	},{
+		"ID":9,
+		"name":"Magic Wand",
+		"description":"Previous Owner: Barry Potter",
+		"type":"ACCESSORY",
+		"modifiers":[2, 2, 2, 12, 2],
+		"levelRequirement":20
+	},{
+		"ID":10,
+		"name":"Gun",
+		"description":"How does this work? Use your imagination",
+		"type":"WEAPON",
+		"modifiers":[0, 1, 8, 0, 1],
+		"levelRequirement":10
 	}],
 "consumables":[
 	{
@@ -47,14 +89,14 @@
 	},
 	{
 		"ID":1,
-		"name":"Reviver",
+		"name":"Revive Potion",
 		"description":"It Revives",
 		"type":"REVIVE",
 		"power":30
 	},
 	{
 		"ID":2,
-		"name":"MP Giver",
+		"name":"Mana Flask",
 		"description":"It gives MP",
 		"type":"MANAHEAL",
 		"power":15
