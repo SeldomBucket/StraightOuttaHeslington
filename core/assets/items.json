@@ -21,6 +21,14 @@
 		"type":"HEAD",
 		"modifiers":[2, 2, 2, 2, 2],
 		"levelRequirement":0
+	},
+	{
+		"ID":3,
+		"name":"Super OP Helmet",
+		"description":"How to beat game",
+		"type":"HEAD",
+		"modifiers":[5, 5, 5, 5, 5],
+		"levelRequirement":0
 	}],
 "consumables":[
 	{

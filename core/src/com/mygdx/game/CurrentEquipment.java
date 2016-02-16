@@ -70,22 +70,27 @@ public class CurrentEquipment {
         int id = item.getID();
         switch (item.getType()){
             case HEAD:{
+                returnItem(0);
                 equipSlots[0] = id;
                 break;
             }
             case CHEST:{
+                returnItem(1);
                 equipSlots[1] = id;
                 break;
             }
             case FEET:{
+                returnItem(2);
                 equipSlots[2] = id;
                 break;
             }
             case ACCESSORY:{
+                returnItem(3);
                 equipSlots[3] = id;
                 break;
             }
             case WEAPON:{
+                returnItem(4);
                 equipSlots[4] = id;
                 break;
             }
@@ -95,10 +100,16 @@ public class CurrentEquipment {
     }
     //Add item to inventory then unequip
     public void unequip(int index) {
-        int id = Game.items.getEquipable(equipSlots[index]).getID();
-        equipSlots[index] = 0;
-        Game.party.getEquipables().add(id);
+        returnItem(index);
         totalStatModifiers=calculateTotalStatModifiers();
+    }
+    //Helper function for equip that returns a currently equipped item to inventory
+    private void returnItem(int index) {
+        if (equipSlots[index] != 0) {
+            int id = Game.items.getEquipable(equipSlots[index]).getID();
+            equipSlots[index] = 0;
+            Game.party.getEquipables().add(id);
+        }
     }
 
     /**
