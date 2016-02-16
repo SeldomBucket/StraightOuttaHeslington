@@ -52,7 +52,14 @@ public class BackUpNPC extends NPC {
         Agent enemyDuck4 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
+        enemyDuck.addSkill(10);
         enemyDuck.addSkill(4);
+        enemyDuck2.addSkill(10);
+        enemyDuck2.addSkill(4);
+        enemyDuck3.addSkill(10);
+        enemyDuck3.addSkill(4);
+        enemyDuck4.addSkill(10);
+        enemyDuck4.addSkill(4);
 
         params.addEnemy(enemyDuck);
         params.addEnemy(enemyDuck2);

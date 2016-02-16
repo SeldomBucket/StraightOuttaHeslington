@@ -46,6 +46,7 @@ public class RoboFriendNPC extends NPC {
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(4);
+        enemyDuck.addSkill(10);
 
         params.addEnemy(enemyDuck);
 

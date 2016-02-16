@@ -13,11 +13,11 @@
 		"intelligence":3,
 		"baseArmourVal":2,
 		"armourVal":2,
-		"experience":205,
-		"currentLevel":2,
+		"experience":0,
+		"currentLevel":1,
 		"maxLevel":20
 		},
-	"skills":[0, 1, 2, 3],
+	"skills":[0, 10, 2, 3],
 	"equipment":{
 		"equipSlots":[2,0,0,0,1]
 		}
@@ -36,11 +36,11 @@
 		"intelligence":5,
 		"baseArmourVal":2,
 		"armourVal":2,
-		"experience":2,
-		"currentLevel":2,
+		"experience":0,
+		"currentLevel":1,
 		"maxLevel":20
 		},
-	"skills":[3, 1],
+	"skills":[3, 10, 1],
 	"equipment":{
 		"equipSlots":[0,0,0,0,1]
 		}
@@ -59,11 +59,11 @@
 		"intelligence":2,
 		"baseArmourVal":2,
 		"armourVal":2,
-		"experience":2,
-		"currentLevel":2,
+		"experience":0,
+		"currentLevel":1,
 		"maxLevel":20
 		},
-	"skills":[1, 10],
+	"skills":[1, 10, 12],
 	"equipment":{
 		"equipSlots":[0,0,0,0,0]
 		}
@@ -82,11 +82,11 @@
 		"intelligence":2,
 		"baseArmourVal":2,
 		"armourVal":2,
-		"experience":2,
-		"currentLevel":2,
+		"experience":0,
+		"currentLevel":1,
 		"maxLevel":20
 		},
-	"skills":[0, 1],
+	"skills":[0, 10, 1],
 	"equipment":{
 		"equipSlots":[0,0,0,0,0]
 		}

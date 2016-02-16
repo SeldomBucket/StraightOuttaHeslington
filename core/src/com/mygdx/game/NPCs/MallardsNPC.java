@@ -21,7 +21,7 @@ public class MallardsNPC extends NPC {
         this.julieNPC = julieNPC;
         messages = new String[2];
         messages[0] = "Why are you even trying to help her";
-        messages[1] = "The malards have challenged you to a battle.";
+        messages[1] = "The mallards have challenged you to a battle.";
     }
 
     @Override
@@ -48,9 +48,13 @@ public class MallardsNPC extends NPC {
         Agent enemyDuck4 = new Agent("Malards Duck", Agent.AgentType.ENEMY,new Statistics(5,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
+        enemyDuck1.addSkill(10);
         enemyDuck1.addSkill(4);
+        enemyDuck2.addSkill(10);
         enemyDuck2.addSkill(4);
+        enemyDuck3.addSkill(10);
         enemyDuck3.addSkill(4);
+        enemyDuck4.addSkill(10);
         enemyDuck4.addSkill(4);
 
         params.addEnemy(enemyDuck1);
@@ -61,7 +65,7 @@ public class MallardsNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
-        julieNPC.isMalardDead = true;
+        julieNPC.isMallardDead = true;
         julieNPC.doneInteraction = false;
 
 

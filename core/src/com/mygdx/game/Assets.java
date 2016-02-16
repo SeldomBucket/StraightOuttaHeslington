@@ -171,7 +171,7 @@ public class Assets {
             playerSwimAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        SallyNPCWalkSheet = new Texture("EvilDuckAnimationFrames.png");
+        SallyNPCWalkSheet = new Texture("NPCAnimations/EvilDuckAnimationFrames.png");
         tmp = TextureRegion.split(SallyNPCWalkSheet, SallyNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, SallyNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
@@ -190,7 +190,7 @@ public class Assets {
             SallyNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        RoboNPCWalkSheet = new Texture("RoboDuckAnimationFrames.png");
+        RoboNPCWalkSheet = new Texture("NPCAnimations/RoboDuckAnimationFrames.png");
         tmp = TextureRegion.split(RoboNPCWalkSheet, RoboNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, RoboNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
