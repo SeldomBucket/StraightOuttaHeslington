@@ -155,7 +155,9 @@ public class BattleScreen extends ScreenAdapter {
                     List<Integer> SkillList = emptyList;
                     for (int i=0; i<currentTurnAgent.getSkills().size();i++){
                         if (game.skills.getSkill(currentTurnAgent.getSkills().get(i)).getMPCost() <= currentTurnAgent.getStats().getCurrentMP()){
-                            SkillList.add(currentTurnAgent.getSkills().get(i));
+                            for (int j=0; j<game.skills.getSkill(currentTurnAgent.getSkills().get(i)).getBasePower(); j++) {
+                                SkillList.add(currentTurnAgent.getSkills().get(i));
+                            }
                         }
                     }
                     Random randomgen = new Random();
