@@ -98,7 +98,7 @@ public class Level {
                             textSigns.put(x+y, new String[]{"Welcome to Constantine College,","We're the newest buildings on campus!"});
                             break;
                         case 289:
-                            textSigns.put(x+y, new String[]{"This sign to the left is a vista point,","Interact with it to see the campus.","You get 50 points for each new vista point you find!"});
+                            textSigns.put(x+y, new String[]{"This sign to the left is a vista point,","Interact with it to see the campus.","You get 50 points for each new vista point you find.","There are 9 in all, try to find them all!"});
                             break;
                         case 260:
                             textSigns.put(x+y, new String[]{"Welcome to Langwith College,","We've got the pub!"});
