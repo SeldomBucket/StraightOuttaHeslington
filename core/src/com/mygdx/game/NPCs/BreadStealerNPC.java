@@ -55,7 +55,6 @@ public class BreadStealerNPC extends NPC {
         level.characters.remove(this);
         dannyNPC.doneInteraction = false;
         dannyNPC.isBreadStealerDead = true;
-        Game.party.getMember(2).addSkill(12);
-        gameWorld.uiManager.addNotification("Adrian the Duck can now use Heal Wounds!");
+
     }
 }

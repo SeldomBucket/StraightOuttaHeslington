@@ -58,8 +58,7 @@ public class SomeDucksNPC extends NPC {
         level.characters.remove(this);
         julieNPC.doneInteraction = false;
         julieNPC.isSomeDucksDead = true;
-        Game.party.getMember(3).addSkill(9);
-        gameWorld.uiManager.addNotification("Ahn the Duck can now use Super Fist Punch!");
+
 
     }
 }

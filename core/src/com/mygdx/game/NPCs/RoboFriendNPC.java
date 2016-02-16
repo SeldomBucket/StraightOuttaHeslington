@@ -55,8 +55,7 @@ public class RoboFriendNPC extends NPC {
         level.characters.remove(this);
         sallyNPC.doneInteraction = false;
         sallyNPC.isFriendDead = true;
-        Game.party.getMember(1).addSkill(6);
-        gameWorld.uiManager.addNotification("Ryan the Duck can now use Gamma Ray!");
+
 
 
     }

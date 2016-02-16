@@ -62,14 +62,10 @@ public class MallardsNPC extends NPC {
         params.addEnemy(enemyDuck3);
         params.addEnemy(enemyDuck4);
 
-
         gameWorld.setBattle(params);
         level.characters.remove(this);
         julieNPC.isMallardDead = true;
         julieNPC.doneInteraction = false;
-
-        Game.party.getMember(2).addSkill(5);
-        gameWorld.uiManager.addNotification("Adrian the Duck can now use Toxic Goop!");
 
     }
 }

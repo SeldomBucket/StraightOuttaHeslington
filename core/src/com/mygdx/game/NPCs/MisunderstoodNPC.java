@@ -54,7 +54,6 @@ public class MisunderstoodNPC extends NPC {
         level.characters.remove(this);
         uiManager.addNotification("You gained 100 points.");
         Game.pointsScore += 100;
-        Game.party.getMember(3).addSkill(1);
-        gameWorld.uiManager.addNotification("Ahn the Duck can now use Cure Light Wounds!");
+
     }
 }

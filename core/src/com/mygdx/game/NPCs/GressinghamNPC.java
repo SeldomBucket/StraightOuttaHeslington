@@ -64,8 +64,6 @@ public class GressinghamNPC extends NPC {
         backUp4Duck = new BackUpNPC(level, new Vector2(99, 113), this);
         level.characters.add(backUp4Duck);
 
-        Game.party.getMember(0).addSkill(3);
-        gameWorld.uiManager.addNotification("Tom the Duck can now use Water bolt!");
         sammyNPC.isGresDead = true;
         sammyNPC.doneInteraction = false;
 
