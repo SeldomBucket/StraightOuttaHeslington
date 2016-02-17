@@ -41,10 +41,10 @@ public class Game extends com.badlogic.gdx.Game {
 	 */
 	private void loadFiles(){
 		try {
-			skills = jsonLoader.parseSkillManager("skills.json");
-			items = jsonLoader.parseItemManager("items.json");
-			party = jsonLoader.parsePartyManager("party.json");
-			enemies = jsonLoader.parsePartyManager("enemies.json");
+			skills = jsonLoader.parseSkillManager("JSONfiles/skills.json");
+			items = jsonLoader.parseItemManager("JSONfiles/items.json");
+			party = jsonLoader.parsePartyManager("JSONfiles/party.json");
+			enemies = jsonLoader.parsePartyManager("JSONfiles/enemies.json");
 		} catch (FileNotFoundException ex) {
 			// Do something with 'ex'
 		} catch (IOException ex2) {

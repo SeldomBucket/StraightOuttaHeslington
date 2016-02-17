@@ -89,7 +89,8 @@ public class GameWorld {
 
     /**
      * Called once per frame to update GameWorld logic.
-     * This looks at the current game's current state and acts accordingly.
+     * This looks at the game's current state and acts accordingly.
+     * Switches on gameState and the player's current interaction (which is calculated using the interaction map in the player class)
      * @param delta The time since the last frame was rendered.
      */
     public void update(float delta) {

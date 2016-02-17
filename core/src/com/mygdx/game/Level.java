@@ -129,31 +129,31 @@ public class Level {
                     interactionMap[x][y] = Interaction.VISTA_SIGN;
                     switch (x+y){
                         case 288:
-                            vistaSigns.put(x+y, new Texture("constantine.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/constantine.png"));
                             break;
                         case 258:
-                            vistaSigns.put(x+y, new Texture("langwith.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/langwith.png"));
                             break;
                         case 223:
-                            vistaSigns.put(x+y, new Texture("goodricke.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/goodricke.png"));
                             break;
                         case 181:
-                            vistaSigns.put(x+y, new Texture("LMB.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/LMB.png"));
                             break;
                         case 174:
-                            vistaSigns.put(x+y, new Texture("catalyst.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/catalyst.png"));
                             break;
                         case 145:
-                            vistaSigns.put(x+y, new Texture("TFTV.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/TFTV.png"));
                             break;
                         case 158:
-                            vistaSigns.put(x+y, new Texture("CS.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/CS.png"));
                             break;
                         case 203:
-                            vistaSigns.put(x+y, new Texture("RCH.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/RCH.png"));
                             break;
                         case 58:
-                            vistaSigns.put(x+y, new Texture("hesEast.png"));
+                            vistaSigns.put(x+y, new Texture("vistaImages/hesEast.png"));
                             break;
                     }
                 }else if(layer.getCell(x, y).getTile().getProperties().containsKey("flightSpot")){
