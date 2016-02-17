@@ -47,10 +47,10 @@ public class BackUpNPC extends NPC {
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
 
-        Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0), 8);
-        Agent enemyDuck2 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
-        Agent enemyDuck3 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
-        Agent enemyDuck4 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
+        Agent enemyDuck = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(7,80,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0), 8);
+        Agent enemyDuck2 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(7,80,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
+        Agent enemyDuck3 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(7,80,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
+        Agent enemyDuck4 = new Agent("Gressingham Duck", Agent.AgentType.ENEMY,new Statistics(7,80,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),8);
 
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);

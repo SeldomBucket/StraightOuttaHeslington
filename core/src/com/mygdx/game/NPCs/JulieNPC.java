@@ -73,6 +73,8 @@ public class JulieNPC extends NPC {
         else if((!doneInteraction && isMallardDead) && !isSomeDucksDead){
             uiManager.addNotification("You gained 70 points.");
             Game.pointsScore += 70;
+            level.characters.add(new SomeDucksNPC(level, new Vector2(85, 93), this));
+
             last_messages = new String [2];
             last_messages[0] = "Thanks";
             last_messages [1] = "You're making this place a lot safer";

@@ -43,7 +43,7 @@ public class BreadStealerNPC extends NPC {
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
 
-        Agent enemyDuck = new Agent("Bread stealer", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),7);
+        Agent enemyDuck = new Agent("Bread stealer", Agent.AgentType.ENEMY,new Statistics(100,100,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),7);
 
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);

@@ -42,13 +42,13 @@ public class SomeDucksNPC extends NPC {
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-        Agent enemyDuck1 = new Agent("Some Ducks", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
-        Agent enemyDuck2 = new Agent("Some Ducks", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck1 = new Agent("Some Ducks", Agent.AgentType.ENEMY,new Statistics(9,70,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck2 = new Agent("Some Ducks", Agent.AgentType.ENEMY,new Statistics(9,70,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
-        enemyDuck1.addSkill(4);
+        enemyDuck1.addSkill(8);
         enemyDuck1.addSkill(10);
-        enemyDuck2.addSkill(4);
+        enemyDuck2.addSkill(3);
         enemyDuck2.addSkill(10);
 
         params.addEnemy(enemyDuck1);
