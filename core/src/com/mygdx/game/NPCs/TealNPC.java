@@ -20,7 +20,7 @@ public class TealNPC extends NPC {
         super(level, currentTile);
         this.sammyNPC = sammyNPC;
         messages = new String[2];
-        messages[0] = "Hey you can't do that around here without punishment";
+        messages[0] = "Hey you can't do that around here without punishment!";
         messages[1] = "The Teal Duck challenged you to a battle.";
     }
 

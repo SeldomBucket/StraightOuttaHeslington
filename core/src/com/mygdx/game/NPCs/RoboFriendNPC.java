@@ -21,7 +21,7 @@ public class RoboFriendNPC extends NPC {
         this.sallyNPC = sallyNPC;
         messages = new String[2];
         messages[0] = "YOU KILLED MY FRIEND";
-        messages[1] = "Robo's friend has challenged you to a battle.";
+        messages[1] = "Robo Duck's Friend has challenged you to a battle.";
     }
 
     @Override
@@ -38,11 +38,11 @@ public class RoboFriendNPC extends NPC {
     @Override
     public void action(GameWorld gameWorld) {
         Assets.sfx_battleStart.play(Game.masterVolume);
-        uiManager.addNotification("Robo ducks friend has been defeated.");
+        uiManager.addNotification("Robo Duck's Friend has been defeated.");
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-        Agent enemyDuck = new Agent("Robo Duck's friend", Agent.AgentType.ENEMY,new Statistics(10,500,6,2,2,2,1,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck = new Agent("Robo Duck's Friend", Agent.AgentType.ENEMY,new Statistics(10,500,6,2,2,2,1,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
         enemyDuck.addSkill(5);
