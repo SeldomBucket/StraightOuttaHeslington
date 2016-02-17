@@ -5,6 +5,7 @@ import com.badlogic.gdx.audio.Music;
 import com.badlogic.gdx.audio.Sound;
 import com.badlogic.gdx.graphics.Texture;
 import com.badlogic.gdx.graphics.g2d.*;
+import com.mygdx.game.NPCs.MisunderstoodNPC;
 
 /**
  * Assets is a static class containing all assets that are used in rendering the game.
@@ -22,7 +23,6 @@ public class Assets {
 
 //  MAP ASSETS
     public static Texture[] battleBGs = new Texture[4];
-    public static Texture mapTexture;
 
 //  UI ASSETS
     public static BitmapFont consolas22;
@@ -66,6 +66,21 @@ public class Assets {
     public static Animation[] JulieNPCWalkAnimation;
     public static Texture JulieNPCWalkSheet;
 
+    public static Animation[] MisunderstoodNPCWalkAnimation;
+    public static Texture MisunderstoodNPCWalkSheet;
+
+    public static Animation[] RandomNPCWalkAnimation;
+    public static Texture RandomNPCWalkSheet;
+
+    public static Animation[] TealNPCWalkAnimation;
+    public static Texture TealNPCWalkSheet;
+
+    public static Animation[] SammyNPCWalkAnimation;
+    public static Texture SammyNPCWalkSheet;
+
+    public static Animation[] SomeDucksNPCWalkAnimation;
+    public static Texture SomeDucksNPCWalkSheet;
+
     public static Texture shadow;
 
     public static Texture title;
@@ -92,31 +107,38 @@ public class Assets {
         title = new Texture("Start Screen.png");
         //  BATTLE ASSETS
 
-        playerTexture = new Texture("Duck2.png");
-        deadPlayerTexture = new Texture("DuckDead.png");
-        battleSprites = new Texture[9][2];
-        battleSprites[0][0] = new Texture("Duck2.png");
-        battleSprites[0][1] = new Texture("DuckDead.png");
-        battleSprites[1][0] = new Texture("Roboduck.png");
-        battleSprites[1][1] = new Texture("deadroboduck.png");
+        playerTexture = new Texture("CharacterSpriteSheets/Duck.png");
+        deadPlayerTexture = new Texture("CharacterSpriteSheets/DuckDead.png");
+        battleSprites = new Texture[13][2];
+        battleSprites[0][0] = new Texture("CharacterSpriteSheets/Duck.png");
+        battleSprites[0][1] = new Texture("CharacterSpriteSheets/DuckDead.png");
+        battleSprites[1][0] = new Texture("CharacterSpriteSheets/Roboduck.png");
+        battleSprites[1][1] = new Texture("CharacterSpriteSheets/RoboDuckDead.png");
+        battleSprites[2][0] = new Texture("CharacterSpriteSheets/Ooze.png");
+        battleSprites[2][1] = new Texture("CharacterSpriteSheets/OozeDead.png");
+        battleSprites[3][0] = new Texture("CharacterSpriteSheets/RadiatedDuck.png");
+        battleSprites[3][1] = new Texture("CharacterSpriteSheets/RadiatedDuckDead.png");
+        battleSprites[4][0] = new Texture("CharacterSpriteSheets/ScarDuck.png");
+        battleSprites[4][1] = new Texture("CharacterSpriteSheets/ScarDuckDead.png");
+        battleSprites[5][0] = new Texture("CharacterSpriteSheets/UndeadDuck.png");
+        battleSprites[5][1] = new Texture("CharacterSpriteSheets/UndeadDuckDead.png");
+        battleSprites[6][0] = new Texture("CharacterSpriteSheets/Mallard.png");
+        battleSprites[6][1] = new Texture("CharacterSpriteSheets/MallardDead.png");
+        battleSprites[7][0] = new Texture("CharacterSpriteSheets/NPC2.png");
+        battleSprites[7][1] = new Texture("CharacterSpriteSheets/NPC2dead.png");
+        battleSprites[8][0] = new Texture("CharacterSpriteSheets/Gressingham.png");
+        battleSprites[8][1] = new Texture("CharacterSpriteSheets/GressinghamDead.png");
+        battleSprites[9][0] = new Texture("CharacterSpriteSheets/NPC3.png");
+        battleSprites[9][1] = new Texture("CharacterSpriteSheets/NPC3dead.png");
+        battleSprites[10][0] = new Texture("CharacterSpriteSheets/NPC1.png");
+        battleSprites[10][1] = new Texture("CharacterSpriteSheets/NPC1dead.png");
+        battleSprites[11][0] = new Texture("CharacterSpriteSheets/Teal.png");
+        battleSprites[11][1] = new Texture("CharacterSpriteSheets/TealDead.png");
+        battleSprites[12][0] = new Texture("CharacterSpriteSheets/NPC7.png");
+        battleSprites[12][1] = new Texture("CharacterSpriteSheets/NPC7Dead.png");
 
-        battleSprites[2][0] = new Texture("enemy_sprites/Ooze.png");
-        battleSprites[2][1] = new Texture("enemy_sprites/OozeDead.png");
-        battleSprites[3][0] = new Texture("enemy_sprites/RadiatedDuck.png");
-        battleSprites[3][1] = new Texture("enemy_sprites/RadiatedDuckDead.png");
-        battleSprites[4][0] = new Texture("enemy_sprites/ScarDuck.png");
-        battleSprites[4][1] = new Texture("enemy_sprites/ScarDuckDead.png");
-        battleSprites[5][0] = new Texture("enemy_sprites/UndeadDuck.png");
-        battleSprites[5][1] = new Texture("enemy_sprites/UndeadDuckDead.png");
-        battleSprites[6][0] = new Texture("NPCAnimations/NPC1.png");
-        battleSprites[6][1] = new Texture("NPCAnimations/NPC1.png");
-        battleSprites[7][0] = new Texture("NPCAnimations/NPC2.png");
-        battleSprites[7][1] = new Texture("NPCAnimations/NPC2.png");
-        battleSprites[8][0] = new Texture("NPCAnimations/NPC3.png");
-        battleSprites[8][1] = new Texture("NPCAnimations/NPC3.png");
-
-        battleTurnPointer = new Texture("turnPointer.png");
-        targetingPointer = new Texture("targetingPointer.png");
+        battleTurnPointer = new Texture("Pointers/turnPointer.png");
+        targetingPointer = new Texture("Pointers/targetingPointer.png");
 
         //  MAP ASSETS
         battleBGs[0] = new Texture("backgrounds/CS_centrefixed.png");
@@ -124,14 +146,13 @@ public class Assets {
         battleBGs[2] = new Texture("backgrounds/RCH_lake.png");
         battleBGs[3] = new Texture("backgrounds/Background_1.png");
 
-        mapTexture = new Texture("map.jpg");
 
         //  UI ASSETS
         consolas22 = new BitmapFont(Gdx.files.internal("fonts/consolas22.fnt"));
         consolas16 = new BitmapFont(Gdx.files.internal("fonts/consolas16.fnt"));
         atlas = new TextureAtlas(Gdx.files.internal("packedimages/pack.atlas"));
         patch = atlas.createPatch("knob2");
-        dialoguePointer = new Texture("dialoguePointer.png");
+        dialoguePointer = new Texture("Pointers/dialoguePointer.png");
 
         sfx_menuMove = Gdx.audio.newSound(Gdx.files.internal("sound_effects/MenuMove.wav"));
         sfx_menuSelect = Gdx.audio.newSound(Gdx.files.internal("sound_effects/MenuSelect.wav"));
@@ -152,9 +173,9 @@ public class Assets {
 
 
         //  CHARACTER TEXTURE SHEETS
-        shadow = new Texture("shadow.png");
+        shadow = new Texture("CharacterSpriteSheets/shadow.png");
 
-        playerWalkSheet = new Texture("DuckAnimationFrames.png");
+        playerWalkSheet = new Texture("CharacterSpriteSheets/DuckAnimationFrames.png");
         TextureRegion[][] tmp = TextureRegion.split(playerWalkSheet, playerWalkSheet.getWidth() / PLAYER_WALKSHEET_COLS, playerWalkSheet.getHeight() / PLAYER_WALKSHEET_ROWS);
         TextureRegion[][] walkFrameDirections = new TextureRegion[PLAYER_WALKSHEET_COLS][PLAYER_WALKSHEET_ROWS];
         int index = 0;
@@ -173,7 +194,7 @@ public class Assets {
             playerWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        playerSwimSheet = new Texture("DuckSwimAnimationFrames.png");
+        playerSwimSheet = new Texture("CharacterSpriteSheets/DuckSwimAnimationFrames.png");
         TextureRegion tmp2[][] = TextureRegion.split(playerSwimSheet, playerSwimSheet.getWidth() / PLAYER_SWIMSHEET_COLS, playerSwimSheet.getHeight() / PLAYER_SWIMSHEET_ROWS);
         TextureRegion[][] swimFrameDirections = new TextureRegion[PLAYER_SWIMSHEET_COLS][PLAYER_SWIMSHEET_ROWS];
         index = 0;
@@ -192,7 +213,7 @@ public class Assets {
             playerSwimAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        SallyNPCWalkSheet = new Texture("NPCAnimations/EvilDuckAnimationFrames.png");
+        SallyNPCWalkSheet = new Texture("CharacterSpriteSheets/EvilDuckAnimationFrames.png");
         tmp = TextureRegion.split(SallyNPCWalkSheet, SallyNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, SallyNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
@@ -211,7 +232,7 @@ public class Assets {
             SallyNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        RoboNPCWalkSheet = new Texture("NPCAnimations/RoboDuckAnimationFrames.png");
+        RoboNPCWalkSheet = new Texture("CharacterSpriteSheets/RoboDuckAnimationFrames.png");
         tmp = TextureRegion.split(RoboNPCWalkSheet, RoboNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, RoboNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
@@ -230,7 +251,7 @@ public class Assets {
             RoboNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        MallardNPCWalkSheet = new Texture("NPCAnimations/NPC1AnimationFrames.png");
+        MallardNPCWalkSheet = new Texture("CharacterSpriteSheets/MallardAnimationFrames.png");
         tmp = TextureRegion.split(MallardNPCWalkSheet, MallardNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, MallardNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
@@ -249,7 +270,7 @@ public class Assets {
             MallardNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        BreadStealerNPCWalkSheet = new Texture("NPCAnimations/NPC2AnimationFrames.png");
+        BreadStealerNPCWalkSheet = new Texture("CharacterSpriteSheets/NPC2AnimationFrames.png");
         tmp = TextureRegion.split(BreadStealerNPCWalkSheet, BreadStealerNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, BreadStealerNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
@@ -268,7 +289,7 @@ public class Assets {
             BreadStealerNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        GressinghamNPCWalkSheet = new Texture("NPCAnimations/NPC3AnimationFrames.png");
+        GressinghamNPCWalkSheet = new Texture("CharacterSpriteSheets/GressinghamAnimationFrames.png");
         tmp = TextureRegion.split(GressinghamNPCWalkSheet, GressinghamNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, GressinghamNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
@@ -287,7 +308,7 @@ public class Assets {
             GressinghamNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        DannyNPCWalkSheet = new Texture("NPCAnimations/NPC4AnimationFrames.png");
+        DannyNPCWalkSheet = new Texture("CharacterSpriteSheets/NPC4AnimationFrames.png");
         tmp = TextureRegion.split(DannyNPCWalkSheet, DannyNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, DannyNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
@@ -306,7 +327,7 @@ public class Assets {
             DannyNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
 
-        JulieNPCWalkSheet = new Texture("NPCAnimations/NPC4AnimationFrames.png");
+        JulieNPCWalkSheet = new Texture("CharacterSpriteSheets/NPC5AnimationFrames.png");
         tmp = TextureRegion.split(JulieNPCWalkSheet, JulieNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, JulieNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
         walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
         index = 0;
@@ -324,6 +345,102 @@ public class Assets {
             JulieNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
             JulieNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
         }
+
+        MisunderstoodNPCWalkSheet = new Texture("CharacterSpriteSheets/NPC3AnimationFrames.png");
+        tmp = TextureRegion.split(MisunderstoodNPCWalkSheet, MisunderstoodNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, MisunderstoodNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        MisunderstoodNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            MisunderstoodNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            MisunderstoodNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        RandomNPCWalkSheet = new Texture("CharacterSpriteSheets/NPC1AnimationFrames.png");
+        tmp = TextureRegion.split(RandomNPCWalkSheet, RandomNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, RandomNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        RandomNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            RandomNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            RandomNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        TealNPCWalkSheet = new Texture("CharacterSpriteSheets/TealAnimationFrames.png");
+        tmp = TextureRegion.split(TealNPCWalkSheet, TealNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, TealNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        TealNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            TealNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            TealNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        SammyNPCWalkSheet = new Texture("CharacterSpriteSheets/NPC6AnimationFrames.png");
+        tmp = TextureRegion.split(SammyNPCWalkSheet, SammyNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, SammyNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        SammyNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            SammyNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            SammyNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
+        SomeDucksNPCWalkSheet = new Texture("CharacterSpriteSheets/NPC7AnimationFrames.png");
+        tmp = TextureRegion.split(SomeDucksNPCWalkSheet, SomeDucksNPCWalkSheet.getWidth() / NPC_WALKSHEET_COLS, SomeDucksNPCWalkSheet.getHeight() / NPC_WALKSHEET_ROWS);
+        walkFrameDirections = new TextureRegion[NPC_WALKSHEET_COLS][NPC_WALKSHEET_ROWS];
+        index = 0;
+        for (int i = 0; i < NPC_WALKSHEET_ROWS; i++) {
+            for (int j = 0; j < NPC_WALKSHEET_COLS; j++) {
+                if (j % 2 == 0) {
+                    walkFrameDirections[index][j % 2] = tmp[i][j];
+                } else {
+                    walkFrameDirections[index++][j % 2] = tmp[i][j];
+                }
+            }
+        }
+        SomeDucksNPCWalkAnimation = new Animation[NPC_WALKSHEET_COLS];
+        for (int x = 0; x < walkFrameDirections.length;x++) {
+            SomeDucksNPCWalkAnimation[x] = new Animation(0.175f, walkFrameDirections[x]);
+            SomeDucksNPCWalkAnimation[x].setPlayMode(Animation.PlayMode.LOOP);
+        }
+
     }
 
     /**
@@ -333,7 +450,6 @@ public class Assets {
         playerTexture.dispose();
         playerTexture.dispose();
         battleTurnPointer.dispose();
-        mapTexture.dispose();
         consolas22.dispose();
         atlas.dispose();
 

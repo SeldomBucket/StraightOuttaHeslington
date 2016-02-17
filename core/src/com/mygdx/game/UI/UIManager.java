@@ -126,8 +126,8 @@ public class UIManager {
     public void createShopMenu(boolean[] itemsToDisplay, String[] itemNames, int[] prices, int[]levelRequirements){
         shopMenu = new UIShopMenu(10,10,Gdx.graphics.getWidth()-20, Gdx.graphics.getHeight()-60,itemsToDisplay,itemNames, prices, levelRequirements);
     }
-    public void showShopMenu(int location){
-        shopMenu.show(location);
+    public void showShopMenu(int highestLevel){
+        shopMenu.show(highestLevel);
     }
     public int updateShopMenu(float delta){
         return shopMenu.update(delta);
