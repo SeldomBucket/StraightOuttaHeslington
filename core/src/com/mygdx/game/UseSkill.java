@@ -59,8 +59,16 @@ public class UseSkill extends UseAbility {
             switch (skill.getSkillType()) {
                 case MELEE: {
                     Assets.sfx_hitNoise.play(Game.masterVolume);
-                    target.dealDamage(user.getStats().getStrength() + user.getCurrentEquipment().getTotalStrengthModifiers() + skill.getBasePower());
-                    String infoBoxText = (target.getName() + " takes "+(user.getStats().getStrength() + user.getCurrentEquipment().getTotalStrengthModifiers() + skill.getBasePower()) + " damage");
+                    int dmg = user.getStats().getStrength() + user.getCurrentEquipment().getTotalStrengthModifiers() + skill.getBasePower()
+                            - target.getStats().getArmourVal();
+                    String infoBoxText;
+                    if (dmg <= 0) {
+                        infoBoxText = (target.getName() + " takes 0 damage.");
+                    }
+                    else {
+                        target.dealDamage(dmg);
+                        infoBoxText = (target.getName() + " takes " + dmg + " damage");
+                    }
                     if(target.isDead())
                         infoBoxText+=" and is defeated.";
                     battleMenu.createInfoBox( infoBoxText, 3);
@@ -69,8 +77,16 @@ public class UseSkill extends UseAbility {
                 }
                 case RANGED: {
                     Assets.sfx_hitNoise.play(Game.masterVolume);
-                    target.dealDamage(user.getStats().getDexterity() + user.getCurrentEquipment().getTotalDexterityModifiers() + skill.getBasePower());
-                    String infoBoxText = (target.getName() + " takes "+(user.getStats().getDexterity() + user.getCurrentEquipment().getTotalDexterityModifiers() + skill.getBasePower()) + " damage");
+                    int dmg = user.getStats().getDexterity() + user.getCurrentEquipment().getTotalDexterityModifiers() + skill.getBasePower()
+                            - target.getStats().getArmourVal();
+                    String infoBoxText;
+                    if (dmg <= 0) {
+                        infoBoxText = (target.getName() + " takes 0 damage.");
+                    }
+                    else {
+                        target.dealDamage(dmg);
+                        infoBoxText = (target.getName() + " takes " + dmg + " damage");
+                    }
                     if(target.isDead())
                         infoBoxText+=" and is defeated.";
                     battleMenu.createInfoBox( infoBoxText, 3);
@@ -79,8 +95,16 @@ public class UseSkill extends UseAbility {
                 }
                 case MAGIC: {
                     Assets.sfx_hitNoise.play(Game.masterVolume);
-                    target.dealDamage(user.getStats().getIntelligence() + user.getCurrentEquipment().getTotalIntelligenceModifiers() + skill.getBasePower());
-                    String infoBoxText = (target.getName() + " takes "+(user.getStats().getIntelligence() + user.getCurrentEquipment().getTotalIntelligenceModifiers() + skill.getBasePower()) + " damage");
+                    int dmg = user.getStats().getIntelligence() + user.getCurrentEquipment().getTotalIntelligenceModifiers() + skill.getBasePower()
+                            - target.getStats().getArmourVal();
+                    String infoBoxText;
+                    if (dmg <= 0) {
+                        infoBoxText = (target.getName() + " takes 0 damage.");
+                    }
+                    else {
+                        target.dealDamage(dmg);
+                        infoBoxText = (target.getName() + " takes " + dmg + " damage");
+                    }
                     if(target.isDead())
                         infoBoxText+=" and is defeated.";
                     battleMenu.createInfoBox( infoBoxText, 3);
