@@ -8,7 +8,7 @@ import com.mygdx.game.NPC;
 import com.mygdx.game.UI.UIManager;
 
 /**
- * This class represents the first npc of the game.
+ * This class represents another friendly NPC
  */
 public class JulieNPC extends NPC {
 

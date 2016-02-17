@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the robot boss of the game.
+ * This class the second objective given by SallyNPC.
  */
 public class RoboFriendNPC extends NPC {
 

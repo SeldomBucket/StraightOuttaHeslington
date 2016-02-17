@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the robot boss of the game.
+ * This class represents the second objective given by SammyNPC.
  */
 public class SomeDucksNPC extends NPC {
 
@@ -57,6 +57,9 @@ public class SomeDucksNPC extends NPC {
         params.addEnemy(enemyDuck2);
 
         gameWorld.setBattle(params);
+
+        //Changes the booleans in JuulieNPC to update which NPC is dead and that
+        //you can interact with JulieNPC again
         level.characters.remove(this);
         julieNPC.doneInteraction = false;
         julieNPC.isSomeDucksDead = true;

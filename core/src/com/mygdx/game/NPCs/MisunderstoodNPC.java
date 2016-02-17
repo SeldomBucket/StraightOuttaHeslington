@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the robot boss of the game.
+ * This class represents the second objective given by DannyNPC.
+
  */
 public class MisunderstoodNPC extends NPC {
 

@@ -56,6 +56,8 @@ public class RoboNPC extends NPC {
         gameWorld.setBattle(params);
         level.characters.remove(this);
 
+        //Changes the booleans in SallyNPC to update which NPC is dead and that
+        //you can interact with SallyNPC again
         sallyNPC.doneInteraction = false;
         sallyNPC.isRoboDead = true;
 

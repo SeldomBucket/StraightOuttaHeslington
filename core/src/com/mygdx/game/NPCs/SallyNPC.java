@@ -8,7 +8,8 @@ import com.mygdx.game.NPC;
 import com.mygdx.game.UI.UIManager;
 
 /**
- * This class represents the first npc of the game.
+ * This class represents the a friendly npc sally, which gives the quests corresponding to Robo duck
+ * and his friend.
  */
 public class SallyNPC extends NPC {
 
@@ -25,6 +26,9 @@ public class SallyNPC extends NPC {
             doneInteraction = false;
     }
 
+
+    //This method checks what quests have been done by checking if certain NPCs are alive or dead
+    //and then picks the correct messages given the information
     @Override
     public void initializeInteraction(float delta, UIManager uiManager) {
         if (!doneInteraction && !isRoboDead) {
@@ -55,6 +59,9 @@ public class SallyNPC extends NPC {
         return uiManager.updateDialogue(delta);
     }
 
+
+    //Again this method checks to see which quests you have and havent done by checking which
+    //enemies are dead to give you the correct amount opf points and which enemy (if any) to spawn
     @Override
     public void action(GameWorld gameWorld) {
             if ((!doneInteraction && !isRoboDead) && !interactedBefore) {

@@ -64,6 +64,9 @@ public class MallardsNPC extends NPC {
         params.addEnemy(enemyDuck4);
 
         gameWorld.setBattle(params);
+
+        //Changes the booleans in JulieNPC to update which NPC is dead and that
+        //you can interact with JulieNPC again
         level.characters.remove(this);
         julieNPC.isMallardDead = true;
         julieNPC.doneInteraction = false;
