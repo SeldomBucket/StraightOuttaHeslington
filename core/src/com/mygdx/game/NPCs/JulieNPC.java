@@ -21,7 +21,7 @@ public class JulieNPC extends NPC {
         messages = new String[3];
         messages[0] = "Help! I just got pecked by some mallards!";
         messages[1] = "Please teach them a lesson!";
-        messages[2] = "The when I called for help I think they flew south east towards the lake";
+        messages[2] = "The when I called for help I think they flew south east towards the lake.";
         doneInteraction = false;
     }
 
@@ -73,6 +73,8 @@ public class JulieNPC extends NPC {
         else if((!doneInteraction && isMallardDead) && !isSomeDucksDead){
             uiManager.addNotification("You gained 70 points.");
             Game.pointsScore += 70;
+            level.characters.add(new SomeDucksNPC(level, new Vector2(85, 93), this));
+
             last_messages = new String [2];
             last_messages[0] = "Thanks";
             last_messages [1] = "You're making this place a lot safer";

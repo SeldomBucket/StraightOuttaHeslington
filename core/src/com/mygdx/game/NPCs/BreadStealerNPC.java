@@ -20,8 +20,8 @@ public class BreadStealerNPC extends NPC {
         super(level, currentTile);
         this.dannyNPC = dannyNPC;
         messages = new String[2];
-        messages[0] = "Oh who cares, the bread is mine now";
-        messages[1] = "The bread stealer has challenged you to a battle.";
+        messages[0] = "Oh who cares? The bread is mine now.";
+        messages[1] = "The Bread Stealer has challenged you to a battle.";
     }
 
     @Override
@@ -38,12 +38,14 @@ public class BreadStealerNPC extends NPC {
     @Override
     public void action(GameWorld gameWorld) {
         Assets.sfx_battleStart.play(Game.masterVolume);
-        uiManager.addNotification("Bread stealer has been defeated.");
+        uiManager.addNotification("Bread Stealer has been defeated.");
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
 
-        Agent enemyDuck = new Agent("Bread stealer", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),7);
+
+        Agent enemyDuck = new Agent("Bread stealer", Agent.AgentType.ENEMY,new Statistics(100,100,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),7);
+
 
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);

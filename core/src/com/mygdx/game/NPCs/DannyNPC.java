@@ -20,8 +20,8 @@ public class DannyNPC extends NPC {
         super(level, currentTile);
         messages = new String[3];
         messages[0] = "Help! Someone stole my bread!";
-        messages[1] = "Please help me by finding him and defeating him!";
-        messages[2] = "Look he's just over there to the right";
+        messages[1] = "Please help me by finding and defeating him!";
+        messages[2] = "Look, he's just over there to the right.";
         doneInteraction = false;
     }
 
@@ -53,17 +53,17 @@ public class DannyNPC extends NPC {
         if ((!doneInteraction && !isBreadStealerDead) && !interactedBefore) {
             uiManager.addNotification("You gained 40 points.");
             Game.pointsScore += 40;
+            level.characters.add((new BreadStealerNPC(level, new Vector2(130, 93), this)));
             second_messages = new String[3];
-            second_messages[0] = "thanks for getting my bread back!";
-            second_messages[1] = "Oh no a duck has thought you stole his bread not getting him back he's coming for you";
-            second_messages[2] = "Im so sorry";
+            second_messages[0] = "Thanks for getting my bread back!";
+            second_messages[1] = "Oh no! A duck thought you stole his bread, he's coming for you.";
+            second_messages[2] = "I'm so sorry.";
             doneInteraction = true;
         }
 
         else if (!doneInteraction && isBreadStealerDead){
             uiManager.addNotification("You gained 50 points.");
             interactedBefore = true;
-            level.characters.add((new BreadStealerNPC(level, new Vector2(130, 93), this)));
             Game.pointsScore += 50;
             level.characters.add((new MisunderstoodNPC(level, new Vector2(120, 91), this)));
             Game.party.getMember(3).addSkill(1);

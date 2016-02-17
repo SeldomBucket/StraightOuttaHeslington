@@ -20,7 +20,7 @@ public class SomeDucksNPC extends NPC {
         super(level, currentTile);
         this.julieNPC = julieNPC;
         messages = new String[2];
-        messages[0] = "Seriously?! You're trying to help Sally? We'll teach you a lesson on how to mind your own business";
+        messages[0] = "Seriously?! You're trying to help Sally? We'll teach you a lesson on how to mind your own business.";
         messages[1] = "Some ducks has challenged you to a battle.";
     }
 
@@ -38,17 +38,19 @@ public class SomeDucksNPC extends NPC {
     @Override
     public void action(GameWorld gameWorld) {
         Assets.sfx_battleStart.play(Game.masterVolume);
-        uiManager.addNotification("Some Ducks has been defeated.");
+        uiManager.addNotification("Some Ducks have been defeated.");
         BattleParameters params = new BattleParameters(0);
         //Enemy ducks
         List<Integer> emptyList = new ArrayList<Integer>();
-        Agent enemyDuck1 = new Agent("Some Ducks", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
-        Agent enemyDuck2 = new Agent("Some Ducks", Agent.AgentType.ENEMY,new Statistics(10,500,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+
+        Agent enemyDuck1 = new Agent("Some Ducks", Agent.AgentType.ENEMY,new Statistics(9,70,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+        Agent enemyDuck2 = new Agent("Some Ducks", Agent.AgentType.ENEMY,new Statistics(9,70,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),1);
+
 //        enemyDuck.equipEquipment(0);
 //        enemyDuck.equipEquipment(1);
-        enemyDuck1.addSkill(4);
+        enemyDuck1.addSkill(8);
         enemyDuck1.addSkill(10);
-        enemyDuck2.addSkill(4);
+        enemyDuck2.addSkill(3);
         enemyDuck2.addSkill(10);
 
         params.addEnemy(enemyDuck1);

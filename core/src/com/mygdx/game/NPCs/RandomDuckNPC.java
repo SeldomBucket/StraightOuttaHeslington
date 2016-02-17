@@ -20,8 +20,8 @@ public class RandomDuckNPC extends NPC {
         super(level, currentTile);
         this.sammyNPC = sammyNPC;
         messages = new String[2];
-        messages[0] = "Hey I dont like your attitude";
-        messages[1] = "The random duck has challenged you to a battle.";
+        messages[0] = "Hey, I don't like your attitude";
+        messages[1] = "The Random Duck has challenged you to a battle.";
     }
 
     @Override
