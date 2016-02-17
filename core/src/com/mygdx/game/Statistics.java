@@ -58,7 +58,7 @@ public class Statistics {
      */
     public  Statistics(){};
 
-    private int RandInc(int stat){
+    private int RandInc(int stat){      //function that randomly increases a stat, usually by 1 but sometimes 2
         Random randlvl = new Random();
         if (randlvl.nextInt(3)==2){
             stat += 2;
@@ -70,7 +70,7 @@ public class Statistics {
     }
 
     private void LevelUp(){
-        Random randlvl = new Random();
+        Random randlvl = new Random();          //changed leveling up so it increases stats and refills health and mana
         speed = RandInc(speed);
         strength = RandInc(strength);
         dexterity = RandInc(dexterity);
