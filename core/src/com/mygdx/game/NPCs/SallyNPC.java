@@ -34,11 +34,15 @@ public class SallyNPC extends NPC {
         else if ((!doneInteraction && isRoboDead) && !isFriendDead){
             uiManager.createDialogue(second_messages);
             this.uiManager = uiManager;
+            Game.party.getMember(2).addSkill(4);
+            uiManager.addNotification("Ryan the Duck can now use the Incredibly Close Range Laser Attack!");
         }
 
         else if ((!doneInteraction && isRoboDead) && isFriendDead){
             uiManager.createDialogue(last_messages);
             this.uiManager = uiManager;
+            Game.party.getMember(1).addSkill(6);
+            uiManager.addNotification("Ryan the Duck can now use Gamma Ray!");
         }
 
     }
@@ -63,8 +67,7 @@ public class SallyNPC extends NPC {
                 second_messages[0] = "Thanks, he was really scaring me!";
                 second_messages[1] = "You seem to be good at this, can you take care of his nasty friend too?";
                 second_messages[2] = "He'll be over there now looking at Robo Duck's body";
-                Game.party.getMember(2).addSkill(4);
-                gameWorld.uiManager.addNotification("Ryan the Duck can now use the Incredibly Close Range Laser Attack!");
+
                 doneInteraction = true;
             }
 
@@ -72,7 +75,6 @@ public class SallyNPC extends NPC {
                 uiManager.addNotification("You gained 50 points.");
                 Game.pointsScore += 50;
                 level.characters.add((new RoboFriendNPC(level, new Vector2(75, 98), this)));
-
                 last_messages = new String[2];
                 last_messages[0] = "Thank you so much for all your help!";
                 last_messages[1] = "You definitely deserve a first for all that you just did.";
@@ -81,8 +83,6 @@ public class SallyNPC extends NPC {
 
             else if ((!doneInteraction && isRoboDead) && isFriendDead){
                 uiManager.addNotification("You gained 60 points.");
-                Game.party.getMember(1).addSkill(6);
-                gameWorld.uiManager.addNotification("Ryan the Duck can now use Gamma Ray!");
                 Game.pointsScore += 60;
                 doneInteraction = true;
             }
