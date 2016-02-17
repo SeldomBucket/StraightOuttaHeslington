@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <map version="1.0" orientation="orthogonal" renderorder="right-down" width="275" height="194" tilewidth="16" tileheight="16" nextobjectid="1">
- <tileset firstgid="1" name="SpriteSheetPlaceHolders" tilewidth="16" tileheight="16" tilecount="256" columns="16">
+ <tileset firstgid="1" name="SpriteSheetPlaceHolders" tilewidth="16" tileheight="16" tilecount="256">
   <image source="SpriteSheetPlaceHolders.png" width="256" height="256"/>
   <tile id="0">
    <properties>
@@ -685,11 +685,13 @@
   <tile id="194">
    <properties>
     <property name="blocked" value=""/>
+    <property name="shop" value=""/>
    </properties>
   </tile>
   <tile id="195">
    <properties>
     <property name="blocked" value=""/>
+    <property name="shop" value=""/>
    </properties>
   </tile>
   <tile id="196">

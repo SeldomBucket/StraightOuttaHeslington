@@ -158,6 +158,8 @@ public class Level {
                     }
                 }else if(layer.getCell(x, y).getTile().getProperties().containsKey("flightSpot")){
                     interactionMap[x][y] = Interaction.FLIGHT;
+                }else if(layer.getCell(x, y).getTile().getProperties().containsKey("shop")){
+                    interactionMap[x][y] = Interaction.SHOP;
                 }else{
                     interactionMap[x][y] = Interaction.NONE;
                 }

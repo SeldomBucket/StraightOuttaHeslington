@@ -19,7 +19,7 @@
 		},
 	"skills":[10,2],
 	"equipment":{
-		"equipSlots":[2,0,0,0,1]
+		"equipSlots":[0,0,0,0,0]
 		}
 	},
 	{
@@ -42,7 +42,7 @@
 		},
 	"skills":[10,13],
 	"equipment":{
-		"equipSlots":[0,0,0,0,1]
+		"equipSlots":[0,0,0,0,0]
 		}
 	},
 	{
@@ -92,6 +92,6 @@
 		}
 	}	
 	],
-	"consumables": [0,1,2],
-	"equipables": [1, 2, 3]
+	"consumables": [],
+	"equipables": [1,2,3]
 }

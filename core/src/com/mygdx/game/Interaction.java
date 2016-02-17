@@ -1,8 +1,8 @@
 package com.mygdx.game;
 
 /**
- * Represents the possible states of the game world.
+ * Represents interactions the player can have.
  */
 public enum Interaction {
-    FLIGHT, TEXT_SIGN, VISTA_SIGN, NPC_DIALOGUE, NONE
+    FLIGHT, TEXT_SIGN, VISTA_SIGN, NPC_DIALOGUE, NONE, SHOP
 }

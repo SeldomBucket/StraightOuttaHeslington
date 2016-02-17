@@ -79,9 +79,9 @@ public class GameWorld {
         uiManager.createFlightMenu(flightSpotsVisited, locationNames);
         itemsToShow = new boolean[]{true, true, true, true, true, true, true, true, true, true};
         itemCosts = new int[]{20,40,20,50,100,60,70,80,100,60};
-        levelRequirements = new int[]{0, 9990, 0, 5, 12, 15, 6, 9, 20, 10};
+        levelRequirements = new int[]{0, 0, 0, 5, 12, 0, 6, 9, 20, 10};//15
         itemNames = new String[]{"Heal Flask","Revive Potion","Mana Flask","Crowbar","Fancy Sword","Wizard's Hat","Heelys","Iron Chestplate", "Magic Wand", "Gun"};
-        uiManager.createShopMenu(itemsToShow, itemNames);
+        uiManager.createShopMenu(itemsToShow, itemNames, itemCosts, levelRequirements);
         maxLevel = 0;
         }
 
@@ -138,8 +138,8 @@ public class GameWorld {
                         interactingNPC.initializeInteraction(delta, uiManager);
                         interaction = Interaction.NPC_DIALOGUE;
                         gameState = GameState.INTERACTION;
-                    }else if (!(interaction == Interaction.NONE)){
-                        switch (interaction){
+                    } else if (!(interaction == Interaction.NONE)) {
+                        switch (interaction) {
                             case TEXT_SIGN:
                                 uiManager.createDialogue(level.textSigns.get(level.player.interactionLocationHash));
                                 gameState = GameState.INTERACTION;
@@ -149,98 +149,100 @@ public class GameWorld {
                                 gameState = GameState.INTERACTION;
                                 break;
                             case FLIGHT:
-                                if ((level.player.getCurrentTile().x == 179.0f) && (level.player.getCurrentTile().y == 105.0f)){
-                                    if (!flightSpotsVisited[0]){
+                                if ((level.player.getCurrentTile().x == 179.0f) && (level.player.getCurrentTile().y == 105.0f)) {
+                                    if (!flightSpotsVisited[0]) {
                                         flightSpotsVisited[0] = true;
                                         uiManager.addNotification("Flight spot for Constantine unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore+=50;
-                                    }else {
+                                        game.pointsScore += 50;
+                                    } else {
                                         uiManager.showFlightMenu(0);
                                         gameState = GameState.INTERACTION;
                                     }
-                                }else if ((level.player.getCurrentTile().x == 145.0f) && (level.player.getCurrentTile().y == 110.0f)){
-                                    if (!flightSpotsVisited[1]){
+                                } else if ((level.player.getCurrentTile().x == 145.0f) && (level.player.getCurrentTile().y == 110.0f)) {
+                                    if (!flightSpotsVisited[1]) {
                                         flightSpotsVisited[1] = true;
                                         uiManager.addNotification("Flight spot for Langwith unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore+=50;
-                                    }else {
+                                        game.pointsScore += 50;
+                                    } else {
                                         uiManager.showFlightMenu(1);
                                         gameState = GameState.INTERACTION;
                                     }
-                                }else if ((level.player.getCurrentTile().x == 102.0f) && (level.player.getCurrentTile().y == 118.0f)){
-                                    if (!flightSpotsVisited[2]){
+                                } else if ((level.player.getCurrentTile().x == 102.0f) && (level.player.getCurrentTile().y == 118.0f)) {
+                                    if (!flightSpotsVisited[2]) {
                                         flightSpotsVisited[2] = true;
                                         uiManager.addNotification("Flight spot for Goodricke unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore+=50;
-                                    }else {
+                                        game.pointsScore += 50;
+                                    } else {
                                         uiManager.showFlightMenu(2);
                                         gameState = GameState.INTERACTION;
                                     }
-                                }else if ((level.player.getCurrentTile().x == 86.0f) && (level.player.getCurrentTile().y == 92.0f)){
-                                    if (!flightSpotsVisited[3]){
+                                } else if ((level.player.getCurrentTile().x == 86.0f) && (level.player.getCurrentTile().y == 92.0f)) {
+                                    if (!flightSpotsVisited[3]) {
                                         flightSpotsVisited[3] = true;
                                         uiManager.addNotification("Flight spot for Law and Management unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore+=50;
-                                    }else {
+                                        game.pointsScore += 50;
+                                    } else {
                                         uiManager.showFlightMenu(3);
                                         gameState = GameState.INTERACTION;
                                     }
-                                }else if ((level.player.getCurrentTile().x == 71.0f) && (level.player.getCurrentTile().y == 97.0f)){
-                                    if (!flightSpotsVisited[4]){
+                                } else if ((level.player.getCurrentTile().x == 71.0f) && (level.player.getCurrentTile().y == 97.0f)) {
+                                    if (!flightSpotsVisited[4]) {
                                         flightSpotsVisited[4] = true;
                                         uiManager.addNotification("Flight spot for The Catalyst unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore+=50;
-                                    }else {
+                                        game.pointsScore += 50;
+                                    } else {
                                         uiManager.showFlightMenu(4);
                                         gameState = GameState.INTERACTION;
                                     }
-                                }else if ((level.player.getCurrentTile().x == 72.0f) && (level.player.getCurrentTile().y == 72.0f)){
-                                    if (!flightSpotsVisited[5]){
+                                } else if ((level.player.getCurrentTile().x == 72.0f) && (level.player.getCurrentTile().y == 72.0f)) {
+                                    if (!flightSpotsVisited[5]) {
                                         flightSpotsVisited[5] = true;
                                         uiManager.addNotification("Flight spot for Theatre, Film, and Television unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore+=50;
-                                    }else {
+                                        game.pointsScore += 50;
+                                    } else {
                                         uiManager.showFlightMenu(5);
                                         gameState = GameState.INTERACTION;
                                     }
-                                }else if ((level.player.getCurrentTile().x == 89.0f) && (level.player.getCurrentTile().y == 65.0f)){
-                                    if (!flightSpotsVisited[6]){
+                                } else if ((level.player.getCurrentTile().x == 89.0f) && (level.player.getCurrentTile().y == 65.0f)) {
+                                    if (!flightSpotsVisited[6]) {
                                         flightSpotsVisited[6] = true;
                                         uiManager.addNotification("Flight spot for Computer Science unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore+=50;
-                                    }else {
+                                        game.pointsScore += 50;
+                                    } else {
                                         uiManager.showFlightMenu(6);
                                         gameState = GameState.INTERACTION;
                                     }
-                                }else if ((level.player.getCurrentTile().x == 115.0f) && (level.player.getCurrentTile().y == 84.0f)){
-                                    if (!flightSpotsVisited[7]){
+                                } else if ((level.player.getCurrentTile().x == 115.0f) && (level.player.getCurrentTile().y == 84.0f)) {
+                                    if (!flightSpotsVisited[7]) {
                                         flightSpotsVisited[7] = true;
                                         uiManager.addNotification("Flight spot for Ron Cooke Hub unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore+=50;
-                                    }else {
+                                        game.pointsScore += 50;
+                                    } else {
                                         uiManager.showFlightMenu(7);
                                         gameState = GameState.INTERACTION;
                                     }
                                 }
                                 break;
-                        }
-                    }
-                }else if (InputHandler.isMenuJustPressed()){
-                    uiManager.openPartyMenu();
-                    level.stopInput = true;
-                    gameState = GameState.PARTY_MENU;
+                            case SHOP:
+                                uiManager.showShopMenu(0);
+                                level.stopInput = true;
+                                gameState = GameState.SHOP_MENU;
+                                break;
 
-                } else if (InputHandler.isShopJustPressed()){
-                    uiManager.showShopMenu(0);
-                    gameState = GameState.SHOP_MENU;
+                        }
+                    } else if (InputHandler.isMenuJustPressed()) {
+                        uiManager.openPartyMenu();
+                        level.stopInput = true;
+                        gameState = GameState.PARTY_MENU;
+                    }
                 }
                 break;
 
@@ -263,27 +265,29 @@ public class GameWorld {
                 }else if(!(shopSelection==-1)){
                     switch (shopSelection){
                         case 0:
-                            if (levelRequirements[0] <= maxLevel){
-                                if (Game.pointsScore >= itemCosts[0]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
-                                        Game.pointsScore -= itemCosts[0];
-                                        uiManager.addNotification("Successfully purchased the " + itemNames[0]);
+                            if (levelRequirements[shopSelection] <= maxLevel){
+                                if (Game.pointsScore >= itemCosts[shopSelection]){
+                                    if (!Game.party.getConsumables().contains(shopSelection)) {
+                                        Game.pointsScore -= itemCosts[shopSelection];
+                                        Game.party.getConsumables().add(shopSelection);
+                                        uiManager.addNotification("Successfully purchased the " + itemNames[shopSelection]);
                                     }else{
-                                        uiManager.addNotification("You already have the " + itemNames[0] + " in your inventory");
+                                        uiManager.addNotification("You already have the " + itemNames[shopSelection] + " in your inventory");
                                     }
                                 }else{
-                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[0]);
+                                    uiManager.addNotification("You do not have enough points to buy the " + itemNames[shopSelection]);
                                 }
                             }else{
-                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[0]);
+                                uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[shopSelection]);
                             }
                             break;
 
                         case 1:
                             if (levelRequirements[1] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[1]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getConsumables().contains(shopSelection)) {
                                         Game.pointsScore -= itemCosts[1];
+                                        Game.party.getConsumables().add(shopSelection);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[1]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[1] + " in your inventory");
@@ -299,8 +303,9 @@ public class GameWorld {
                         case 2:
                             if (levelRequirements[2] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[2]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getConsumables().contains(shopSelection)) {
                                         Game.pointsScore -= itemCosts[2];
+                                        Game.party.getConsumables().add(shopSelection);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[2]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[2] + " in your inventory");
@@ -316,8 +321,9 @@ public class GameWorld {
                         case 3:
                             if (levelRequirements[3] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[3]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[3];
+                                        Game.party.getEquipables().add(shopSelection+1);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[3]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[3] + " in your inventory");
@@ -333,8 +339,9 @@ public class GameWorld {
                         case 4:
                             if (levelRequirements[4] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[4]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[4];
+                                        Game.party.getEquipables().add(shopSelection+1);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[4]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[4] + " in your inventory");
@@ -346,12 +353,12 @@ public class GameWorld {
                                 uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[4]);
                             }
                             break;
-
                         case 5:
                             if (levelRequirements[5] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[5]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[5];
+                                        Game.party.getEquipables().add(shopSelection+1);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[5]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[5] + " in your inventory");
@@ -367,8 +374,9 @@ public class GameWorld {
                         case 6:
                             if (levelRequirements[6] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[6]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[6];
+                                        Game.party.getEquipables().add(shopSelection+1);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[6]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[6] + " in your inventory");
@@ -384,8 +392,9 @@ public class GameWorld {
                         case 7:
                             if (levelRequirements[7] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[7]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[7];
+                                        Game.party.getEquipables().add(shopSelection+1);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[7]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[7] + " in your inventory");
@@ -401,8 +410,9 @@ public class GameWorld {
                         case 8:
                             if (levelRequirements[8] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[8]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[8];
+                                        Game.party.getEquipables().add(shopSelection+1);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[8]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[8] + " in your inventory");
@@ -418,8 +428,9 @@ public class GameWorld {
                         case 9:
                             if (levelRequirements[9] <= maxLevel){
                                 if (Game.pointsScore >= itemCosts[9]){
-                                    if (!Game.party.getEquipables().contains(shopSelection)) {
+                                    if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[9];
+                                        Game.party.getEquipables().add(shopSelection+1);
                                         uiManager.addNotification("Successfully purchased the " + itemNames[9]);
                                     }else{
                                         uiManager.addNotification("You already have the " + itemNames[9] + " in your inventory");
@@ -431,7 +442,6 @@ public class GameWorld {
                                 uiManager.addNotification("None of your party members are a high enough level to purchase the " + itemNames[9]);
                             }
                             break;
-
                     }
                     gameState = GameState.FREEROAM;
                 }

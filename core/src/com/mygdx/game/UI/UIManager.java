@@ -123,8 +123,8 @@ public class UIManager {
         return flightMenu.update();
 
     }
-    public void createShopMenu(boolean[] locations, String[] locationNames){
-        shopMenu = new UIShopMenu(10,10,Gdx.graphics.getWidth()-20, Gdx.graphics.getHeight()-60,locations,locationNames);
+    public void createShopMenu(boolean[] itemsToDisplay, String[] itemNames, int[] prices, int[]levelRequirements){
+        shopMenu = new UIShopMenu(10,10,Gdx.graphics.getWidth()-20, Gdx.graphics.getHeight()-60,itemsToDisplay,itemNames, prices, levelRequirements);
     }
     public void showShopMenu(int location){
         shopMenu.show(location);
