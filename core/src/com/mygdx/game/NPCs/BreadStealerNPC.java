@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the robot boss of the game.
+ * This class represents the first objective given by DannyNPC.
+ *
  */
 public class BreadStealerNPC extends NPC {
 
@@ -44,7 +45,7 @@ public class BreadStealerNPC extends NPC {
         List<Integer> emptyList = new ArrayList<Integer>();
 
 
-        Agent enemyDuck = new Agent("Bread stealer", Agent.AgentType.ENEMY,new Statistics(100,100,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),7);
+        Agent enemyDuck = new Agent("Bread stealer", Agent.AgentType.ENEMY,new Statistics(1,100,8,2,3,3,3,3,3),emptyList,new CurrentEquipment(0,0,0,0,0),7);
 
 
 //        enemyDuck.equipEquipment(0);
@@ -56,7 +57,8 @@ public class BreadStealerNPC extends NPC {
 
         params.addEnemy(enemyDuck);
 
-
+        //Changes the booleans in DannyNPC to update which NPC is dead and that
+        //you can interact with DannyNPC again
         gameWorld.setBattle(params);
         level.characters.remove(this);
         dannyNPC.doneInteraction = false;

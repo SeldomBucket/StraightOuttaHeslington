@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the robot boss of the game.
+ * This class represents the back up called by the gressingham duck when you kill him.
  */
 public class BackUpNPC extends NPC {
 
@@ -39,6 +39,9 @@ public class BackUpNPC extends NPC {
     }
 
 
+
+    //There are four NPCs spawned in but you can interact with either one and after you finish the battle all four are
+    //removed
     @Override
     public void action(GameWorld gameWorld) {
         Assets.sfx_battleStart.play(Game.masterVolume);

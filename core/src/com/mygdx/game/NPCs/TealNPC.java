@@ -9,7 +9,8 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * This class represents the robot boss of the game.
+ * This class represents the Teal duck which spawns on immediately on the user
+ * killing the RandomDuckNPC.
  */
 public class TealNPC extends NPC {
 
@@ -56,6 +57,9 @@ public class TealNPC extends NPC {
 
         gameWorld.setBattle(params);
         level.characters.remove(this);
+
+        //Changes the booleans in SammyNPC to update which NPC is dead and that
+        //you can interact with SammyNPC again
         sammyNPC.isTealDead = true;
         sammyNPC.doneInteraction = false;
 
