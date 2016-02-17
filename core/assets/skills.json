@@ -35,7 +35,7 @@
 	"ID":4,
 	"name":"Overly Close-Range Invisible Laser Attack",
 	"description":"Overly Close-Range Invisible Laser Attack, what does it sound like?",
-	"skillType":"RANGED",
+	"skillType":"RANGED",																	//reclassified attacks so they weren't all magic
 	"basePower":23,
 	"MPCost":3
 	},
@@ -80,7 +80,7 @@
 	"MPCost":3
   	},
 	{
-	"ID":10,
+	"ID":10,				//added this skill so there was an option for when players or enemies had no mana
 	"name":"Peck",
 	"description":"Lightly pecks you in the face",
 	"skillType":"MELEE",
@@ -89,7 +89,7 @@
 	},
 	{
 	"ID":11,
-	"name":"Blob",
+	"name":"Blob",			//added a free skill for slimes, as peck was unrealistic
 	"description":"Lightly blobs you in the face",
 	"skillType":"MELEE",
 	"basePower":5,

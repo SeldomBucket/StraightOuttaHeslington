@@ -30,26 +30,8 @@ public class UseSkill extends UseAbility {
         skill = Game.skills.getSkill(abilityID);
 
         battleMenu.showTurnIndicator=false;
+        //removed a redundant switch statement that was here
 
-        /*switch (skill.getSkillType()){
-            case MELEE:{
-                break;
-            }
-            case RANGED:{
-                break;
-            }
-            case MAGIC:{
-                battleAnimator.moveAgentTo(user,target.getX(),target.getY(),this);//Moves the agent to the target
-                battleMenu.createInfoBox(user.getName() + " uses " + skill.getName()+" on "+target.getName(),3);//Create an info box with information on the current action
-                break;
-            }
-            case HEAL:{
-                battleAnimator.moveAgentTo(user, target.getX(), target.getY(), this);
-                battleMenu.createInfoBox(user.getName() + " uses " + skill.getName()+" on "+target.getName(),3);
-                break;
-            }
-        }
-        */
         battleAnimator.moveAgentTo(user, target.getX(), target.getY(), this);
         battleMenu.createInfoBox(user.getName() + " uses " + skill.getName()+" on "+target.getName(),3);
 
@@ -72,6 +54,7 @@ public class UseSkill extends UseAbility {
      */
     public void movementDone(int type){
         //Type 0=moved, type 1=returned
+        //added melee and ranged attack support here.
         if(type==0) {
             switch (skill.getSkillType()) {
                 case MELEE: {

@@ -152,6 +152,7 @@ public class BattleScreen extends ScreenAdapter {
             } else {
                 if (!enemyHasUsedSkill) {
                     //Enemy targetting
+                    //added a system which randomly picks a skill that the enemy has access to that it can afford, with a higher weighting given to skills with more power.
                     List<Integer> SkillList = emptyList;
                     for (int i=0; i<currentTurnAgent.getSkills().size();i++){
                         if (game.skills.getSkill(currentTurnAgent.getSkills().get(i)).getMPCost() <= currentTurnAgent.getStats().getCurrentMP()){

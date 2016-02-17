@@ -428,6 +428,11 @@ public class BattleMenu {
      * Uses the battleLayout 2D array and row and column pointers.
      * You cannot wrap around the screen i.e. pressing left in the leftmost column won't select the rightmost column.
      */
+
+    /*
+    a lot of code was added here to stop the player doing useless actions: e.g. using healing items / skills on enemies, attack dead enemies.
+    some code was added to stop the player from being able to heal dead allies before reviving them.
+     */
     private void targetingMenuInput(InputHandler.inputType input){
 
         switch (input){
