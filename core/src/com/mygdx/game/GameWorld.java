@@ -115,7 +115,7 @@ public class GameWorld {
                  * Random battle generator.
                  * chance for a random battle increases with each step you take
                  */
-                if (level.player.getState() == Character.CharacterState.TRANSITIONING && random.nextInt(battleChance) > 1){
+                if (level.player.getState() == Character.CharacterState.TRANSITIONING && random.nextInt(battleChance) == 1){
                     if (!level.roadMap[(int)level.player.getCurrentTile().x][(int)level.player.getCurrentTile().y]) {
                         uiManager.createDialogue(new String[]{"You have been stopped by a group of... somethings!"});
                         level.stopInput = true;

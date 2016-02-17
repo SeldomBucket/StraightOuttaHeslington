@@ -9,7 +9,7 @@ import java.io.IOException;
 /**
  * This class is used to switch between the StartScreen, WorldScreen and BattleScreen.
  * It also stores the instances for the friendly party and all items and skills.
- * More information can be found at http://www.teampochard.co.uk/game-releases/
+ * Executable jar file can be found at https://teammuscovy.wordpress.com/straight-outta-heslington/
  */
 public class Game extends com.badlogic.gdx.Game {
 
