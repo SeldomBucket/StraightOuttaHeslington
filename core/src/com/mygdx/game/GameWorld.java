@@ -238,12 +238,13 @@ public class GameWorld {
                                 break;
 
                         }
-                    } else if (InputHandler.isMenuJustPressed()) {
-                        uiManager.openPartyMenu();
-                        level.stopInput = true;
-                        gameState = GameState.PARTY_MENU;
-                    }
+                    } 
+                }else if (InputHandler.isMenuJustPressed()) {
+                    uiManager.openPartyMenu();
+                    level.stopInput = true;
+                    gameState = GameState.PARTY_MENU;
                 }
+
                 break;
 
             case PARTY_MENU:
