@@ -166,16 +166,16 @@ public class WorldRenderer {
                 }
                 batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
                 if (c.getDirection() == Player.Direction.DOWN) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.SammyNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.LEFT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.SammyNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.RIGHT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.SammyNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else {
-                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.SammyNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 }
             } else if (c instanceof BreadStealerNPC) {
@@ -286,16 +286,16 @@ public class WorldRenderer {
                 }
                 batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
                 if (c.getDirection() == Player.Direction.DOWN) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.MisunderstoodNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.LEFT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.MisunderstoodNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.RIGHT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.MisunderstoodNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else {
-                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.MisunderstoodNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 }
             }else if (c instanceof RandomDuckNPC) {
@@ -306,16 +306,16 @@ public class WorldRenderer {
                 }
                 batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
                 if (c.getDirection() == Player.Direction.DOWN) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.RandomNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.LEFT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.RandomNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.RIGHT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.RandomNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else {
-                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.RandomNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 }
             }else if (c instanceof RoboFriendNPC) {
@@ -346,16 +346,16 @@ public class WorldRenderer {
                 }
                 batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
                 if (c.getDirection() == Player.Direction.DOWN) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.TealNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.LEFT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.TealNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.RIGHT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.TealNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else {
-                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.TealNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 }
             }else if (c instanceof SomeDucksNPC) {
@@ -366,16 +366,16 @@ public class WorldRenderer {
                 }
                 batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 10, c.getAbsPos().y - textureOffset.y - 4);
                 if (c.getDirection() == Player.Direction.DOWN) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.SomeDucksNPCWalkAnimation[2].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.LEFT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.SomeDucksNPCWalkAnimation[1].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else if (c.getDirection() == Player.Direction.RIGHT) {
-                    batch.draw(Assets.RoboNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.SomeDucksNPCWalkAnimation[3].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 } else {
-                    batch.draw(Assets.RoboNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
+                    batch.draw(Assets.SomeDucksNPCWalkAnimation[0].getKeyFrame(c.getStateTime()), c.getAbsPos().x - textureOffset.x,
                             c.getAbsPos().y - textureOffset.y);
                 }
             }
