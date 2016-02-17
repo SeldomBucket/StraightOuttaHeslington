@@ -38,7 +38,7 @@ public class GameWorld {
     private boolean[] itemsToShow;
     private String[] itemNames;
     private int[] levelRequirements;
-    private int maxLevel;
+    private int highestLevel;
     private int[] itemCosts;
 
     private Vector2 lastFlightSpot;
@@ -82,7 +82,7 @@ public class GameWorld {
         levelRequirements = new int[]{0, 0, 0, 5, 12, 0, 6, 9, 20, 10};//15
         itemNames = new String[]{"Heal Flask","Revive Potion","Mana Flask","Crowbar","Fancy Sword","Wizard's Hat","Heelys","Iron Chestplate", "Magic Wand", "Gun"};
         uiManager.createShopMenu(itemsToShow, itemNames, itemCosts, levelRequirements);
-        maxLevel = 0;
+        highestLevel = 0;
         }
 
 
@@ -232,13 +232,18 @@ public class GameWorld {
                                 }
                                 break;
                             case SHOP:
-                                uiManager.showShopMenu(0);
+                                for (int i = 0;i<4;i++) {
+                                    if (Game.party.getMember(i).getStats().getCurrentLevel() > highestLevel) {
+                                        highestLevel = Game.party.getMember(i).getStats().getCurrentLevel();
+                                    }
+                                }
+                                uiManager.showShopMenu(highestLevel);
                                 level.stopInput = true;
                                 gameState = GameState.SHOP_MENU;
                                 break;
 
                         }
-                    } 
+                    }
                 }else if (InputHandler.isMenuJustPressed()) {
                     uiManager.openPartyMenu();
                     level.stopInput = true;
@@ -255,18 +260,13 @@ public class GameWorld {
 
             case SHOP_MENU:
 
-                for (int i = 0;i<4;i++) {
-                    if (Game.party.getMember(i).getStats().getCurrentLevel() > maxLevel) {
-                        maxLevel = Game.party.getMember(i).getStats().getCurrentLevel();
-                    }
-                }
                 int shopSelection = uiManager.updateShopMenu(delta);
                 if (shopSelection == 974){
                     gameState = GameState.FREEROAM;
                 }else if(!(shopSelection==-1)){
                     switch (shopSelection){
                         case 0:
-                            if (levelRequirements[shopSelection] <= maxLevel){
+                            if (levelRequirements[shopSelection] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[shopSelection]){
                                     if (!Game.party.getConsumables().contains(shopSelection)) {
                                         Game.pointsScore -= itemCosts[shopSelection];
@@ -284,7 +284,7 @@ public class GameWorld {
                             break;
 
                         case 1:
-                            if (levelRequirements[1] <= maxLevel){
+                            if (levelRequirements[1] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[1]){
                                     if (!Game.party.getConsumables().contains(shopSelection)) {
                                         Game.pointsScore -= itemCosts[1];
@@ -302,7 +302,7 @@ public class GameWorld {
                             break;
 
                         case 2:
-                            if (levelRequirements[2] <= maxLevel){
+                            if (levelRequirements[2] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[2]){
                                     if (!Game.party.getConsumables().contains(shopSelection)) {
                                         Game.pointsScore -= itemCosts[2];
@@ -320,7 +320,7 @@ public class GameWorld {
                             break;
 
                         case 3:
-                            if (levelRequirements[3] <= maxLevel){
+                            if (levelRequirements[3] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[3]){
                                     if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[3];
@@ -338,7 +338,7 @@ public class GameWorld {
                             break;
 
                         case 4:
-                            if (levelRequirements[4] <= maxLevel){
+                            if (levelRequirements[4] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[4]){
                                     if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[4];
@@ -355,7 +355,7 @@ public class GameWorld {
                             }
                             break;
                         case 5:
-                            if (levelRequirements[5] <= maxLevel){
+                            if (levelRequirements[5] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[5]){
                                     if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[5];
@@ -373,7 +373,7 @@ public class GameWorld {
                             break;
 
                         case 6:
-                            if (levelRequirements[6] <= maxLevel){
+                            if (levelRequirements[6] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[6]){
                                     if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[6];
@@ -391,7 +391,7 @@ public class GameWorld {
                             break;
 
                         case 7:
-                            if (levelRequirements[7] <= maxLevel){
+                            if (levelRequirements[7] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[7]){
                                     if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[7];
@@ -409,7 +409,7 @@ public class GameWorld {
                             break;
 
                         case 8:
-                            if (levelRequirements[8] <= maxLevel){
+                            if (levelRequirements[8] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[8]){
                                     if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[8];
@@ -427,7 +427,7 @@ public class GameWorld {
                             break;
 
                         case 9:
-                            if (levelRequirements[9] <= maxLevel){
+                            if (levelRequirements[9] <= highestLevel){
                                 if (Game.pointsScore >= itemCosts[9]){
                                     if (!Game.party.getEquipables().contains(shopSelection+1)) {
                                         Game.pointsScore -= itemCosts[9];
