@@ -21,7 +21,7 @@ public class JulieNPC extends NPC {
         messages = new String[3];
         messages[0] = "Help! I just got pecked by some mallards!";
         messages[1] = "Please teach them a lesson!";
-        messages[2] = "The when I called for help I think they flew south east towards the lake";
+        messages[2] = "The when I called for help I think they flew south east towards the lake.";
         doneInteraction = false;
     }
 

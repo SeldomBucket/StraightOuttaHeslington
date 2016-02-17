@@ -21,9 +21,9 @@ public class GressinghamNPC extends NPC {
         super(level, currentTile);
         this.sammyNPC = sammyNPC;
         messages = new String[3];
-        messages[0] = "Oh she's sent you after me has she?";
-        messages[1] = "Even if you get passed me you wont get passed my back up, bring it!";
-        messages[2] = "The gresigham duck has challenged you to a battle.";
+        messages[0] = "Oh, she's sent you after me has she?";
+        messages[1] = "Even if you get past me you wont get past my back up, bring it!";
+        messages[2] = "The Gressingham duck has challenged you to a battle.";
     }
 
     @Override

@@ -19,9 +19,9 @@ public class SammyNPC extends NPC {
     public SammyNPC(Level level, Vector2 currentTile) {
         super(level, currentTile);
         messages = new String[3];
-        messages[0] = "Help! A gressingham duck just attacked me";
+        messages[0] = "Help! A Gressingham duck just attacked me!";
         messages[1] = "Please sort him out for me, I'll be very grateful!";
-        messages[2] = "I think he flew north of my position";
+        messages[2] = "I think he flew north of my position.";
         doneInteraction = false;
     }
 
@@ -60,10 +60,10 @@ public class SammyNPC extends NPC {
             level.characters.add((new GressinghamNPC(level, new Vector2(100, 113), this)));
 
             second_message = new String[4];
-            second_message[0] = "Sorry! I didn't mean to put you in that much danger";
+            second_message[0] = "Sorry! I didn't mean to put you in that much danger.";
             second_message[1] = "You handled it well though, can you make this place even safer?";
-            second_message[2] = "The teal duck is acting like he owns this place and is being big headed, get him to attack you by killing another nasty duck";
-            second_message[3] = "Attack that duck to the north east then the Teal duck will come for your blood";
+            second_message[2] = "The Teal Duck is acting like he owns this place and is being big headed, get him to attack you by killing another nasty duck.";
+            second_message[3] = "Attack that duck to the north east then the Teal duck will come for your blood.";
 
         }
 
@@ -73,8 +73,8 @@ public class SammyNPC extends NPC {
             level.characters.add((new RandomDuckNPC(level, new Vector2(115, 102), this)));
 
             last_message = new String [2];
-            last_message[0] = "Well done you really are good at this";
-            last_message[1] = "I hope I can help you sometime too";
+            last_message[0] = "Well done you really are good at this.";
+            last_message[1] = "I hope I can help you sometime too.";
             Game.party.getMember(0).addSkill(3);
             gameWorld.uiManager.addNotification("Tom the Duck can now use Water bolt!");
             doneInteraction = true;

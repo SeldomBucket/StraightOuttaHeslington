@@ -19,8 +19,8 @@ public class SallyNPC extends NPC {
     public SallyNPC(Level level, Vector2 currentTile) {
         super(level, currentTile);
             messages = new String[3];
-            messages[0] = "Help! There is a robo duck on the loose!";
-            messages[1] = "Please help us by finding him and defeating him!";
+            messages[0] = "Help! There is a Robo Duck on the loose!";
+            messages[1] = "Please help us by finding and defeating him!";
             messages[2] = "The last time I saw him was by the Catalyst building.";
             doneInteraction = false;
     }
@@ -60,9 +60,9 @@ public class SallyNPC extends NPC {
                 level.characters.add((new RoboNPC(level, new Vector2(75, 98), this)));
 
                 second_messages = new String[3];
-                second_messages[0] = "thanks, he was scaring the widgey out of me!";
+                second_messages[0] = "Thanks, he was really scaring me!";
                 second_messages[1] = "You seem to be good at this, can you take care of his nasty friend too?";
-                second_messages[2] = "He'll be over there now probably looking at Robo Ducks body";
+                second_messages[2] = "He'll be over there now looking at Robo Duck's body";
                 Game.party.getMember(2).addSkill(4);
                 gameWorld.uiManager.addNotification("Ryan the Duck can now use the Incredibly Close Range Laser Attack!");
                 doneInteraction = true;
@@ -74,8 +74,8 @@ public class SallyNPC extends NPC {
                 level.characters.add((new RoboFriendNPC(level, new Vector2(75, 98), this)));
 
                 last_messages = new String[2];
-                last_messages[0] = "Thank you so much for all your help";
-                last_messages[1] = "You definitely deserve a first for all that you just did";
+                last_messages[0] = "Thank you so much for all your help!";
+                last_messages[1] = "You definitely deserve a first for all that you just did.";
                 doneInteraction = true;
             }
 
