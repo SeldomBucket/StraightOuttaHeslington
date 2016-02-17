@@ -439,7 +439,7 @@ public class BattleMenu {
             case ACT:{
                 if(isSkillTargeting) {
                     if(battleScreen.getCurrentTurnAgent().getType()== Agent.AgentType.FRIENDLY){
-                        if(battleScreen.getCurrentTurnAgent().getStats().getCurrentMP()-Game.skills.getSkill(0).getMPCost()<0){
+                        if(battleScreen.getCurrentTurnAgent().getStats().getCurrentMP()-Game.skills.getSkill(skillOrItemID).getMPCost()<0){
                             createInfoBox(battleScreen.getCurrentTurnAgent().getName() + " does not have enough MP to use this skill", 3);
                             break;
                         }
