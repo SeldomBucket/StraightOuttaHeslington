@@ -8,8 +8,8 @@ import com.mygdx.game.Assets;
 import com.mygdx.game.InputHandler;
 
 /**
- * The party menu allows the user to see information about each party member.
- * It contains a party member's skills and statistics.
+ * The party menu allows the user to select a location to fly to
+ * NEW CLASS
  */
 
 public class UIFlightMenu extends UIComponent {
@@ -70,6 +70,7 @@ public class UIFlightMenu extends UIComponent {
 
     /**
      * Makes the UI component visible on screen.
+     * @param location The location which should be selected first
      */
     public void show(int location) {
         locationSelected = location;
@@ -78,7 +79,7 @@ public class UIFlightMenu extends UIComponent {
 
     /**
      * Called once per frame to handle input logic for selecting a player and exiting the menu.
-     * @return returns true if the dialogue box should continue to be displayed.
+     * @return returns -1 if the dialogue box should continue to be displayed, 666 if no location was selected, and the location number if a location was selected
      */
     public int update() {
         if (InputHandler.isActJustPressed()) {

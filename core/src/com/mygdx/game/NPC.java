@@ -50,6 +50,7 @@ public abstract class NPC extends Character {
     /**
      * This abstract method is called when a player first interacts with the NPC.
      * @param delta The time since the last frame was rendered.
+     * @param uiManager The UIManager being used currently
      */
     public abstract void initializeInteraction(float delta, UIManager uiManager);
 
@@ -62,6 +63,7 @@ public abstract class NPC extends Character {
 
     /**
      * This abstract method is called when a player has finished interacting with the NPC.
+     * @param gameWorld The GameWorld the NPC is in
      */
     public abstract void action(GameWorld gameWorld);
 }

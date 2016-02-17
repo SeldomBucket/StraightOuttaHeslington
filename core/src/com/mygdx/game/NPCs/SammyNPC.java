@@ -9,6 +9,7 @@ import com.mygdx.game.UI.UIManager;
 
 /**
  * This class represents another friendly npc in the game.
+ * NEW NPC
  */
 public class SammyNPC extends NPC {
 

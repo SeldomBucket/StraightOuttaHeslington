@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * This class the second objective given by SallyNPC.
+ * NEW NPC
  */
 public class RoboFriendNPC extends NPC {
 

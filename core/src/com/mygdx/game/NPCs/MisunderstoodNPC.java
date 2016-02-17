@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * This class represents the second objective given by DannyNPC.
+ * NEW NPC
 
  */
 public class MisunderstoodNPC extends NPC {

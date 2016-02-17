@@ -36,6 +36,13 @@ public class Level {
 
     /**
      * The constructor loads the map and creates a new player in the appropriate position.
+     * Generates a 2d array collision map so the player can't walk through any blocked tiles
+     * NEW PARTS - Generates several 2d arrays which show the location of the water, the roads, and every interaction with a static
+     * object on the map. Uses the ENUM Interaction.
+     * Also creates the dialogue for the text signs, and the images for the vista signs, in a dictionary using the sum
+     * of the x and y coordinates as keys to uniquely identify them (this means be careful when placing a new one, or it
+     * can go a bit wrong)
+     * @param gameWorld the GameWorld which is being used for this game
      */
     public Level(GameWorld gameWorld) {
         this.gameWorld = gameWorld;
@@ -175,6 +182,7 @@ public class Level {
 
     /**
      * This method is called once per frame and updates each character in the level.
+     * @param delta time elapsed since last frame
      */
     public void update(float delta) {
         characters.sort(new Character.CharacterComparator());
@@ -186,6 +194,7 @@ public class Level {
 
     /**
      * The CollisionMap allows characters to know if their path is blocked by a player or a blocked tile.
+     * Called once a frame (in the update method above) to update the locations of the moving NPCs
      */
     private void updateCollisionMap() {
         for (int i = 0; i < collisionMap.length; i++) {
@@ -208,7 +217,9 @@ public class Level {
     }
 
     /**
-     * @return Returns null if no character exists at x, y.
+     * @param tileX x coordinate of the character you want to find
+     * @param tileY y coordinate of the character you want to find
+     * @return Returns the character at x, y or null if no character exists at x, y.
      */
     public Character getCharacterAt(float tileX, float tileY){
         if (characters != null) {
@@ -219,6 +230,5 @@ public class Level {
         }
         return null;
     }
-
 
 }

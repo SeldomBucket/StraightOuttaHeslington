@@ -40,6 +40,7 @@ public class ItemManager {
 
     /**
      * Adds a new consumable item.
+     * @param consumable The consumable to be added
      */
     public void addConsumable(Consumable consumable) {
 

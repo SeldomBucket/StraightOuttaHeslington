@@ -7,7 +7,8 @@ import com.mygdx.game.Game;
 import com.mygdx.game.Player;
 
 /**
- * Component for rendering the score display at the top right of the screen.
+ * Component for rendering the X and Y coordinates of the player (not used in production version, only for debugging)
+ * NEW CLASS
  */
 public class UIDebugCoords extends UIComponent {
 

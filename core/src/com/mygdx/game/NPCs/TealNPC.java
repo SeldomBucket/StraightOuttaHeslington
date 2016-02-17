@@ -11,6 +11,7 @@ import java.util.List;
 /**
  * This class represents the Teal duck which spawns on immediately on the user
  * killing the RandomDuckNPC.
+ * NEW NPC
  */
 public class TealNPC extends NPC {
 

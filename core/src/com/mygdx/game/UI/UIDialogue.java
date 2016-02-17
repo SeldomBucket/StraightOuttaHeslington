@@ -47,6 +47,7 @@ public class UIDialogue extends UIComponent {
 
     /**
      * Called once per frame to handle timing of ui elements.
+     * @param delta the time elapsed since the last frame.
      * @return returns true if the dialogue box should continue to be displayed.
      */
     public boolean update(float delta) {

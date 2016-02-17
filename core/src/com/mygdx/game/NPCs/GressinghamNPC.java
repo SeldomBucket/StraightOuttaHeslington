@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * This class represents the first objective given by SammyNPC.
+ * NEW NPC
  */
 public class GressinghamNPC extends NPC {
 

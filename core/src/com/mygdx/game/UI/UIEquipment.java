@@ -40,12 +40,12 @@ public class UIEquipment extends UIComponent {
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {
         if (selected == true) {
-            colorMain = Color.WHITE;
+            colorMain = Color.GOLD;
             colorDesc = Color.LIGHT_GRAY;
         }
         else {
-            colorMain = Color.LIGHT_GRAY;
-            colorDesc = Color.GRAY;
+            colorMain = Color.WHITE;
+            colorDesc = Color.LIGHT_GRAY;
         }
         patch.draw(batch, x, y, width, height + (paddingY * 2));
         /**

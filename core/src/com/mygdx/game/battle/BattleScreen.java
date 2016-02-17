@@ -179,6 +179,7 @@ public class BattleScreen extends ScreenAdapter {
     /**
      * Rudimentary targeting for the AI agents.
      * @param typeToGet The type of agent to target.
+     * @return the index of the target
      */
     public int getTarget(Agent.AgentType typeToGet){
         Random random = new Random();
@@ -187,7 +188,6 @@ public class BattleScreen extends ScreenAdapter {
             return getTarget(typeToGet);
         else
             return index;
-
     }
 
 

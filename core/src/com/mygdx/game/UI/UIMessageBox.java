@@ -90,6 +90,10 @@ public class UIMessageBox extends UIComponent {
 
     }
 
+    /**
+     * Sets the message of the message box
+     * @param message The string which should be displayed by the message box
+     */
     public void setMessage(String message) {
         this.message = message;
     }

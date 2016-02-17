@@ -34,6 +34,7 @@ public class UIDialogueBox extends UIComponent {
 
     /**
      * Used to determine whether the dialogue show show an arrow in the bottom right corner.
+     * @param show true if the arrow should be displayed, false otherwise
      */
     public void setArrow(Boolean show) {
         showArrow = show;

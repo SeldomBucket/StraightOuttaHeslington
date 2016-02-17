@@ -15,6 +15,10 @@ public class UIRenderer {
     SpriteBatch uiBatch;
     NinePatchDrawable patchDraw;
 
+    /**
+     * Constructor for UIRenderer
+     * @param uiManager the complete UI to be rendered
+     */
     public UIRenderer(UIManager uiManager) {
         this.uiManager = uiManager;
         patchDraw = new NinePatchDrawable();
@@ -50,6 +54,7 @@ public class UIRenderer {
     /**
      * To be called once per frame to render every UI component in the UI manager.
      * This allows the spritebatch to be passed to the components.
+     * @param batch The batch to be used to render the UI
      */
     public void render(SpriteBatch batch) {
         for (int x = 0; x < uiManager.getUIComponents().size();x++) {

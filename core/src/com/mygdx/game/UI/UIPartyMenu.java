@@ -106,7 +106,7 @@ public class UIPartyMenu extends UIComponent {
      * Called once per frame to handle input logic for selecting a player and exiting the menu.
      * @return returns true if the dialogue box should continue to be displayed.
      */
-    public boolean update(float delta) {
+    public boolean update() {
         if ((InputHandler.isEscJustPressed()) && (mode == equipMode.NOT)) {
             show = false;
             return false;

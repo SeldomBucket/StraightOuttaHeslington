@@ -72,8 +72,9 @@ public class WorldRenderer {
     }
 
     /**
-     * Iterates through each player in the level and renders the correct sprite based
-     * on position, orientation ect.
+     * Iterates through each character in the level and renders the correct sprite based
+     * on position, orientation, type etc.
+     * NEW PARTS - Rendering swimming for player character, rendering a different sprite for each NPC
      */
     private void renderPlayers() {
         for (int i = 0; i < world.level.characters.size(); i++) {
@@ -84,7 +85,6 @@ public class WorldRenderer {
                 }else{
                     c.setStateTime(c.getStateTime() + Gdx.graphics.getDeltaTime());
                 }
-
                 if (!world.level.waterMap[(int)c.getCurrentTile().x][(int)c.getCurrentTile().y]) {
                     //if not swimming, draw the normal walking sprites
                     batch.draw(Assets.shadow, c.getAbsPos().x - textureOffset.x - 9, c.getAbsPos().y - textureOffset.y - 4);

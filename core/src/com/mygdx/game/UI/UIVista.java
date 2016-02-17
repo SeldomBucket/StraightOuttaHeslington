@@ -22,6 +22,10 @@ public class UIVista extends UIComponent {
         batch.draw(image, 0, 0);
     }
 
+    /**
+     * Updates the vista display
+     * @return returns true if the vista should continue to be displayed
+     */
     public boolean update() {
         if (InputHandler.isActJustPressed()) {
             return false;

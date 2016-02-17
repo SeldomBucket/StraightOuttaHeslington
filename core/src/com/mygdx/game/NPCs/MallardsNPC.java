@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * This class represents the robot boss of the game.
+ * NEW NPC
  */
 public class MallardsNPC extends NPC {
 

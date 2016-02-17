@@ -38,6 +38,7 @@ public class UIBattleBaseMenu extends UIComponent {
 
     /**
      * Highlights and points to the item at the given index.
+     * @param selected The item you want to be highligted
      */
     public void selectItem(int selected) {
         this.selected = selected;

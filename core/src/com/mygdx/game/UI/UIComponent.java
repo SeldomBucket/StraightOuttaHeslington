@@ -20,6 +20,8 @@ public abstract class UIComponent {
 
     /**
      * Called once per frame to render the UI component.
+     * @param batch the batch used to render the component
+     * @param patch the patch used for the background of the component
      */
     public abstract void render(SpriteBatch batch, NinePatch patch);
 }

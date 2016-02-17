@@ -25,12 +25,12 @@ public class UIStats extends UIComponent {
     public boolean selected;
 
     /**
-     * CHANGE- height no longer hard-coded
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @param player
+     * CHANGE- added height parameter for instantiation
+     * @param x x coordinate of the stats info box
+     * @param y y coordinate of the stats info box
+     * @param width width of the stats info box
+     * @param height height of the stats info box
+     * @param player the player whose stats to be displayed
      */
     public UIStats(float x, float y, float width, float height, Agent player) {
         super(x, y, width, height);

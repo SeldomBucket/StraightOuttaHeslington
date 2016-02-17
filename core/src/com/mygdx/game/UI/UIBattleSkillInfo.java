@@ -24,13 +24,12 @@ public class UIBattleSkillInfo extends UIComponent {
 
     /**
      * CHANGE- added height parameter for instantiation
-     * @param x
-     * @param y
-     * @param width
-     * @param height
-     * @param skill
+     * @param x x coordinate of the skill info box
+     * @param y y coordinate of the skill info box
+     * @param width width of the skill info box
+     * @param height height of the skill info box
+     * @param skill the skill to be displayed
      */
-
     public UIBattleSkillInfo(float x, float y, float width, float height, Skill skill) {
         super(x, y, width, height);
         this.skill = skill;

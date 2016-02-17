@@ -25,11 +25,11 @@ public class UIPlayer extends UIComponent {
     public boolean selected;
 
     /**
-     * CHANGE- height no longer hard-coded
-     * @param x
-     * @param y
-     * @param width
-     * @param player
+     * @param x The x coordinate of the player
+     * @param y The x coordinate of the player
+     * @param width The width of the player
+     * @param height The height of the player
+     * @param player The player to be rendered
      */
     public UIPlayer(float x, float y, float width, float height, Agent player) {
         super(x, y, width, height);
@@ -42,6 +42,8 @@ public class UIPlayer extends UIComponent {
 
     /**
      * Called once per frame to render the player information.
+     * @param batch The batch used to render
+     * @param patch The patch used as the background for the text
      */
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {

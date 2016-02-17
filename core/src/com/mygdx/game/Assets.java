@@ -101,6 +101,7 @@ public class Assets {
     public static Music worldMusic;
     /**
      * Loads the assets from the asset folder and initialises animation frames.
+     * NEW PARTS - Loading lots more textures for each NPC
      */
     public static void load() {
 

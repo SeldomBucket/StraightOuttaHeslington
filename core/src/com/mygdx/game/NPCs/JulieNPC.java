@@ -9,6 +9,7 @@ import com.mygdx.game.UI.UIManager;
 
 /**
  * This class represents another friendly NPC
+ * NEW NPC
  */
 public class JulieNPC extends NPC {
 

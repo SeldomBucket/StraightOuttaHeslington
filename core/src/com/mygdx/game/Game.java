@@ -72,7 +72,7 @@ public class Game extends com.badlogic.gdx.Game {
 
 	/**
 	 * Creates a new battle and sets the battleScreen as the current screen.
-	 * @param battleParams
+	 * @param battleParams The battle parameters of the battle to be created
 	 */
 	public void newBattle(BattleParameters battleParams) {
 		battleScreen = new BattleScreen(this, battleParams);

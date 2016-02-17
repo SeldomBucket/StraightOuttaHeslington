@@ -66,6 +66,11 @@ public class Player extends Character {
             tempDirection = Direction.RIGHT;
         }
     }
+
+    /**
+     * NEW METHOD - works in a similar way to updateTransitioning, but takes longer, so the camera has time to catch up
+     * @param delta The time since the last frame was rendered.
+     */
     protected void updateFlight(float delta){
         float copyOfRunningTime = runningTime + delta;
         float t = copyOfRunningTime / TRANSITION_SPEED;
@@ -90,6 +95,7 @@ public class Player extends Character {
 
     /**
      * Extends parent class by also updating the current interactingNPC of the player.
+     * NEW PARTS - Interactions. They work by looking at the player's location on the interaction map created in the Level class
      * @param delta The time since the last frame was rendered.
      */
     @Override

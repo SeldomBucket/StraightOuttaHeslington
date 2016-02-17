@@ -26,6 +26,7 @@ public class Agent implements Comparable<Agent>{
      * Implements the compareTo function required when implementing the Comparable abstract class.
      * Compares the total speeds of two agents, using base stats and equipment modifiers.
      * Orders in descending order.
+     * @param agent The agent to compare this to
      */
     public int compareTo(Agent agent){
 
@@ -38,8 +39,9 @@ public class Agent implements Comparable<Agent>{
      * @param name the name of the Agent.
      * @param type defines whether a friendly or enemy.
      * @param stats an instance of {@link Statistics}.
-     * @param skills a list of skill ID's that the agent can use.
+     * @param skills a list of skill IDs that the agent can use.
      * @param equipment an instance of {@link CurrentEquipment}.
+     * @param texture the index of the texture in the Assets.battleSprites array
      */
     public Agent(String name, AgentType type, Statistics stats, List<Integer> skills, CurrentEquipment equipment, int texture){
 
@@ -91,9 +93,6 @@ public class Agent implements Comparable<Agent>{
     public CurrentEquipment getCurrentEquipment() {
         return equipment;
     }
-    //////////////
-    //Need to work out how adding equipment when creating agent will work with the armour value statistics of the agent
-    /////////////
 
     /////////
     //Skills

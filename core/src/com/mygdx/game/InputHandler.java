@@ -18,7 +18,6 @@ public class InputHandler {
     private static Boolean leftPressed = false;
     private static Boolean actPressed = false;
     private static Boolean menuPressed = false;
-    private static Boolean shopPressed = false;
     private static Boolean escPressed = false;
 
     private static Boolean upJustPressed = false;
@@ -27,7 +26,6 @@ public class InputHandler {
     private static Boolean leftJustPressed = false;
     private static Boolean actJustPressed = false;
     private static Boolean menuJustPressed = false;
-    private static Boolean shopJustPressed = false;
     private static Boolean escJustPressed = false;
 
     private static final int UP = Input.Keys.UP;
@@ -98,15 +96,6 @@ public class InputHandler {
                 menuJustPressed = true;
             }
 
-            shopPressed = false;
-            shopJustPressed = false;
-            if (Gdx.input.isKeyPressed(SHOP)) {
-                shopPressed = true;
-            }
-            if (Gdx.input.isKeyJustPressed(SHOP)) {
-                shopJustPressed = true;
-            }
-
             escPressed = false;
             escJustPressed = false;
             if (Gdx.input.isKeyPressed(ESC)) {
@@ -162,14 +151,6 @@ public class InputHandler {
 
     public static Boolean isMenuPressed() {
         return menuPressed;
-    }
-
-    public static Boolean isShopJustPressed() {
-        return shopJustPressed;
-    }
-
-    public static Boolean isShopPressed() {
-        return shopPressed;
     }
 
     public static Boolean isEscPressed(){return escPressed;}

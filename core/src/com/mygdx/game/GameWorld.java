@@ -41,6 +41,8 @@ public class GameWorld {
     private int highestLevel;
     private int[] itemCosts;
 
+    private Random random;
+
     private Vector2 lastFlightSpot;
 
     private float flightTimer;
@@ -64,7 +66,7 @@ public class GameWorld {
         dannyDuck = new DannyNPC(level, new Vector2(120, 93));
         level.characters.add(dannyDuck);
         uiManager.addUIComponent(new UIScore());
-        //uiManager.addUIComponent(new UIDebugCoords(level.player));
+        //uiManager.addUIComponent(new UIDebugCoords(level.player)); /*Useful for finding x and y of interactables on the map*/
         battleParams = new BattleParameters(0);
         List<Integer> emptyList = new ArrayList<Integer>();
         Agent enemyDuck = new Agent("Crazed Duck", Agent.AgentType.ENEMY,new Statistics(100,100,0,2,2,2,2,2,3),emptyList,new CurrentEquipment(0,0,0,0,0),0);
@@ -77,12 +79,12 @@ public class GameWorld {
         vistasVisited = new boolean[]{false, false, false, false, false, false, false, false, false};
         locationNames = new String[]{"Constantine", "Langwith", "Goodricke", "Law and Management", "The Catalyst", "TFTV", "Computer Science", "Ron Cooke Hub"};
         uiManager.createFlightMenu(flightSpotsVisited, locationNames);
-        itemsToShow = new boolean[]{true, true, true, true, true, true, true, true, true, true};
         itemCosts = new int[]{20,40,20,50,100,60,70,80,100,60};
         levelRequirements = new int[]{0, 0, 0, 5, 12, 0, 6, 9, 20, 10};//15
         itemNames = new String[]{"Heal Flask","Revive Potion","Mana Flask","Crowbar","Fancy Sword","Wizard's Hat","Heelys","Iron Chestplate", "Magic Wand", "Gun"};
-        uiManager.createShopMenu(itemsToShow, itemNames, itemCosts, levelRequirements);
+        uiManager.createShopMenu(itemNames, itemCosts, levelRequirements);
         highestLevel = 0;
+        random = new Random();
         }
 
 
@@ -91,6 +93,8 @@ public class GameWorld {
      * Called once per frame to update GameWorld logic.
      * This looks at the game's current state and acts accordingly.
      * Switches on gameState and the player's current interaction (which is calculated using the interaction map in the player class)
+     * Turns off input for the level when in a menu
+     * NEW PARTS - switch case on player interaction (Flight, Vista sign, Text sign, shop), and related parts (I.E. shop menu, flight menu)
      * @param delta The time since the last frame was rendered.
      */
     public void update(float delta) {
@@ -107,8 +111,11 @@ public class GameWorld {
                 break;
             case FREEROAM:
                 level.stopInput = false;
-                Random random = new Random();
-                if (level.player.getState() == Character.CharacterState.TRANSITIONING && random.nextInt(battleChance) < 1){
+                /**
+                 * Random battle generator.
+                 * chance for a random battle increases with each step you take
+                 */
+                if (level.player.getState() == Character.CharacterState.TRANSITIONING && random.nextInt(battleChance) > 1){
                     if (!level.roadMap[(int)level.player.getCurrentTile().x][(int)level.player.getCurrentTile().y]) {
                         uiManager.createDialogue(new String[]{"You have been stopped by a group of... somethings!"});
                         level.stopInput = true;
@@ -129,7 +136,7 @@ public class GameWorld {
                         gameState = GameState.BATTLE_DIALOGUE;
                         level.stopInput = true;
                     }else{
-                        battleChance--;
+                        battleChance--; //increases chance of a random battle
                     }
                 } else if (InputHandler.isActJustPressed()) {
                     interactingNPC = level.player.interactingNPC;
@@ -150,12 +157,16 @@ public class GameWorld {
                                 gameState = GameState.INTERACTION;
                                 break;
                             case FLIGHT:
+                                /**
+                                 * Flight spots unlocked if they've not been visited before, otherwise goes to flight menu
+                                 * Points gained for finding new flight spots
+                                 */
                                 if ((level.player.getCurrentTile().x == 179.0f) && (level.player.getCurrentTile().y == 105.0f)) {
                                     if (!flightSpotsVisited[0]) {
                                         flightSpotsVisited[0] = true;
                                         uiManager.addNotification("Flight spot for Constantine unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore += 50;
+                                        Game.pointsScore += 50;
                                     } else {
                                         uiManager.showFlightMenu(0);
                                         gameState = GameState.INTERACTION;
@@ -165,7 +176,7 @@ public class GameWorld {
                                         flightSpotsVisited[1] = true;
                                         uiManager.addNotification("Flight spot for Langwith unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore += 50;
+                                        Game.pointsScore += 50;
                                     } else {
                                         uiManager.showFlightMenu(1);
                                         gameState = GameState.INTERACTION;
@@ -175,7 +186,7 @@ public class GameWorld {
                                         flightSpotsVisited[2] = true;
                                         uiManager.addNotification("Flight spot for Goodricke unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore += 50;
+                                        Game.pointsScore += 50;
                                     } else {
                                         uiManager.showFlightMenu(2);
                                         gameState = GameState.INTERACTION;
@@ -185,7 +196,7 @@ public class GameWorld {
                                         flightSpotsVisited[3] = true;
                                         uiManager.addNotification("Flight spot for Law and Management unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore += 50;
+                                        Game.pointsScore += 50;
                                     } else {
                                         uiManager.showFlightMenu(3);
                                         gameState = GameState.INTERACTION;
@@ -195,7 +206,7 @@ public class GameWorld {
                                         flightSpotsVisited[4] = true;
                                         uiManager.addNotification("Flight spot for The Catalyst unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore += 50;
+                                        Game.pointsScore += 50;
                                     } else {
                                         uiManager.showFlightMenu(4);
                                         gameState = GameState.INTERACTION;
@@ -205,7 +216,7 @@ public class GameWorld {
                                         flightSpotsVisited[5] = true;
                                         uiManager.addNotification("Flight spot for Theatre, Film, and Television unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore += 50;
+                                        Game.pointsScore += 50;
                                     } else {
                                         uiManager.showFlightMenu(5);
                                         gameState = GameState.INTERACTION;
@@ -215,7 +226,7 @@ public class GameWorld {
                                         flightSpotsVisited[6] = true;
                                         uiManager.addNotification("Flight spot for Computer Science unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore += 50;
+                                        Game.pointsScore += 50;
                                     } else {
                                         uiManager.showFlightMenu(6);
                                         gameState = GameState.INTERACTION;
@@ -225,7 +236,7 @@ public class GameWorld {
                                         flightSpotsVisited[7] = true;
                                         uiManager.addNotification("Flight spot for Ron Cooke Hub unlocked!");
                                         uiManager.addNotification("You gained 50 points.");
-                                        game.pointsScore += 50;
+                                        Game.pointsScore += 50;
                                     } else {
                                         uiManager.showFlightMenu(7);
                                         gameState = GameState.INTERACTION;
@@ -254,14 +265,13 @@ public class GameWorld {
                 break;
 
             case PARTY_MENU:
-                if (!uiManager.updatePartyMenu(delta)){
+                if (!uiManager.updatePartyMenu()){
                     gameState = GameState.FREEROAM;
                 }
                 break;
 
             case SHOP_MENU:
-
-                int shopSelection = uiManager.updateShopMenu(delta);
+                int shopSelection = uiManager.updateShopMenu();
                 if (shopSelection == 974){
                     gameState = GameState.FREEROAM;
                 }else if(!(shopSelection==-1)){
@@ -467,73 +477,73 @@ public class GameWorld {
                             gameState = GameState.FREEROAM;
                             switch (level.player.interactionLocationHash){
                                 case 288:
-                                    if (vistasVisited[0]==false){
+                                    if (!vistasVisited[0]){
                                         vistasVisited[0] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the vista for Constantine.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }
                                     break;
                                 case 258:
-                                    if (vistasVisited[1]==false){
+                                    if (!vistasVisited[1]){
                                         vistasVisited[1] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the vista for Langwith.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }
                                     break;
                                 case 223:
-                                    if (vistasVisited[2]==false){
+                                    if (!vistasVisited[2]){
                                         vistasVisited[2] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the vista for Goodricke.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }
                                     break;
                                 case 181:
-                                    if (vistasVisited[3]==false){
+                                    if (!vistasVisited[3]){
                                         vistasVisited[3] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the vista for the Law and Management Building.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }
                                     break;
                                 case 174:
-                                    if (vistasVisited[4]==false){
+                                    if (!vistasVisited[4]){
                                         vistasVisited[4] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the vista for the Catalyst.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }
                                     break;
                                 case 145:
-                                    if (vistasVisited[5]==false){
+                                    if (!vistasVisited[5]){
                                         vistasVisited[5] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the vista for Theatre Film and Television.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }
                                     break;
                                 case 158:
-                                    if (vistasVisited[6]==false){
+                                    if (!vistasVisited[6]){
                                         vistasVisited[6] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the vista for Computer Science.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }
                                     break;
                                 case 203:
-                                    if (vistasVisited[7]==false){
+                                    if (!vistasVisited[7]){
                                         vistasVisited[7] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the vista for the Ron Cooke Hub.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }
                                     break;
                                 case 58:
-                                    if (vistasVisited[8]==false){
+                                    if (!vistasVisited[8]){
                                         vistasVisited[8] = true;
-                                        game.pointsScore+=50;
+                                        Game.pointsScore+=50;
                                         uiManager.addNotification("Found the final vista.");
                                         uiManager.addNotification("You gained 50 points.");
                                     }

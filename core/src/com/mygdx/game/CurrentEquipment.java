@@ -1,6 +1,5 @@
 package com.mygdx.game;
 
-import java.lang.reflect.Array;
 import java.util.Arrays;
 
 /**
@@ -38,6 +37,8 @@ public class CurrentEquipment {
 
     /**
      * function returns the equipment corresponding to slotNumber
+     * @param slotNumber The location of the equipment you want in the equipped equipment array
+     * @return the equipment at slotNumber
      */
     public int getEquipment(int slotNumber) {
         return equipSlots[slotNumber];

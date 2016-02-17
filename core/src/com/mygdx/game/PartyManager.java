@@ -30,6 +30,7 @@ public class PartyManager {
     /**
      * Returns the Agent stored at the given index.
      * @param index The index to receive the Agent at
+     * @return The agent at the index
      */
     public Agent getMember(int index){
         return partyList.get(index);
@@ -75,7 +76,7 @@ public class PartyManager {
 
     /**
      * Renders the the party at their respective locations with their respective sprite.
-     * @param delta The time between frames
+     * @param delta Time elapsed between frames
      * @param batch The SpriteBatch to use
      */
     public void render(float delta, SpriteBatch batch){

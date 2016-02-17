@@ -13,13 +13,13 @@ import com.mygdx.game.ItemManager;
 
 /**
  * This class handles and renders the shop menu
+ * NEW CLASS
  */
 
 public class UIShopMenu extends UIComponent {
 
     private boolean show;
 
-    private boolean[] items;
     private String[] itemNames;
     private int[] itemPrices;
     private int[] levelRequirements;
@@ -27,18 +27,19 @@ public class UIShopMenu extends UIComponent {
     private int itemSelected;
     private int highestLevel;
 
-    public UIShopMenu(float x, float y, float width, float height, boolean[] items, String[] itemNames, int[] itemPrices, int[] levelRequirements) {
+    public UIShopMenu(float x, float y, float width, float height, String[] itemNames, int[] itemPrices, int[] levelRequirements) {
         super(x, y, width, height);
         show = false;
         itemSelected = 0;
-        this.items = items;
         this.itemNames = itemNames;
         this.itemPrices = itemPrices;
         this.levelRequirements = levelRequirements;
     }
 
     /**
-     * Called once per frame to render item information.
+     * Called once per frame to render item information. Uses highestLevel to decide if the item should be displayed or not
+     * @param batch The batch used to render the information
+     * @param patch The patch used as the background for the information
      */
     @Override
     public void render(SpriteBatch batch, NinePatch patch) {
@@ -80,6 +81,7 @@ public class UIShopMenu extends UIComponent {
 
     /**
      * Makes the UI component visible on screen.
+     * @param highestLevel The level of the character in the party with the highest level
      */
     public void show(int highestLevel) {
         itemSelected = 0;
@@ -87,7 +89,11 @@ public class UIShopMenu extends UIComponent {
         show = true;
     }
 
-    public int update(float delta) {
+    /**
+     * Updates the shop menu
+     * @return Returns -1 if the menu is not to be closed, 974 if no item was selected, or the index of the item selected if one was selected
+     */
+    public int update() {
         if (InputHandler.isActJustPressed()) {
             show = false;
             return itemSelected;

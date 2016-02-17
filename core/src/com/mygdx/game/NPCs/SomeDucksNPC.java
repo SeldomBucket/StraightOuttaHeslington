@@ -10,6 +10,7 @@ import java.util.List;
 
 /**
  * This class represents the second objective given by SammyNPC.
+ * NEW NPC
  */
 public class SomeDucksNPC extends NPC {
 

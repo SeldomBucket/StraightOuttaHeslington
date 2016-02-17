@@ -28,6 +28,7 @@ public class BattleAnimator {
     /**
      * Updates the movement and checks for reaching target location
      * Will also call the movementDone function of the caller to notify of a movement completion
+     * @param delta Time elapsed since last frame
      */
     public void update(float delta){
 

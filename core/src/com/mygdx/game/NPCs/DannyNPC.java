@@ -9,6 +9,7 @@ import com.mygdx.game.UI.UIManager;
 
 /**
  * This class another friendly NPC in the game.
+ * NEW NPC
  */
 public class DannyNPC extends NPC {
 
